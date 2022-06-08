@@ -1,0 +1,48 @@
+<div class="header-holder">
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-2 p-0">
+                    <div id="logo">
+                        <a href="<?=$this->baseUrl;?>/" title="<?= $this->header->nazwa; ?>">
+                            <img src="<?=$this->baseUrl;?>/public/gfx/template/logo.png" alt="<?= $this->header->nazwa; ?>" width="120" height="97">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-10 p-0">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="top">
+                                <ul class="mb-0 list-unstyled d-flex justify-content-end">
+                                    <li><a href=""><i class="fa-icons fa-marker"></i> ul. Kazimierza Odnowiciela 13</a></li>
+                                    <li><a href=""><i class="fa-icons fa-clock"></i> Pon, Śr, Pt: 9-17</a></li>
+                                    <li><a href=""><i class="fa-icons fa-clock"></i> Wt, Cz: 10-18</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <nav class="navbar clearfix">
+                                <ul class="nav justify-content-end">
+                                    <li><a href="<?=$this->baseUrl;?>/">Strona główna</a></li>
+                                    <?php $menu = Zend_Registry::get('querymenu'); echo $menu->get_menu_html(0); ?>
+                                    <!--<li><a href="<?=$this->baseUrl;?>/oferta/">ZNAJDŹ MIESZKANIE</a></li>
+                                    <li><a href="<?=$this->baseUrl;?>/inwestor/">INWESTOR</a></li>
+                                    <li><a href="<?=$this->baseUrl;?>/aktualnosci/">AKTUALNOŚCI</a></li>
+                                    <li><a href="<?=$this->baseUrl;?>/kontakt/">KONTAKT</a></li>-->
+                                    <li class="phoneli">
+                                        <a href="tel:576117119">
+                                            <span>ZADZWOŃ DO NAS</span>
+                                            576-117-119
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="mobilemenu"><a href="#" id="triggermenu">MENU</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+<div id="megamenu-opacity"></div>

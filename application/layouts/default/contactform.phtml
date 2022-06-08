@@ -1,0 +1,55 @@
+<form method="post" action="" class="validateform">
+	<div class="form-row row">
+		<div class="col-3">
+			<div class="inputs">
+				<div class="input">
+					<label for="form_imie">Imię</label>
+					<input name="form_imie" id="form_imie" class="validate[required]" placeholder="Imię" type="text">
+				</div>
+				<div class="input">
+					<label for="form_email">E-mail</label>
+					<input name="form_email" id="form_email" class="validate[required,custom[email]]" placeholder="E-mail" type="email">
+				</div>
+				<div class="input">
+					<label for="form_tel">Telefon</label>
+					<input name="form_telefon" id="form_tel" class="validate[custom[phone]]" placeholder="Telefon" type="tel">
+				</div>
+			</div>
+		</div>
+		<div class="col-9">
+			<div class="input">
+				<label for="form_wiadomosc">Treść wiadmości</label>
+				<textarea name="form_wiadomosc" id="form_wiadomosc" placeholder="Treść wiadomości"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="form-row row">
+		<div class="col-12 obowiazek">
+			<p>Wyrażając poniższe zgody oświadczam, że podając adres e-mail oraz numer telefonu jestem osobą uprawnioną do ich używania, oraz że zapoznałem/zapoznałam się z <a href="#" title="Polityka prywatności" target="_blank">Polityką Informacyjną</a>, że znam przysługujące mi prawo do wycofania niniejszej zgody w dowolnym momencie, prawo dostępu do treści moich danych osobowych, ich poprawiania, żądania czasowego lub stałego wstrzymania ich przetwarzania, poprawiania lub usunięcia. Podanie przeze mnie moich danych osobowych oraz wyrażenie zgody na ich przetwarzanie są dobrowolne. Przetwarzanie podanych przez mnie danych osobowych odbywać będzie się zgodnie z przepisami o ochronie danych osobowych które reguluje rozporządzenie Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r.</p>
+			<p>&nbsp;</p>
+			<p>Wyrażam zgodę na przetwarzanie moich danych osobowych przez Administratora Danych Osobowych, którym jest ......:</p>
+		</div>
+	</div>
+	<div class="form-row row">
+		<div class="col-12 rules">
+				<label for="zgoda_1" class="rules-text"><input name="zgoda_1" id="zgoda_1" value="1" class="validate[required]" data-prompt-position="topLeft:0" type="checkbox"><p>przez okres 12 miesięcy, w celu otrzymywania za pomocą środków komunikacji elektronicznej a w szczególności na podany adres e-mail i/lub numer telefonu, odpowiedzi na powyższe zapytanie dotyczące produktów i usług oferowanych przez ......</p></label>
+			<div class="clr"></div>
+				<label for="zgoda_2" class="rules-text"><input name="zgoda_2" id="zgoda_2" value="1" class="validate[required]" data-prompt-position="topLeft:0" type="checkbox"><p>przez okres 12 miesięcy, w celu otrzymywania za pomocą środków komunikacji elektronicznej a w szczególności na podany adres e-mail, informacji marketingowych dotyczących produktów i usług oferowanych przez przez ......</p></label>
+			<div class="clr"></div>
+				<label for="zgoda_3" class="rules-text"><input name="zgoda_3" id="zgoda_3" value="1" class="validate[required]" data-prompt-position="topLeft:0" type="checkbox"><p>przez okres 12 miesięcy, w celu otrzymywania drogą telefoniczną, na podany numer telefonu, informacji marketingowych dotyczących produktów i usług oferowanych przez ......</p></label>
+			<div class="clr"></div>
+		</div>
+	</div>
+	<div class="form-row row">
+		<div class="col-6">
+		</div>
+		<div class="col-6">
+			<div class="text-right">
+				<script type="text/javascript">
+					document.write("<button class=\"bttn bttn-more hvr-shadow\" type=\"submit\">WYŚLIJ WIADOMOŚĆ</button>");
+				</script>
+				<noscript><p><b>Do poprawnego działania, Java musi być włączona.</b><p></noscript>
+			</div>
+		</div>
+	</div>
+</form>

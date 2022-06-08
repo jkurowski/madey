@@ -1,0 +1,106 @@
+<div id="plan" class="plan-img">
+	<div class="container">
+		<div class="row">
+			<div class="col-3 inwestmenu">
+				<?php echo $this->render('inwestycja/aside.phtml');?>
+			</div>
+			
+			<div class="col-9 inwestdesc inwestroomslist">
+				<?php if($this->pietro->typ == 4 || $this->pietro->typ == 3){?>
+				<div class="fluid-container">
+					<div class="row pietro-nav no-gutters">
+						<div class="col-12">
+							<?=replace($this->pietro->tekst); ?>
+						</div>
+					</div>
+				</div>
+				<?php } else { ?>
+			
+				<div class="fluid-container">
+					<div class="row pietro-nav">
+						<div class="col-4"><?php if($this->poprzednie) {?><a href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/p/<?=$this->poprzednie->numer;?>/typ/<?=$this->poprzednie->typ;?>/" class="bttn">Piętro niżej</a><?php } ?></div>
+						<div class="col-4 text-center"><a href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/plan-inwestycji/" class="bttn">Plan inwestycji</a></div>
+						<div class="col-4 text-right"><?php if($this->kolejne) {?><a href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/p/<?=$this->kolejne->numer;?>/typ/<?=$this->kolejne->typ;?>/" class="bttn">Piętro wyżej</a><?php } ?></div>
+					</div>
+				</div>
+				
+				<div class="inwestpadding">
+				<h2 class="plan-title text-center mb-4"><?=$this->pietro->nazwa;?></h2>
+				<div class="plan-holder">
+					<div id="plan">
+						<img src="<?=$this->baseUrl; ?>/files/inwestycje/pietro/<?=$this->pietro->plik;?>" alt="<?=$this->inwestycja->nazwa;?> - <?=$this->pietro->nazwa;?>" style="max-width:100%;height:auto;" id="myimagemap" usemap="#imagemap">
+						
+						<map name="imagemap">
+					<?php foreach($this->powierzchnia as $mieszkania) {
+					
+							if($mieszkania->status <> 2) {
+								$mieszkanie = str_replace('href=""','href="'.$this->baseUrl.'/i/'.$this->inwestycja->tag.'/p/'.$this->pietro->numer.'/m/'.$mieszkania->numer.'/" data-id="'.$mieszkania->id.'"', $mieszkania->html);
+							} else {
+								$mieszkanie = str_replace('href=""','href="#"', $mieszkania->html);
+							}
+						
+							$mieszkanie =  str_replace('shape="polygon"','shape="poly"', $mieszkanie);
+
+							if($mieszkania->status == 1) {
+								$mieszkanie = str_replace('alt=""','id="'.$mieszkania->id.'" alt="" title="<b>'.$mieszkania->numer.'</b><br />Powierzchnia: <b class=fr>'.$mieszkania->metry.' m<sup>2</sup></b><br />Pokoje: <b class=fr>'.$mieszkania->pokoje.'</b><br />'.$mdm.''.statusMieszkania($mieszkania->status).'" data-color="green" class="inline forsale"', $mieszkanie);
+							}
+							if($mieszkania->status == 2) {
+								$mieszkanie = str_replace('alt=""','id="'.$mieszkania->id.'" alt="" title="<b>'.$mieszkania->numer.'</b><br />Powierzchnia: <b class=fr>'.$mieszkania->metry.' m<sup>2</sup></b><br />Pokoje: <b class=fr>'.$mieszkania->pokoje.'</b><br />'.$mdm.''.statusMieszkania($mieszkania->status).'" data-color="red" class="inline sold"', $mieszkanie);
+							}
+							if($mieszkania->status == 3) {
+								$mieszkanie = str_replace('alt=""','id="'.$mieszkania->id.'" alt="" title="<b>'.$mieszkania->numer.'</b><br />Powierzchnia: <b class=fr>'.$mieszkania->metry.' m<sup>2</sup></b><br />Pokoje: <b class=fr>'.$mieszkania->pokoje.'</b><br />'.$mdm.''.statusMieszkania($mieszkania->status).'" data-color="blue" class="inline reserved"', $mieszkanie);
+							}
+							if($mieszkania->status == 4) {
+								$mieszkanie = str_replace('alt=""','id="'.$mieszkania->id.'" alt="" title="<b>'.$mieszkania->numer.'</b><br />Powierzchnia: <b class=fr>'.$mieszkania->metry.' m<sup>2</sup></b><br />Pokoje: <b class=fr>'.$mieszkania->pokoje.'</b><br />'.$mdm.''.statusMieszkania($mieszkania->status).'" data-color="orange" class="inline rent"', $mieszkanie);
+							}
+							echo $mieszkanie;
+					} ?>
+						</map>
+					</div>
+				</div>
+
+				<div class="lista"><div class="view"><span id="grid">Mała lista</span> <span id="list">Duża lista</span></div></div>
+
+				<div id="offerList" class="fluid-container">
+					<?php if($this->wynik > 0){?>
+						<?php foreach($this->powierzchnia as $powierzchnia){?>
+						<div class="row no-gutters pozycja-ap" data-id="<?=$powierzchnia->numer;?>" data-url="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag?>/p/<?=$powierzchnia->numer_pietro;?>/m/<?=$powierzchnia->numer;?>/">
+							<div class="col-2 status-ap-<?=statusMieszkaniaListaTag($powierzchnia->status);?> namelist d-flex align-items-center justify-content-start">
+								<h2><?=$powierzchnia->numer;?></h2>
+							</div>
+							<div class="col-2 col-room-thumb">
+								<img src="<?=$this->baseUrl;?>/files/inwestycje/pomieszczenie/thumbs/<?=$powierzchnia->plik;?>" alt="Apartament nr. <?=$powierzchnia->numer;?>">
+							</div>
+							<div class="col-3 paramlist">
+								<ul class="list-unstyled biglist mb-0">
+									<li>pokoje: <span><?=$powierzchnia->pokoje;?></span></li>
+									<li>powierzchnia: <span><?=$powierzchnia->metry;?>&nbsp; m<sup>2</sup></span></li>
+								<?php if($powierzchnia->numer_pietro){?><li class="li-inwest-rwd">piętro: <span><?=$powierzchnia->numer_pietro;?></span></li><?php } ?>
+								</ul>
+
+								<ul class="list-unstyled smalllist mb-0">
+									<li>pokoje: <span><?=$powierzchnia->pokoje;?></span></li>
+									<li>pow.: <span><?=$powierzchnia->metry;?>&nbsp; m<sup>2</sup></span></li>
+									<li>piętro: <span><?=$powierzchnia->numer_pietro;?></span></li>
+								</ul>
+							</div>
+							<div class="col-2 text-right">
+								<div class="<?=statusMieszkaniaListaTag($powierzchnia->status);?>-ap"><?=statusMieszkania($powierzchnia->status);?><?php if($powierzchnia->specjalny){?><br><div class="specjalny-ap"><?=$powierzchnia->specjalny;?></div><?php } ?></div>
+							</div>
+                            <div class="col-3 text-right d-flex align-items-center justify-content-end">
+								<a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag?>/p/<?=$powierzchnia->numer_pietro;?>/m/<?=$powierzchnia->numer;?>/" class="bttn bttn-blue bttn-small" target="_blank">ZOBACZ</a>
+							</div>
+						</div>
+						<?php } ?>
+					<?php } else {?>
+						<div class="col-12 text-center">
+							<p><br>Brak wyników</p>
+						</div>
+					<?php } ?>
+				</div>
+				</div>
+				<?php } ?>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container specjalna">
+	<div class="row">
+		<div class="col-8">
+			<h1><?=$this->oferta->nazwa; ?></h1>
+			<?=replace($this->oferta->tekst); ?> 
+		</div>
+		
+		<div class="col-4">
+<?php if($this->inne){?>
+			<div class="side-box">
+				<h3>Inne oferty</h3>
+				<ul class="list-unstyled">
+<?php foreach($this->inne as $inny){?>
+				  <li class="media">
+					<a href="<?=$this->baseUrl;?>/oferta/<?=$inny->tag;?>/" title="<?=$inny->tytul;?>">
+						<img src="<?=$this->baseUrl;?>/files/specjalne/<?=$inny->plik;?>" alt="<?=$inny->tytul;?>">
+						<div class="media-body">
+							<h5 class=""><?=$inny->nazwa;?></h5>
+						</div>
+					</a>
+				  </li>
+<?php } ?>
+				</ul>
+			</div>
+<?php } ?>
+<?php if($this->header->fb){?>
+			<div class="side-box">
+				<h3>Facebook</h3>
+				<iframe src="https://www.facebook.com/plugins/page.php?href=<?= urlencode($this->header->fb);?>%2F&tabs=timeline&width=310&height=500&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false&appId=1383589491946459" width="310" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+			</div>
+<?php } ?>
+		</div>
+	</div>
+</div>

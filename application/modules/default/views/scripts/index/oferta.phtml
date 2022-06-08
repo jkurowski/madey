@@ -1,0 +1,65 @@
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-12 inwestdesc">
+			<?=replace($this->oferta->tekst); ?>
+		</div>
+	</div>
+</div>
+
+<div id="wyniki" class="mt-2 mb-5">
+	<div class="container">
+		<div class="lista"><div class="view"><span id="grid">Mała lista</span> <span id="list">Duża lista</span></div></div>
+		<div class="row">
+
+			<div id="offerList" class="fluid-container">
+				<?php if($this->wynik > 0){?>
+					<?php foreach($this->powierzchnia as $powierzchnia){?>
+
+                        <?php foreach ($this->inwestycje as $i) {
+                            if($powierzchnia->id_inwest == $i->id) {
+                                $inwest_tag = $i->tag;
+                            }
+                        } ?>
+
+
+                        <div class="row no-gutters pozycja-ap" data-id="<?=$powierzchnia->numer;?>" data-url="<?=$this->baseUrl;?>/i/<?=$inwest_tag;?>/b/<?=$powierzchnia->id_budynek;?>/p/<?=$powierzchnia->numer_pietro;?>/m/<?=$powierzchnia->numer;?>/">
+						<!-- Osiedlowa i budynkowa -->
+						<div class="col-2 status-ap-<?=statusMieszkaniaListaTag($powierzchnia->status);?> namelist">
+							<h2><?=$powierzchnia->numer;?></h2>
+						</div>
+						<div class="col-2 col-room-thumb">
+							<img src="<?=$this->baseUrl;?>/files/inwestycje/pomieszczenie/thumbs/<?=$powierzchnia->plik;?>" alt="<?=$powierzchnia->nazwa;?>">
+						</div>
+						<div class="col-3 paramlist">
+							<ul class="list-unstyled biglist mb-0">
+								<li>pokoje: <span><?=$powierzchnia->pokoje;?></span></li>
+								<li>powierzchnia: <span><?=$powierzchnia->metry;?>&nbsp; m<sup>2</sup></span></li>
+							<?php if($powierzchnia->numer_pietro){?><li class="li-inwest-rwd">piętro: <span><?=$powierzchnia->numer_pietro;?></span></li><?php } ?>
+							</ul>
+
+							<ul class="list-unstyled smalllist mb-0">
+								<li>pokoje: <span><?=$powierzchnia->pokoje;?></span></li>
+								<li>pow.: <span><?=$powierzchnia->metry;?>&nbsp; m<sup>2</sup></span></li>
+								<li>piętro: <span><?=$powierzchnia->numer_pietro;?></span></li>
+							</ul>
+						</div>
+						<div class="col-2 text-right">
+							<div class="<?=statusMieszkaniaListaTag($powierzchnia->status);?>-ap"><?=statusMieszkania($powierzchnia->status);?><?php if($powierzchnia->specjalny){?><br><div class="specjalny-ap"><?=$powierzchnia->specjalny;?></div><?php } ?></div>
+						</div>
+						<div class="col-3 text-right">
+						<!--<h4>380.000 zł</h4>-->
+							<!-- Budynkowa -->
+
+							<a href="<?=$this->baseUrl;?>/i/<?=$inwest_tag;?>/b/<?=$powierzchnia->id_budynek;?>/p/<?=$powierzchnia->numer_pietro;?>/m/<?=$powierzchnia->numer;?>/" class="bttn bttn-blue bttn-small bttn-more" target="_blank">ZOBACZ</a>
+						</div>
+					</div>
+					<?php } ?>
+				<?php } else {?>
+					<div class="col-12 text-center">
+						<p><br>Brak wyników</p>
+					</div>
+				<?php } ?>
+			</div>
+		</div>
+	</div>
+</div>

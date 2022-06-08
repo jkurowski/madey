@@ -1,0 +1,44 @@
+<div class="col-12">
+	<div class="aktualna">
+		<div class="aktualna-img"><img src="http://via.placeholder.com/370x270" alt=""></div>
+		<div class="aktualna-text gradient2">
+			<h2>Nazwa inwestycji</h2>
+			<p>Nunc ex lectus, bibendum sit amet ultricies accumsan, tristique mattis tellus. Aliquam eget magna eu lacus varius bibendum non sed est.</p>
+			<div class="zrealizowana-list">
+				<a href="#" class="hvr-ripple-out hvr-ripple-out-white">Kontakt</a>
+				<a href="#" class="hvr-ripple-out hvr-ripple-out-white">Opis inwestycji</a>
+				<a href="#" class="hvr-ripple-out hvr-ripple-out-white">Dostępne mieszkania</a>
+			</div>
+		</div>
+	</div>
+</div>
+		
+<div class="col-6">
+	<div class="aktualna aktualna-full">
+		<div class="aktualna-img aktualna-img2"><img src="http://via.placeholder.com/905x470" alt=""></div>
+		<div class="aktualna-text zrealizowana-text2 gradient2">
+			<h2>Nazwa inwestycji</h2>
+			<p>Nunc ex lectus, bibendum sit amet ultricies accumsan, tristique mattis tellus. Aliquam eget magna eu lacus varius bibendum non sed est.</p>
+			<div class="zrealizowana-list">
+				<a href="#" class="hvr-ripple-out hvr-ripple-out-white">Kontakt</a>
+				<a href="#" class="hvr-ripple-out hvr-ripple-out-white">Opis inwestycji</a>
+				<a href="#" class="hvr-ripple-out hvr-ripple-out-white">Dostępne mieszkania</a>
+			</div>
+		</div>
+	</div>
+</div>	
+
+<div class="col-6">
+	<div class="aktualna aktualna-full">
+		<div class="aktualna-img aktualna-img2"><img src="http://via.placeholder.com/905x470" alt=""></div>
+		<div class="aktualna-text zrealizowana-text2 gradient2">
+			<h2>Nazwa inwestycji</h2>
+			<p>Nunc ex lectus, bibendum sit amet ultricies accumsan, tristique mattis tellus. Aliquam eget magna eu lacus varius bibendum non sed est.</p>
+			<div class="zrealizowana-list">
+				<a href="#" class="hvr-ripple-out hvr-ripple-out-white">Kontakt</a>
+				<a href="#" class="hvr-ripple-out hvr-ripple-out-white">Opis inwestycji</a>
+				<a href="#" class="hvr-ripple-out hvr-ripple-out-white">Dostępne mieszkania</a>
+			</div>
+		</div>
+	</div>
+</div>

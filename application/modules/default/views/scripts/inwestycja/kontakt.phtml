@@ -1,0 +1,80 @@
+<div id="dziennik">
+	<div class="container">
+		<div class="row">
+			<div class="col-3 inwestmenu">
+				<?php echo $this->render('inwestycja/aside.phtml');?>
+			</div>
+
+			<div class="col-9 inwestdesc pl-5">
+				<div id="formalert">
+					<?php if($this->message == 1) :?>
+					<div class="col-12">
+						<div class="sendok mt-0 mb-4"><p><b>Wiadomość została wysłana.</b> </br>W najbliższym czasie skontaktujemy się z Państwem celem omówienia szczegółów!</p></div>
+					</div>
+					<?php endif; ?>
+				</div>
+				<form method="post" action="" class="validateform validateform-padding whiteform">
+					<div class="form-row row">
+                        <div class="col-4">
+                            <div class="input">
+                                <label for="form_imie">Imię</label>
+                                <input name="form_imie" id="form_imie" class="validate[required]" type="text">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="input">
+                                <label for="form_email">E-mail</label>
+                                <input name="form_email" id="form_email" class="validate[required,custom[email]]" type="email">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="input">
+                                <label for="form_tel">Telefon</label>
+                                <input name="form_telefon" id="form_tel" class="validate[custom[phone]]" type="tel">
+                            </div>
+                        </div>
+						<div class="col-12">
+							<div class="input">
+								<label for="form_wiadomosc">Treść wiadmości</label>
+								<textarea name="form_wiadomosc" id="form_wiadomosc"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="form-row row">
+						<div class="col-12 obowiazek">
+							<?=$this->rodo->obowiazek;?>
+						</div>
+					</div>
+					<div class="form-row row">
+						<div class="col-12 rules">
+						<?php foreach($this->regulkis as $regulka){?>
+							<label for="zgoda_<?=$regulka['id'];?>" class="rules-text"><input name="zgoda_<?=$regulka['id'];?>" id="zgoda_<?=$regulka['id'];?>" value="1" type="checkbox" <?php if($regulka['wymagane'] == 1){;?>class="validate[required]"<?php } ?> data-prompt-position="topLeft:0"><p><?=$regulka['tresc'];?></p></label>
+							<div class="clr"></div>
+						<?php } ?>
+						</div>
+					</div>
+					<div class="form-row row mt-3">
+						<div class="col-12">
+							<div class="input text-left">
+								<script>
+								grecaptcha.ready(function() {
+								grecaptcha.execute('6LcbhL8UAAAAABpOvbcsQ5DI8vfd7G6LvH3cXCDf', {action: 'inwestycjakontakt'})
+									.then(function(token) {
+									console.log(token)
+									document.getElementById('g-recaptcha-response').value = token;
+									});
+								});
+								</script>
+								<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+								<script type="text/javascript">
+									document.write("<button class=\"bttn bttn-lg\" type=\"submit\">WYŚLIJ WIADOMOŚĆ</button>");
+								</script>
+								<noscript><p><b>Do poprawnego działania, Java musi być włączona.</b><p></noscript>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,75 @@
+<div id="aside">
+	<ul class="list-unstyled sidemenu">
+				<li<?php if($this->inwestmenupage == 'opis'){?> class="active"<?php } ?>><a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/">Opis inwestycji</a></li>
+			<?php if($this->plan->id){?>
+					<li class="<?php if($this->pagetag == 'plan-inwestycji'){?> active<?php } ?>"><a href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/plan-inwestycji/">Znajdź mieszkanie</a></li>
+			<?php } ?>
+			
+			
+			<?php if($this->inwestycja->id <> 1) {?>
+				<?php if($this->action == 'plan'){?>
+					<?php if($this->inwestycja->typ == 1) { foreach($this->budynki as $budynek) { ?>
+						<li class="hightlightmap"><a data-item="<?=$budynek->id;?>" href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/b/<?=$budynek->id;?>/"><?=$budynek->nazwa;?></a></li>
+					<?php } } ?>
+
+					<?php if($this->inwestycja->typ == 2) { foreach($this->pietra as $pietro) { ?>
+						<li class="hightlightmap"><a data-item="<?=$pietro->id;?>" href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/p/<?=$pietro->numer;?>/typ/<?=$pietro->typ;?>/"><?=$pietro->nazwa;?></a></li>
+					<?php } } ?>
+				<?php } ?>
+
+				<?php if($this->action == 'budynek'){?>
+					<?php foreach($this->pietra as $pietro) { if($pietro->typ <> 4){ ?>
+						<li class="hightlightmap"><a data-item="<?=$pietro->id;?>" href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/b/<?=$this->budynek->id;?>/p/<?=$pietro->numer;?>/typ/<?=$pietro->typ;?>/"><?=$pietro->nazwa;?></a></li>
+					<?php } } ?>
+					<?php foreach($this->pietra as $pietro) { if($pietro->typ == 4){ ?>
+						<li class="hightlightmap"><a data-item="<?=$pietro->id;?>" href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/b/<?=$this->budynek->id;?>/p/<?=$pietro->numer;?>/typ/<?=$pietro->typ;?>/"><?=$pietro->nazwa;?></a></li>
+					<?php } } ?>
+				<?php } ?>
+				
+				<?=$this->uslugowki;?>
+			<?php } ?>
+
+	<?php foreach($this->inwestpage as $strona){?>
+			<?php if($strona->typ == 0) {?>
+				<li class="<?php if($strona->tag == $this->pagetag){?> active<?php } ?>"><a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/p/<?=$strona->tag;?>/"><?=$strona->nazwa;?></a></li>
+			<?php } else { ?>
+				<li class="listSection"><h4><?=$strona->nazwa;?></h4></li>
+			<?php }?>
+	<?php } ?>
+	</ul>
+
+	<?php if($this->inwestycja->id <> 1) {?>
+		<?php if($this->searchonplan){?>
+	<form id="searchOffer" method="get" action="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/plan-inwestycji/">
+		<?php } else { ?>
+	<form id="searchOffer" method="get" action="">
+		<?php } ?>
+		<div class="row">
+			<div class="col-12">
+				<label for="s_pokoje">Pokoje</label>
+				<select name="s_pokoje" id="s_pokoje" class="hvr-shadow">
+					<option value="">Dowolna ilość</option>
+					<?php $var = explode(',', $this->inwestycja->zakres_pokoje); ?>
+					<?php foreach($var as $pozycja) {?>
+					<option value="<?=$pozycja;?>"<?php if($this->s_pokoje && $this->s_pokoje == $pozycja){echo ' selected="selected"';};?>><?=$pozycja;?></option>
+					<?php } ?>
+				</select>
+			</div>
+			<div class="col-12">
+				<label for="s_metry">Powierzchnia</label>
+				<select name="s_metry" id="s_metry" class="hvr-shadow">
+					<option value="">Dowolny metraż</option>
+					<?php $var = explode(',', $this->inwestycja->zakres_powierzchnia); ?>
+					<?php foreach($var as $pozycja) {?>
+					<option value="<?=$pozycja;?>"<?php if($this->s_metry && $this->s_metry == $pozycja){echo ' selected="selected"';};?>><?=$pozycja;?></option>
+					<?php } ?>
+				</select>
+			</div>
+			<div class="col-12">
+				<input type="hidden" name="a" value="szukaj">
+				<button type="submit" id="s_button" class="bttn bttn-white bttn-more">SZUKAJ</button>
+			</div>
+		</div>
+	</form>
+	<?php } ?>
+</div>

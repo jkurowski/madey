@@ -1,0 +1,215 @@
+<div class="responsive">
+	<div class="grid_9">
+
+		<div class="box_2">
+			<div class="mieszkanie-sticker">
+			<div class="menu-area-show">
+				<?php if($this->poprzednie) {?><a href="<?=$this->baseUrl;?>/<?=$this->inwestycja->tag;?>/b/<?=$this->budynek->id;?>/p/<?=$this->pietro->numer;?>/m/<?=$this->poprzednie->numer;?>.html" class="fl inwest-nav goprev small-nav">Poprzedni dom</a><?php } ?>
+				<?php if($this->nastepne) {?><a href="<?=$this->baseUrl;?>/<?=$this->inwestycja->tag;?>/b/<?=$this->budynek->id;?>/p/<?=$this->pietro->numer;?>/m/<?=$this->nastepne->numer;?>.html" class="fl inwest-nav gonext small-nav">Następny dom</a><?php } ?>
+				<a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/" class="fl inwest-nav goplan small-nav">Wróć do planu inwestycji</a>
+				<div class="clr"></div>
+			</div>
+			<div class="mieszkanie-dane">
+			
+				<div class="mieszkanie-status status-<?=zmiana(statusMieszkaniaLista($this->mieszkanie->status));?>"><?=statusMieszkania($this->mieszkanie->status);?></div>
+				
+				<div class="mieszkanie-padd">
+					
+					<h2><?=$this->mieszkanie->nazwa;?></h2>
+					<ul class="cleanul mieszkanie-param">
+						<li><div class="mieszkanie-i">0<span>pow. działki w m<sup>2</sup></span></div></li>
+						<li><div class="mieszkanie-i"><?=$this->mieszkanie->pokoje;?><span>pokoje</span></div></li>
+						<li><div class="mieszkanie-i"><?=$this->mieszkanie->metry;?><span>pow. domu w m<sup>2</sup></span></div></li>
+					</ul>
+					
+					<div class="clr"></div>
+						<div class="mieszkanie-sep"></div>
+					<div class="clr"></div>
+					
+						<!-- cena -->
+						<?php if($this->mieszkanie->cena){?>
+							<div class="mieszkanie-op op-cena"<?php if($this->mieszkanie->cena_promocja){?> style="color:#444444"<?php } ?>>Cena:</div>
+							<div class="mieszkanie-op op-cena right"<?php if($this->mieszkanie->cena_promocja){?> style="color:#444444"<?php } ?>>
+							<?php if($this->mieszkanie->cena_promocja){?><del><?php } ?>
+							<?=number_format($this->mieszkanie->cena , 0, ',', '.');?> zł
+							<?php if($this->mieszkanie->cena_promocja){?></del><?php } ?>
+							</div>
+						<?php } ?>
+						
+						<!-- promocja -->
+						<?php if($this->mieszkanie->cena_promocja){?>
+							<?php if(is_numeric($this->mieszkanie->cena_promocja)){ ?>
+								
+								<?php $str = strpos($this->mieszkanie->cena_promocja, '.'); if($str !== false) { ?>
+									<div class="mieszkanie-op op-cena-prom">Cena promocyjna:</div><div class="mieszkanie-op op-cena-prom right"><?php if($this->mieszkanie->cena_promocja){?><?=number_format($this->mieszkanie->cena_promocja , 2, ',', '.');?> zł<?php } ?></div>
+								<?php } else { ?>
+									<div class="mieszkanie-op op-cena-prom">Cena promocyjna:</div><div class="mieszkanie-op op-cena-prom right"><?php if($this->mieszkanie->cena_promocja){?><?=number_format($this->mieszkanie->cena_promocja , 0, ',', '.');?> zł<?php } ?></div>
+								<?php } ?>
+
+							<?php } else { ?>
+								<div class="mieszkanie-op op-cena-prom">Cena promocyjna:</div><div class="mieszkanie-op op-cena-prom right"><?php if($this->mieszkanie->cena_promocja){?><?=$this->mieszkanie->cena_promocja;?><?php } ?></div>
+							<?php } ?>
+						<?php } ?>
+						
+						<div class="scroll-hide">
+						
+						<div class="clr"></div>
+							<div class="mieszkanie-sep scroll-hide"></div>
+						<div class="clr"></div>
+						
+						<?php if($this->mieszkanie->cena_m){?><div class="mieszkanie-op cenam2"<?php if($this->mieszkanie->cena_m_promocja){?> style="color:#444444"<?php } ?>>Cena m<sup>2</sup>:</div><div class="mieszkanie-op right cenam2"<?php if($this->mieszkanie->cena_m_promocja){?> style="color:#444444"<?php } ?>><?php if($this->mieszkanie->cena_m_promocja){?><del><?php } ?><?=$this->mieszkanie->cena_m;?> zł<?php if($this->mieszkanie->cena_m_promocja){?></del><?php } ?></div><?php } else {?>
+						
+						<div class="mieszkanie-op cenam2">Cena m<sup>2</sup>:</div>
+						<div class="mieszkanie-op cenam2 right"><?php if($this->mieszkanie->cena && $this->mieszkanie->metry) { echo round($this->mieszkanie->cena / $this->mieszkanie->metry, 2) .' zł'; }?></div><?php } ?>
+						
+						
+						<?php if($this->mieszkanie->cena_m_promocja){?><div class="mieszkanie-op op-prom">Cena promocyjna m<sup>2</sup>:</div><div class="mieszkanie-op op-prom right"><?=$this->mieszkanie->cena_m_promocja;?> zł</div><?php } ?>
+
+					<?php if($this->mieszkanie->mdm == 1){?>
+
+						<div class="mieszkanie-op">MDM:</div>
+						<div class="mieszkanie-op right"><?=taknie($this->mieszkanie->mdm);?></div>
+					<?php } ?>
+
+					<?php if(!empty($this->oknoArray[0]) && count($this->oknoArray) > 0){?>
+						
+						<div class="clr"></div>
+							<div class="mieszkanie-sep"></div>
+						<div class="clr"></div>
+						
+						<div class="mieszkanie-op">Wystawa okna:</div>
+						<div class="mieszkanie-op op-list right"><ul class="cleanul"><?php foreach($this->oknoArray as $okno){ echo '<li>'.okno($okno).'</li>'; } ?></ul></div>
+						
+						<div class="clr"></div>
+							<div class="mieszkanie-sep"></div>
+						<div class="clr"></div>
+						
+					<?php } ?>
+					
+					<?php if($this->mieszkanie->typ_okno){?>
+						<div class="mieszkanie-op">Rodzaj okna:</div>
+						<div class="mieszkanie-op right"><?=rodzajOkno($this->mieszkanie->typ_okno);?></div>
+					<?php } ?>
+					
+					<?php if($this->mieszkanie->material){?>
+						<div class="mieszkanie-op">Materiał budynku:</div>
+						<div class="mieszkanie-op right"><?=materialBudynek($this->mieszkanie->material);?></div>
+					<?php } ?>
+					
+					<?php if($this->mieszkanie->ogrzewanie){?>
+						<div class="mieszkanie-op">Ogrzewanie:</div>
+						<div class="mieszkanie-op right"><?=ogrzewanie($this->mieszkanie->ogrzewanie);?></div>
+					<?php } ?>
+					
+					<?php if($this->mieszkanie->kuchnia == 1) { ?>
+						<div class="mieszkanie-op">Oddzielna kuchnia:</div>
+						<div class="mieszkanie-op right"><?=taknie(1);?></div>
+					<?php } else {?>
+						<div class="mieszkanie-op">Aneks kuchenny:</div>
+						<div class="mieszkanie-op right"><?=taknie(1);?></div>
+					<?php } ?>
+					
+					<?php if(count($this->mediaArray) > 1){?>
+						
+						<div class="clr"></div>
+							<div class="mieszkanie-sep"></div>
+						<div class="clr"></div>
+						
+						<div class="mieszkanie-op">Media:</div>
+						<div class="mieszkanie-op op-list right"><ul class="cleanul"><?php foreach($this->mediaArray as $media){ echo '<li>'.media($media).'</li>'; } ?></ul></div>
+
+					<?php } ?>
+					
+					<?php if(count($this->zabezpieczenieArray) > 1){?>
+						
+						<div class="clr"></div>
+							<div class="mieszkanie-sep"></div>
+						<div class="clr"></div>
+						
+						<div class="mieszkanie-op">Zabezpieczenie:</div>
+						<div class="mieszkanie-op op-list right"><ul class="cleanul"><?php foreach($this->zabezpieczenieArray as $zabezpieczenie){ echo '<li>'.typZabezpieczenie($zabezpieczenie).'</li>'; } ?></ul></div>
+
+					<?php } ?>
+					
+					<?php if(count($this->info_dodatkoweArray) > 1){?>
+						
+						<div class="clr"></div>
+							<div class="mieszkanie-sep"></div>
+						<div class="clr"></div>
+						
+						<div class="mieszkanie-op">Informacje dodatkowe:</div>
+						<div class="mieszkanie-op op-list right"><ul class="cleanul"><?php foreach($this->info_dodatkoweArray as $dodatkowo){ echo '<li>'.dodatkowe($dodatkowo).'</li>'; } ?></ul></div>
+
+					<?php } ?>
+	
+					</div>					
+					<div class="clr"></div>
+						<div class="sep-bottom"></div>
+					<div class="clr"></div>
+
+					<?php if($this->mieszkanie->pdf){?><a href="<?=$this->baseUrl;?>/files/inwestycje/pdf/<?=$this->mieszkanie->pdf;?>" class="mieszkanie-link" target="_blank">Pobierz plan mieszkania<i class="material-icons">file_download</i></a><?php } ?>
+				</div>
+			</div>
+			</div>
+			
+			<div class="mieszkanie-opis">
+			<div class="menu-area-hide">
+				<?php if($this->poprzednie) {?><a href="<?=$this->baseUrl;?>/<?=$this->inwestycja->tag;?>/b/<?=$this->budynek->id;?>/p/<?=$this->pietro->numer;?>/m/<?=$this->poprzednie->numer;?>.html" class="fl inwest-nav goprev small-nav">Poprzednie mieszkanie</a><?php } ?>
+				<?php if($this->nastepne) {?><a href="<?=$this->baseUrl;?>/<?=$this->inwestycja->tag;?>/b/<?=$this->budynek->id;?>/p/<?=$this->pietro->numer;?>/m/<?=$this->nastepne->numer;?>.html" class="fl inwest-nav gonext small-nav">Następne mieszkanie</a><?php } ?>
+				<a href="<?=$this->baseUrl;?>/<?=$this->inwestycja->tag;?>/b/<?=$this->mieszkanie->id_budynek;?>/p/<?=$this->pietro->numer;?>/typ/<?=$this->mieszkanie->typ;?>.html" class="fl inwest-nav goplan small-nav">Wróć do piętra</a>
+				<div class="clr"></div>
+			</div>
+
+			</div>
+		<div class="clr"></div>
+		</div>
+		
+		<div class="box_2 form-grid">
+					<?php if($this->message == 1) :?>
+						<div class="sendok"><p>Twoja wiadomość została wysłana. W najbliższym czasie skontaktujemy się z Państwem celem omówienia szeczegółów!</p></div><br />
+						<script type="text/javascript">dataLayer.push({'event': 'wyslanie_zapytania'});</script>
+					<?php endif; ?>
+					<form method="post" action="" id="formgrid" class="mieszkanieForm form realpersonform">
+					<div class="input3 input-left">
+						<label for="form_imie">Imię</label>
+						<input type="text" name="imie" id="form_imie" class="validate[required]" data-prompt-position="topRight:-74px">
+					</div>
+					<div class="input3 input-right">
+						<label for="form_email">Adres e-mail</label>
+						<input type="email" name="email" id="form_email" class="validate[required,custom[email]]" data-prompt-position="topRight:-74px">
+					</div>
+					<div class="input3 input-left">
+						<label for="form_telefon">Telefon</label>
+						<input type="tel" name="telefon" id="form_telefon" class="validate[required,custom[phone]]" data-prompt-position="topRight:-74px">
+					</div>
+					<div class="clr"></div>
+					<div class="input1">
+						<label for="form_wiadomosc">Treść wiadomości</label>
+						<textarea rows="1" cols="1" name="wiadomosc" id="form_wiadomosc"></textarea>
+					</div>
+					<div class="input1 rules"><input type="checkbox" id="checkbox" name="rule" class="validate[required]" data-prompt-position="topLeft"><p>Wyrażam zgodę na przetwarzanie moich danych osobowych zamieszczonych w niniejszym formularzu przez firmę Triada Dom sp. j. 55-100 Trzebnica, ul. Obornicka 19 zgodnie z ustawą z dnia 29.08.1997 r. o ochronie danych osobowych (Dz. U. z 2002 r. nr 101, poz. 926, z późn. zm.) w celach marketingowych. Administratorem bazy jest Triada Dom sp. j. lub podmioty z nią współpracujące przy realizacji akcji marketingowych. Moje dane osobowe udostępniam dobrowolnie i jestem świadomy, że przysługuje mi prawo do wglądu, ich poprawiania i żądania zaprzestania przetwarzania.</p></div>
+					<div class="input1 input-left"><input type="text" class="validate[required]" id="defaultReal" name="defaultReal" placeholder="Wpisz kod" /></div>
+					<div class="input2 input-right input-button text-right">
+					<script type="text/javascript">
+						document.write("<button type=\"submit\" id=\"sendbutton\">Wyślij wiadomość</button>");
+					</script>
+					<noscript><p><b>Do poprawnego działania, Java musi być włączona.</b><p></noscript>
+					</div>
+					<div class="clr"></div>
+					</form>
+					<h2 class="mieszkanie-rzut">Rzut mieszkania</h2>
+					<?php if($this->mieszkanie->plik){?><a href="<?=$this->baseUrl;?>/files/inwestycje/pomieszczenie/<?=$this->mieszkanie->plik;?>" class="swipebox kartamieszkania" title="<?=$this->budynek->nazwa;?> - <?=$this->pietro->nazwa;?> -  <?=$this->mieszkanie->nazwa;?>"><img src="<?=$this->baseUrl;?>/files/inwestycje/pomieszczenie/thumbs/<?=$this->mieszkanie->plik;?>" alt="<?=$this->mieszkanie->nazwa;?>"></a><?php } ?>
+					<?php if($this->mieszkanie->plik2){?><a href="<?=$this->baseUrl;?>/files/inwestycje/pomieszczenie/<?=$this->mieszkanie->plik2;?>" class="swipebox kartamieszkania" title="<?=$this->budynek->nazwa;?> - <?=$this->pietro->nazwa;?> -  <?=$this->mieszkanie->nazwa;?>"><img src="<?=$this->baseUrl;?>/files/inwestycje/pomieszczenie/thumbs/<?=$this->mieszkanie->plik2;?>" alt="<?=$this->mieszkanie->nazwa;?>"></a><?php } ?>		
+					
+		</div><div class="clr"></div>
+		
+		<div class="box_1 mieszkanie-pad">
+			<?=replace($this->mieszkanie->tekst);?>
+		</div>
+
+	</div>
+	<div class="grid_3 inwestlist">
+<?php echo $this->render('inwestycja/aside.phtml');?>
+	</div>
+	<div class="clr"></div>
+</div>

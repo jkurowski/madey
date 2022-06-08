@@ -1,0 +1,82 @@
+<div id="contact">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center contact-text">
+				<?php replace($this->strona->tekst); ?>
+
+
+                <h3 class="blue mb-5"><b>Madey Development spółka z ograniczoną odpowiedzialnością sp.k.</b></h3>
+                <h3 class="mb-5"><a href="tel:576117119"><b class="blue">576 117 119</b></a></h3>
+                <h3>Biuro sprzedaży:</h3>
+                <p>ul. Kazimierza Odnowiciela 13</p>
+                <p>&nbsp;</p>
+                <h3>Godziny otwarcia:</h3>
+                <p>poniedziałek-czwartek godz.: <b>8:00 - 19:00</b></p>
+                <p>piątek godz.: <b>9:00 - 18:00</b></p>
+                <p>sobota godz.: <b>9:00 - 15:00</b></p>
+                <p>&nbsp;</p>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-sm-5 text-center text-sm-right"><h4><a href="tel:534664737">Sylwia: 534-664-737</a></h4></div>
+                    <div class="col-12 col-sm-5 text-center text-sm-left"><h4><a href="tel:882482077">Ewelina: 882-482-077</a></h4></div>
+                </div>
+            </div>
+		</div>
+	</div>
+	<div class="fluid-container">
+		<div class="row no-gutters">
+			<div class="col-6">
+				<div id="maincontact">
+					<div class="container">
+						<?php if($this->message == 1) :?>
+						<div class="row">
+							<div id="formalert" class="col-12">
+								<div class="sendok"><p>Twoja wiadomość została wysłana. W najbliższym czasie skontaktujemy się z Państwem celem omówienia szczegółów!</p></div>
+							</div>
+						</div>
+						<?php endif; ?>
+						<form class="validateform" method="post">
+							<div class="row">
+								<div class="col-4"><input type="text" placeholder="Imię" name="form_imie" class="validate[required]"></div>
+								<div class="col-4"><input type="text" placeholder="E-mail" name="form_mail" class="validate[required,custom[email]]"></div>
+								<div class="col-4"><input type="text" placeholder="Telefon" name="form_telefon" class="validate[custom[phone]]"></div>
+							</div>
+							<div class="row">
+								<div class="col-12"><div class="validholder"><textarea name="form_wiadomosc" placeholder="Treść wiadomości" class="validate[required]"></textarea></div></div>
+							</div>
+							<div class="form-row row">
+								<div class="col-12 obowiazek">
+									<?=$this->rodo->obowiazek;?>
+								</div>
+							</div>
+							<div class="form-row row">
+								<div class="col-12 rules">
+								<?php foreach($this->regulkis as $regulka){?>
+									<label for="zgoda_<?=$regulka['id'];?>" class="rules-text"><input name="zgoda_<?=$regulka['id'];?>" id="zgoda_<?=$regulka['id'];?>" value="1" type="checkbox" <?php if($regulka['wymagane'] == 1){;?>class="validate[required]"<?php } ?> data-prompt-position="topLeft:0"><p><?=$regulka['tresc'];?></p></label>
+									<div class="clr"></div>
+								<?php } ?>
+								</div>
+							</div>
+							<div class="row">
+								<script>
+								grecaptcha.ready(function() {
+								grecaptcha.execute('6LcbhL8UAAAAABpOvbcsQ5DI8vfd7G6LvH3cXCDf', {action: 'kontakt'})
+									.then(function(token) {
+									console.log(token)
+									document.getElementById('g-recaptcha-response').value = token;
+									});
+								});
+								</script>
+								<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+								<div class="col-12"><div class="col-12-submit clearfix"><button type="submit">WYŚLIJ WIADOMOŚĆ</button></div></div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-6">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5546.520430481595!2d19.56024989853064!3d51.73863132149099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471a33292f02b697%3A0x5c950ed89fdf0e9e!2sKazimierza%20Odnowiciela%2013%2C%2092-414%20%C5%81%C3%B3d%C5%BA!5e0!3m2!1spl!2spl!4v1641270415294!5m2!1spl!2spl" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,189 @@
+<div class="container">
+	<div class="row pietro-nav">
+		<div class="col-4">
+		<!-- Inwestycja osiedlowa -->
+		<?php if($this->inwestycja->typ == 1 && $this->inwestycja->id <> 1){?>
+			<?php if($this->poprzednie) {?><a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/b/<?=$this->budynek->id;?>/p/<?=$this->pietro->numer;?>/m/<?=$this->poprzednie->numer;?>/" class="bttn">Poprzednie</a><?php } ?>
+		<?php } ?>
+		<!-- Inwestycja budynkowa -->
+		<?php if($this->inwestycja->typ == 2){?>
+			<?php if($this->poprzednie) {?><a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/p/<?=$this->pietro->numer;?>/m/<?=$this->poprzednie->numer;?>/" class="bttn">Poprzednie</a><?php } ?>
+		<?php } ?>
+		<!-- Inwestycja domkowa -->
+		<?php if($this->inwestycja->typ == 3){?>
+			<?php if($this->poprzednie) {?><a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/d/<?=$this->poprzednie->numer;?>/" class="bttn">Poprzedni</a><?php } ?>
+		<?php } ?>
+		</div>
+		
+		<div class="col-4">
+			<!-- Inwestycja osiedlowa -->
+			<?php if($this->inwestycja->typ == 1 && $this->inwestycja->id <> 1){?>
+				<a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/b/<?=$this->mieszkanie->id_budynek;?>/p/<?=$this->pietro->numer;?>/typ/<?=$this->mieszkanie->typ;?>/" class="bttn">Wróć do planu</a>
+			<?php } ?>
+			
+			<!-- Inwestycja budynkowa -->
+			<?php if($this->inwestycja->typ == 2){?>
+				<a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/p/<?=$this->pietro->numer;?>/typ/<?=$this->mieszkanie->typ;?>/" class="bttn">Wróć do planu</a>
+			<?php } ?>
+			
+			<!-- Inwestycja domkowa -->
+			<?php if($this->inwestycja->typ == 3){?>
+				<a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/plan-inwestycji/" class="bttn">Wróć do planu</a>
+			<?php } ?>
+		</div>
+		<div class="col-4">
+		<!-- Inwestycja osiedlowa -->
+		<?php if($this->inwestycja->typ == 1 && $this->inwestycja->id <> 1){?>
+			<?php if($this->nastepne) {?><a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/b/<?=$this->budynek->id;?>/p/<?=$this->pietro->numer;?>/m/<?=$this->nastepne->numer;?>/" class="bttn">Następny</a><?php } ?>
+		<?php } ?>
+		<!-- Inwestycja budynkowa -->
+		<?php if($this->inwestycja->typ == 2){?>
+			<?php if($this->nastepne) {?><a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/p/<?=$this->pietro->numer;?>/m/<?=$this->nastepne->numer;?>/" class="bttn">Następne</a><?php } ?>
+		<?php } ?>
+		<!-- Inwestycja domkowa -->
+		<?php if($this->inwestycja->typ == 3){?>
+			<?php if($this->nastepne) {?><a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/d/<?=$this->nastepne->numer;?>/" class="bttn">Następny</a><?php } ?>
+		<?php } ?>
+		</div>
+	</div>
+</div>
+			
+<div id="mieszkanie">
+	<div class="container">
+		<div class="row">
+			<div class="col-4">
+                <div class="mieszkanie-dane">
+                    <a href="<?=$this->baseUrl;?>/files/inwestycje/pomieszczenie/<?=$this->mieszkanie->plik;?>" class="swipebox"><img src="<?=$this->baseUrl;?>/files/inwestycje/pomieszczenie/thumbs/<?=$this->mieszkanie->plik;?>" alt="<?=$this->mieszkanie->nazwa;?>"></a>
+
+                    <h2><?=$this->mieszkanie->nazwa;?></h2>
+                    <ul class="list-unstyled">
+                        <li>Ilość pokoi:<span><?=$this->mieszkanie->pokoje;?></span></li>
+                        <li>Metraż:<span><?=$this->mieszkanie->metry;?>m<sup>2</sup></span></li>
+                        <?php if($this->mieszkanie->numer_pietro){?><li>Piętro:<span><?=$this->mieszkanie->numer_pietro;?></span></li><?php } ?>
+                        <?php if($this->mieszkanie->kuchnia){?><li>Aneks/Kuchnia:<span><?=kuchnia($this->mieszkanie->kuchnia);?></span></li><?php } ?>
+
+                        <?php if(!empty($this->oknoArray[0])){?><li class="clearfix">Wystawa okienna:<span><?php foreach($this->oknoArray as $okno){ echo okno($okno).'<br>'; } ?></span></li><?php } ?>
+                        <?php if($this->mieszkanie->balkon){?><li>Powierzchnia balkonu:<span><?=$this->mieszkanie->balkon;?>m<sup>2</sup></span></li><?php } ?>
+                        <?php if($this->mieszkanie->ogrodek){?><li>Powierzchnia ogródka:<span><?=$this->mieszkanie->ogrodek;?>m<sup>2</sup></span></li><?php } ?>
+
+                        <?php if($this->mieszkanie->typ_okno){?>
+                            <li>Rodzaj okna:<span><?=rodzajOkno($this->mieszkanie->typ_okno);?></span></li>
+                        <?php } ?>
+
+                        <?php if($this->mieszkanie->material){?>
+                            <li>Materiał budynku:<span><?=materialBudynek($this->mieszkanie->material);?></span></li>
+                        <?php } ?>
+
+                        <?php if($this->mieszkanie->ogrzewanie){?>
+                            <li>Ogrzewanie:<span><?=ogrzewanie($this->mieszkanie->ogrzewanie);?></span></li>
+                        <?php } ?>
+
+                        <?php if($this->mieszkanie->cena_m){?><li>Cena m<sup>2</sup>:<span><?=number_format($this->mieszkanie->cena_m , 0, ',', '.');?> zł</span></li><?php } ?>
+                    </ul>
+                    <?php if($this->mieszkanie->cena){?><h3>Cena <?=number_format($this->mieszkanie->cena , 0, ',', '.');?> zł</h3><?php } ?>
+
+                    <?php if($this->mieszkanie->pdf){?><a href="<?=$this->baseUrl;?>/files/inwestycje/pdf/<?=$this->mieszkanie->pdf;?>" title="Pobierz plan mieszkania" class="mieszkanie-pdf fa-icons" target="_blank">Pobierz kartę</a><?php } ?>
+
+                    <?php if($this->mieszkanie->id == 75){?>
+                        <?=replace('[galeria=galeria]18[/galeria]'); ?>
+                    <?php } ?>
+
+                </div>
+			</div>
+
+			<div class="col-8">
+				<div id="maincontact" class="inwestycja-contact pl-5 pt-4">
+					<div class="row mieszkanie-form">
+						<div class="col-12">
+							<div id="formalert">
+								<?php if($this->message == 1) :?>
+								<div class="col-12">
+									<div class="sendok mt-0 mb-4"><p><b>Wiadomość została wysłana.</b> </br>W najbliższym czasie skontaktujemy się z Państwem celem omówienia szczegółów!</p></div>
+								</div>
+								<?php endif; ?>
+							</div>
+							<form method="post" action="" class="validateform kontakt">
+								<div class="row">
+									<div class="col-4">
+										<div class="input">
+                                            <label for="form_imie">Imię</label>
+                                            <input name="form_imie" id="form_imie" class="validate[required]"type="text">
+                                        </div>
+									</div>
+									<div class="col-4">
+										<div class="input">
+                                            <label for="form_email">E-mail</label>
+                                            <input name="form_email" id="form_email" class="validate[required,custom[email]]" type="text">
+                                        </div>
+									</div>
+									<div class="col-4">
+										<div class="input">
+                                            <label for="form_tel">Telefon</label>
+                                            <input name="form_telefon" id="form_tel" class="validate[custom[phone]]" type="text">
+                                        </div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="col-12">
+										<div class="input">
+                                            <label for="form_wiadomosc">Treść wiadomości</label>
+                                            <textarea name="form_wiadomosc" col="1" row="1" id="form_wiadomosc" class="validate[required]"></textarea>
+                                        </div>
+									</div>
+								</div>
+								
+								<div class="form-row row">
+									<div class="col-12 obowiazek">
+										<?=$this->rodo->obowiazek;?>
+									</div>
+								</div>
+								<div class="form-row row">
+									<div class="col-12 rules">
+									<?php foreach($this->regulkis as $regulka){?>
+										<label for="zgoda_<?=$regulka['id'];?>" class="rules-text"><input name="zgoda_<?=$regulka['id'];?>" id="zgoda_<?=$regulka['id'];?>" value="1" type="checkbox" <?php if($regulka['wymagane'] == 1){;?>class="validate[required]"<?php } ?> data-prompt-position="topLeft:0"><p><?=$regulka['tresc'];?></p></label>
+										<div class="clr"></div>
+									<?php } ?>
+									</div>
+								</div>
+								<div class="form-row row mt-3">
+									<div class="col-12">
+										<div class="input text-left">
+										<script>
+										grecaptcha.ready(function() {
+										grecaptcha.execute('6LcbhL8UAAAAABpOvbcsQ5DI8vfd7G6LvH3cXCDf', {action: 'mieszkanie'})
+											.then(function(token) {
+											console.log(token)
+											document.getElementById('g-recaptcha-response').value = token;
+											});
+										});
+										</script>
+										<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+											<script type="text/javascript">
+												document.write("<button class=\"bttn bttn-lg\" type=\"submit\">WYŚLIJ WIADOMOŚĆ</button>");
+											</script>
+											<noscript><p><b>Do poprawnego działania, Java musi być włączona.</b><p></noscript>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+            <div class="col-12 mieszkanie-rzut">
+                <?php if($this->mieszkanie->plik2){?><a href="<?=$this->baseUrl;?>/files/inwestycje/pomieszczenie/<?=$this->mieszkanie->plik2;?>" class="swipebox"><img src="<?=$this->baseUrl;?>/files/inwestycje/pomieszczenie/thumbs/<?=$this->mieszkanie->plik2;?>" alt="<?=$this->mieszkanie->nazwa;?>"></a><?php } ?>
+
+                <?php if($this->mieszkanie->id == 75){?>
+                    <h3>Wersja 5 pokojowa</h3>
+                    <iframe src="https://madeydevelopment.pl/files/ws/Finansowa-100/" frameborder="0" width="100%" height="400"></iframe>
+
+                    <h3 class="mt-4">Wersja 4 pokojowa</h3>
+                    <iframe src="https://madeydevelopment.pl/files/ws/Finansowa-100-polaczona/" frameborder="0" width="100%" height="400"></iframe>
+                <?php } ?>
+
+            </div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	
+<?php if($this->seo_tytul) {?>
+	<title><?= $this->seo_tytul; ?></title>
+<?php } else { ?>
+	<title><?= $this->header->nazwa; ?><?= $this->strona_tytul; ?></title>
+<?php } ?>
+<?php if($this->seo_opis) {?>
+	<meta name="description" content="<?= $this->seo_opis; ?>">
+<?php } else { ?>
+	<meta name="description" content="<?= $this->header->opis; ?>">
+<?php } ?>
+<?php if($this->seo_slowa) {?>
+	<meta name="keywords" content="<?= $this->seo_slowa; ?>">
+<?php } else { ?>
+	<meta name="keywords" content="<?= $this->header->klucze; ?>">
+<?php } ?>
+<?php if($this->header->autor){?>
+	<meta name="author" content="<?= $this->header->autor; ?>">
+<?php } ?>
+<?php if($this->nofollow == 1) {?>
+	<meta name="robots" content="noindex, nofollow">
+	<!-- Wyłączone z akcji -->
+<?php } else { ?>
+	<meta name="robots" content="<?= $this->header->robots; ?>">
+<?php } ?>
+<?php if($this->canonical) {?>
+	<meta name="canonical" content="<?=$this->canonical;?>">
+<?php } ?>
+	
+<?php if($this->share == 1) {?>
+	<meta property="og:title" content="<?=$this->share_tytul;?>">
+	<meta property="og:image" content="<?=$this->share_image;?>">
+	<meta property="og:description" content="<?=str_replace('"', '', $this->share_desc);?>">
+	<meta property="og:type" content="article">
+	<meta property="og:image:width" content="600">
+	<meta property="og:image:height" content="315">
+	<meta property="og:url" content="<?=$this->share_url;?>">
+<?php } ?>
+
+	<!-- Wylaczenie numeru tel. -->
+	<meta name="format-detection" content="telephone=no">
+	
+	<!-- Prefetch -->
+	<link rel="dns-prefetch" href="//maps.google.com">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+
+	<!-- Styles -->
+    <link rel="stylesheet" href="<?=$this->baseUrl;?>/public/styles/template/bootstrap.css">
+    <link rel="stylesheet" href="<?=$this->baseUrl;?>/public/styles/template/styles.css">
+	
+	<!-- jQuery -->
+    <script src="<?=$this->baseUrl; ?>/public/js/jquery.js" charset="utf-8"></script>
+	<script src="<?=$this->baseUrl; ?>/public/js/bootstrap.min.js" charset="utf-8"></script>
+	<script src="<?=$this->baseUrl; ?>/public/js/slick.js" charset="utf-8"></script>
+    <script src="<?=$this->baseUrl; ?>/public/js/main.js" charset="utf-8"></script>
+	
+	<?php echo $this->header->head; ?>
+	
+	<script src='https://www.google.com/recaptcha/api.js?render=6LcbhL8UAAAAABpOvbcsQ5DI8vfd7G6LvH3cXCDf'></script>
+</head>
+<body id="pagebody">
+	<?=$this->render('header.phtml');?>
+
+    <?php if(!$this->hidepageheader) { ?>
+        <?=$this->render('pageheader.phtml');?>
+    <?php } ?>
+
+	<div id="page" class="<?php if($this->nobottom){?>nobottom<?php } ?><?php if($this->notop){?> notop<?php } ?><?=$this->pageclass;?>">
+		<div class="page-content">
+			<?= $this->layout()->content; ?>
+		</div>
+	</div>
+
+	<?=$this->render('footer.phtml');?>
+
+	<div id="cookies"><p><a href="" class="closecookies gradient">Zamknij</a><?= $this->header->cookies; ?></p></div>
+
+	<!--Google font style-->
+<?php if($this->validation) { ?>
+	<script src="<?=$this->baseUrl; ?>/public/js/validation.js" charset="utf-8"></script>
+	<script src="<?=$this->baseUrl; ?>/public/js/pl.js" charset="utf-8"></script>
+<?php } ?>
+
+<?php if($this->googlemaps) {?>
+	<script src="http://maps.google.com/maps/api/js?key=AIzaSyAP5BoMzEgymeCTM3yS6EQVBHteGOSnY9o"></script>
+	<script src="<?=$this->baseUrl; ?>/public/js/lokalizacja.js" charset="utf-8"></script>
+<?php } ?>
+<?php if($this->budynkimap) {?>
+	<script src="<?=$this->baseUrl; ?>/public/js/imagemapster.js" charset="utf-8"></script>
+	<script src="<?=$this->baseUrl; ?>/public/js/budynek.js" charset="utf-8"></script>
+<?php } ?>
+<?php if($this->pietromap){?>
+	<script src="<?=$this->baseUrl; ?>/public/js/imagemapster.js" charset="utf-8"></script>
+	<script src="<?=$this->baseUrl; ?>/public/js/pietro.js" charset="utf-8"></script>
+<?php } ?>
+<?php if($this->domymap){?>
+	<script src="<?=$this->baseUrl; ?>/public/js/imagemapster.js" charset="utf-8"></script>
+	<script src="<?=$this->baseUrl; ?>/public/js/dom.js" charset="utf-8"></script>
+<?php } ?>
+
+<?php if($this->tip) { ?>
+	<script src="<?=$this->baseUrl; ?>/public/js/tip.js" charset="utf-8"></script>
+<?php } ?>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+<?php if($this->validation) { ?>
+		$(".validateform").validationEngine({
+			validateNonVisibleFields: true,
+			updatePromptsPosition:true,
+			promptPosition : "topRight:-128px"
+		});
+<?php } ?>
+
+<?php if($this->controller == 'kontakt') {?>
+
+<?php } ?>
+
+<?php if($this->action == 'szukaj') {?>
+	$('.search-inwest-list:not(:has(div.pozycja-ap))').hide();
+<?php } ?>
+
+<?php if($this->message == 1) {?>
+		var aboveHeight = $('#header').outerHeight();
+		$('html, body').stop().animate({
+			scrollTop: $('#formalert').offset().top-aboveHeight
+		}, 1500, 'easeInOutExpo');
+<?php } ?>
+	
+
+
+<?php if($this->listamieszkan){?>
+	$(".pozycja-ap").click(function(e) {
+		if(!$(e.target).hasClass("bttn-more")) {
+			var url = $(this).attr("data-url");
+			if(url){ window.location = url; }
+		}
+	});
+	$('#offerList').fadeIn();
+<?php } ?>
+	});
+	$(window).load(function() {
+<?php if($this->szukajeczka) {?>
+		var aboveHeight = $('#header').outerHeight();
+		$('html, body').stop().animate({
+			scrollTop: $('#offerList').offset().top-aboveHeight
+		}, 1500, 'easeInOutExpo');
+<?php } ?>
+	});
+	</script>
+
+	<?= $this->header->footer; ?>
+<?php if($this->user && $this->user->role == "admin"){?>
+	<?=$this->render('inline.phtml') ?>
+<?php } ?>
+</body>
+</html>

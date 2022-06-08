@@ -1,0 +1,31 @@
+	<div class="row">
+		<div class="col-6 entry-post">
+			<div class="entry-shadow">
+				<article id="post-" itemscope itemType="http://schema.org/BlogPosting">
+					<a href="<?=$this->baseUrl;?>/aktualnosci/przykladowy-wpis/" itemprop="url"><img src="http://via.placeholder.com/600x330" alt=""></a>
+					<div class="entry-shadow-content">
+						<h2><a href="<?=$this->baseUrl;?>/aktualnosci/przykladowy-wpis/" title="" itemprop="url"><span itemprop="name headline">Przykładowy wpis do aktualności</span></a></h2>
+						<div class="entry-content" itemprop="description">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+							<a href="<?=$this->baseUrl;?>/aktualnosci/przykladowy-wpis/" title="<?=$post->tytul;?>" class="gradient hvr-ripple-out">czytaj więcej</a>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+		<div class="col-6 entry-post">
+			<div class="entry-shadow">
+				<article id="post-" itemscope itemType="http://schema.org/BlogPosting">
+					<a href="<?=$this->baseUrl;?>/aktualnosci/przykladowy-wpis/" itemprop="url"><img src="http://via.placeholder.com/600x330" alt=""></a>
+					<div class="entry-shadow-content">
+						<h2><a href="<?=$this->baseUrl;?>/aktualnosci/przykladowy-wpis/" title="" itemprop="url"><span itemprop="name headline">Przykładowy wpis do aktualności</span></a></h2>
+						<div class="entry-content" itemprop="description">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+							<a href="<?=$this->baseUrl;?>/aktualnosci/przykladowy-wpis/" title="<?=$post->tytul;?>" class="gradient hvr-ripple-out">czytaj więcej</a>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+	</div>
+	

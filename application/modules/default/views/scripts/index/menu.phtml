@@ -1,0 +1,17 @@
+<?php $menu = Zend_Registry::get('querymenu');$sidemenu = $menu->sidemenu(); ?>
+<div class="container">
+	<div class="row">
+<?php if($sidemenu ) { ?>
+		<div class="col-3 inwestmenu">
+			<div id="aside">
+				<ul class="list-unstyled sidemenu">
+					<?=$sidemenu;?>
+				</ul>
+			</div>
+		</div>
+<?php } ?>
+		<div class="<?php if($sidemenu ) { ?>col-9<?php } else {?>col-12<?php } ?> inwestdesc">
+			<?=replace($this->strona->tekst); ?>
+		</div>
+	</div>
+</div>

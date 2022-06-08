@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title><?= $this->header->nazwa; ?></title>
+    <meta name="description" content="<?= $this->header->opis ?>">
+    <meta name="keywords" content="<?= $this->header->klucze; ?>">
+<?php if($this->header->autor){?>
+	<meta name="author" content="<?= $this->header->autor; ?>">
+<?php } ?>
+	<meta name="robots" content="<?= $this->header->robots; ?>">
+	
+<?php if($this->header->share_plik) {?>
+	<meta property="og:title" content="<?=$this->header->share_tytul;?>">
+	<meta property="og:image" content="https://www.madeydevelopment.pl/files/share/<?=$this->header->share_plik;?>">
+	<meta property="og:description" content="<?=$this->header->share_opis;?>">
+	<meta property="og:type" content="website">
+	<meta property="og:image:width" content="600">
+	<meta property="og:image:height" content="315">
+	<meta property="og:url" content="https://www.madeydevelopment.pl/">
+<?php } ?>
+
+	<!-- Wylaczenie numeru tel. -->
+	<meta name="format-detection" content="telephone=no">
+	
+	<!-- Prefetch -->
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+
+	<!-- Styles -->
+    <style>.rslidess li {display: none}.rslidess li:first-child {display: block}.rslidessimg {width: 100%}</style>
+	<?= $this->header->head; ?>
+</head>
+<body id="homepage">
+
+<?=$this->render('header.phtml');?>
+    <div id="slider">
+        <ul class="rslidess list-unstyled mb-0 clearfix">
+            <?php foreach($this->slider as $panel){?>
+                <li><img sizes="(max-width:380px) 33.3vw, (max-width:680px) 66.6vw, 100vw"
+                         srcset="<?=$this->baseUrl;?>/files/slider/desktop/<?=$panel['plik'];?> 1920w,
+			 <?=$this->baseUrl;?>/files/slider/<?=$panel['plik'];?> 1920w,
+			 <?=$this->baseUrl;?>/files/slider/tablet/<?=$panel['plik'];?> 1024w,
+			 <?=$this->baseUrl;?>/files/slider/mobile/<?=$panel['plik'];?> 580w"
+                         src="<?=$this->baseUrl;?>/files/slider/desktop/<?=$panel['plik'];?>"
+                         alt="<?=$panel['tytul'];?>" width="1920" height="780">
+                </li>
+            <?php } ?>
+        </ul>
+        <?php foreach($this->slider as $int => $panel){?>
+        <div class="apla apla-<?=$int;?>">
+            <div class="container">
+                <div class="row">
+                    <div class="col-5">
+                        <div class="blue-apla-box">
+                            <h2><?=$panel['tytul'];?></h2>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="white-apla-box">
+                            <p><?=$panel['tekst'];?></p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <?php if($panel['link'] && $panel['link_tytul']) {?>
+                            <a href="<?=$panel['link'];?>" class="bttn"><?=$panel['link_tytul'];?></a>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+    </div>
+
+    <div id="maininvest">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <span>MADEY DEVELOPMENT</span>
+                        <h2>Nasze inwestycje</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mb-5">
+                <div class="col-12">
+                    <ul class="mb-0 list-unstyled">
+                        <li><a href="">W SPRZEDAŻY</a></li>
+                        <li class="d-none"><a href="">PLANOWANE</a></li>
+                        <li><a href="">ZAKOŃCZONE</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="fluid-container">
+            <div class="row row-invest-slick no-gutters">
+                <?php foreach($this->inwestycje as $inwestycja) {?>
+                    <?php if($inwestycja['id'] == 5){?>
+                        <div class="col-12">
+                            <a href="https://www.bliskiolechow.pl/" target="_blank">
+                                <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja['inwestycja_plik'];?>" alt="<?=$inwestycja['nazwa'];?>" width="960" height="630">
+                            </a>
+                            <div class="inwestlist">
+                                <h2 class="source"><a href="https://www.bliskiolechow.pl/" target="_blank"><?=$inwestycja['nazwa'];?></a></h2>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <a href="https://www.bliskiolechow.pl/" class="bttn bttn-blue bttn-more mr-4" target="_blank">OPIS INWESTYCJI</a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="https://www.bliskiolechow.pl/mieszkania" class="bttn bttn-blue bttn-more" target="_blank">ZNAJDŹ MIESZKANIE</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } else { ?>
+                        <div class="col-12">
+                            <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja['tag'];?>/plan-inwestycji/">
+                                <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja['inwestycja_plik'];?>" alt="<?=$inwestycja['nazwa'];?>" width="960" height="630">
+                            </a>
+                            <div class="inwestlist">
+                                <h2 class="source"><a href="<?=$this->baseUrl;?>/i/<?=$inwestycja;?>/plan-inwestycji/"><?=$inwestycja['nazwa'];?></a></h2>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja['tag'];?>/" class="bttn bttn-blue bttn-more mr-4">OPIS INWESTYCJI</a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja['tag'];?>/plan-inwestycji/" class="bttn bttn-blue bttn-more">ZNAJDŹ MIESZKANIE</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+
+    <div id="maininvestor">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <span>Inwestor</span>
+                        <h2>Wieloletnie doświadczenie w budownictwie</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center text-center">
+                <div class="col-10">
+                    <p>Wieloletnie doświadczenie, które zdobyliśmy na placach budowy najróżniejszych budynków w całej Polsce dało nam podstawy aby zająć się kompleksowo budowaniem - począwszy od zakupu działki, poprzez wybór projektu architektonicznego, wykonanie budynku i przekazanie do użytkowania.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="mainboxes">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="icon-box text-center">
+                            <img src="https://placehold.co/105x105" alt="">
+                            <h3>Kompleksowe Podejście</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida ex quis porta lacinia.</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="icon-box text-center">
+                            <img src="https://placehold.co/105x105" alt="">
+                            <h3>Kompleksowe Podejście</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida ex quis porta lacinia.</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="icon-box text-center">
+                            <img src="https://placehold.co/105x105" alt="">
+                            <h3>Kompleksowe Podejście</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida ex quis porta lacinia.</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="icon-box text-center">
+                            <img src="https://placehold.co/105x105" alt="">
+                            <h3>Kompleksowe Podejście</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida ex quis porta lacinia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainparalaxa" class="section-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <span>Oferta</span>
+                        <h2>Dostępne rodzaje mieszkań</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container container-paralaxa">
+        <div class="row">
+            <div class="col-4">
+                <a href=""><img src="<?=$this->filesUrl(); ?>/upload/mieszkanie-solo.jpg" alt=""></a>
+                <div class="paralaxa-box">
+                    <h2><a href="">DLA SINGLI</a></h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultrices odio nec justo laoreet, rutrum volutpat dolor tristique.</p>
+                </div>
+                <div class="paralax-box-footer d-flex justify-content-center">
+                    <a href="" class="bttn bttn-sm">ZOBACZ MIESZKANIA</a>
+                </div>
+            </div>
+            <div class="col-4">
+                <a href=""><img src="<?=$this->filesUrl(); ?>/upload/mieszkanie-para.jpg" alt=""></a>
+                <div class="paralaxa-box">
+                    <h2><a href="">DLA PAR</a></h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultrices odio nec justo laoreet, rutrum volutpat dolor tristique.</p>
+                </div>
+                <div class="paralax-box-footer d-flex justify-content-center">
+                    <a href="" class="bttn bttn-sm">ZOBACZ MIESZKANIA</a>
+                </div>
+            </div>
+            <div class="col-4">
+                <a href=""><img src="<?=$this->filesUrl(); ?>/upload/mieszkanie-rodzina.jpg" alt=""></a>
+                <div class="paralaxa-box">
+                    <h2><a href="">DLA RODZIN</a></h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultrices odio nec justo laoreet, rutrum volutpat dolor tristique.</p>
+                </div>
+                <div class="paralax-box-footer d-flex justify-content-center">
+                    <a href="" class="bttn bttn-sm">ZOBACZ MIESZKANIA</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="maincontact">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <span>KONTAKT</span>
+                        <h2>ZAPYTAJ O OFERTĘ</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-9">
+                    <div class="text-center">
+                        <p>Jeśli jesteś zainteresowany zakupem mieszkania w naszych inwestycjach, wypełnij poniższy formularz kontaktowy. Nasi doradcy skontaktują się z Tobą z ofertą dopasowaną do Twoich potrzeb.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact-form">
+            <form class="container validateForm mt-0 mt-sm-3" method="post" action="">
+                <div class="row">
+                    <?php if($this->message == 1) :?>
+                        <div id="formalert" class="col-12">
+                            <div class="sendok mb-4"><p>Twoja wiadomość została poprawnie wysłana</p></div>
+                        </div>
+                    <?php endif; ?>
+                    <?php if($this->message == 2) :?>
+                        <div id="formalert" class="col-12">
+                            <div class="senderror mb-4"><p>Formularz zawiera błędy, popraw je i spróbuj ponownie</p></div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-3 input">
+                        <label for="form_imie">Imię</label>
+                        <input type="text" name="imie" id="form_imie" class="validate[required]" data-prompt-position="topLeft:0" required>
+                    </div>
+                    <div class="col-6 col-md-3 input">
+                        <label for="form_nazwisko">Nazwisko</label>
+                        <input type="text" name="nazwisko" id="form_nazwisko" class="validate[required]" data-prompt-position="topLeft:0" required>
+                    </div>
+                    <div class="col-12 col-md-6 input">
+                        <select name="invest" id="form_invest" class="validate[required]" data-prompt-position="topLeft:0" required>
+                            <?php foreach($this->inwestycje as $i) { if($i['status'] == 1) { ?>
+                                <option value="<?=$i['nazwa'];?>"><?=$i['nazwa'];?></option>
+                            <?php } } ?>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-md-6 input">
+                        <label for="form_email">E-mail</label>
+                        <input type="email" name="email" id="form_email" class="validate[required]" data-prompt-position="topLeft:0" required>
+                    </div>
+
+                    <div class="col-6 col-md-3 input">
+                        <label for="form_metry_od">Metraż od</label>
+                        <input type="text" name="metry_od" id="form_metry_od" class="validate[required]" data-prompt-position="topLeft:0" required>
+                    </div>
+                    <div class="col-6 col-md-3 input">
+                        <label for="form_metry_do">Metraż do</label>
+                        <input type="text" name="metry_do" id="form_metry_do" class="validate[required]" data-prompt-position="topLeft:0" required>
+                    </div>
+
+                    <div class="col-12 col-sm-6 input">
+                        <label for="form_telefon">Telefon</label>
+                        <input type="tel" name="telefon" id="form_telefon" class="validate[required]" data-prompt-position="topLeft:0" required>
+                    </div>
+
+                    <div class="col-6 col-sm-3 input">
+                        <label for="form_pokoje">Pokoje</label>
+                        <input type="text" name="pokoje" id="form_pokoje" class="validate[required]" data-prompt-position="topLeft:0" required>
+                    </div>
+                    <div class="col-6 col-sm-3 input">
+                        <label for="form_pietro">Piętro</label>
+                        <input type="text" name="pietro" id="form_pietro" class="validate[required]" data-prompt-position="topLeft:0" required>
+                    </div>
+
+
+                    <div class="col-12 input">
+                        <label for="form_wiadomosc">Treść widomości</label>
+                        <textarea name="wiadomosc" cols="30" rows="10" id="form_wiadomosc" class="validate[required]" data-prompt-position="topLeft:0" required></textarea>
+                    </div>
+
+                    <div class="col-12 obowiazek">
+                        <?=$this->rodo->obowiazek;?>
+                    </div>
+
+                    <div class="col-12 rules">
+                        <?php foreach($this->regulkis as $regulka){?>
+                            <label for="zgoda_<?=$regulka['id'];?>" class="rules-text"><input name="zgoda_<?=$regulka['id'];?>" id="zgoda_<?=$regulka['id'];?>" value="1" type="checkbox" <?php if($regulka['wymagane'] == 1){;?>class="validate[required]"<?php } ?> data-prompt-position="topLeft:0"><p><?=$regulka['tresc'];?></p></label>
+                            <div class="clr"></div>
+                        <?php } ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center pt-4">
+                        <script type="text/javascript">
+                            document.write("<button type=\"submit\" class=\"bttn bttn-lg\">WYŚLIJ WIADOMOŚĆ</button>");
+                        </script>
+                        <noscript><p><b>Do poprawnego działania, Java musi być włączona.</b><p></noscript>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+	<?=$this->render('footer.phtml');?>
+
+	<link rel="stylesheet" href="<?=$this->cssUrl();?>/bootstrap.css">
+    <link rel="stylesheet" href="<?=$this->cssUrl();?>/styles.min.css">
+
+	<!-- jQuery -->
+    <script src="<?=$this->jsUrl(); ?>/jquery.js" charset="utf-8"></script>
+    <script src="<?=$this->jsUrl(); ?>/main.min.js" charset="utf-8"></script>
+    <script src="<?=$this->jsUrl(); ?>/slick.js" charset="utf-8"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		//$(".rslidess").responsiveSlides({auto:<?=$this->header->slider_auto; ?>, pager:<?=$this->header->slider_pager; ?>, nav:<?=$this->header->slider_nav; ?>, timeout:<?=$this->header->slider_timeout; ?>, random:false, speed: <?=$this->header->slider_speed; ?>});
+
+        $(".rslidess").slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: <?=$this->header->slider_auto; ?>,
+            autoplaySpeed: <?=$this->header->slider_timeout; ?>,
+            arrows: false
+        });
+
+        $(".row-invest-slick").slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            centerMode: true,
+            autoplay: <?=$this->header->slider_auto; ?>,
+            autoplaySpeed: <?=$this->header->slider_timeout; ?>,
+            arrows: false
+        });
+
+        $('.rslidess').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+            $('.apla').hide();
+        });
+        $('.rslidess').on('afterChange', function(event, slick, currentSlide, nextSlide){
+            $('.apla-'+currentSlide).fadeIn();
+        });
+
+<?php if($this->header->popup_status == 1){; ?>
+	<?php if($this->header->popup_tryb == 1){; ?>
+					$.cookie('popup', null);
+					$.magnificPopup.open({
+						items: {
+							src: '<div class="white-popup"><?= str_replace (array("\r\n", "\n", "\r"), ' ', $this->header->popup_tekst); ?></div>',
+							type: 'inline'
+						}
+					});
+						setTimeout( function(){ 
+							$.magnificPopup.close();
+						}, 10000 );
+	<?php } else {?>
+					if ($.cookie('popup') == null){
+						$.magnificPopup.open({
+							items: {
+								src: '<div class="white-popup"><?= str_replace (array("\r\n", "\n", "\r"), ' ', $this->header->popup_tekst); ?></div>',
+								type: 'inline'
+							}
+						});
+						setTimeout( function(){ 
+							$.magnificPopup.close();
+						}, 10000 );
+						$.cookie('popup','true');
+					}
+	<?php } ?>
+<?php } else {?>
+			$.cookie('popup', null);  
+<?php } ?>
+	});
+
+	$(window).load(function() {
+<?php if($this->message == 1) {?>
+		$('html, body').stop().animate({
+			scrollTop: $('#formalert').offset().top
+		}, 1500, 'easeInOutExpo');
+<?php } ?>
+	});
+	</script>
+	<?= $this->header->footer; ?>
+</body>
+</html>

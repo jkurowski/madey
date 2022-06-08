@@ -1,0 +1,37 @@
+<div id="plan">
+	<div class="container">
+		<div class="row">
+			<div class="col-3 inwestmenu">
+				<?php echo $this->render('inwestycja/aside.phtml');?>
+			</div>
+			
+			<div class="col-9 inwestdesc opisinwestycji">
+				<?php if($this->inwestycja->id == 1){?>
+				<h1>Finansowa 100 - Nowe mieszkania</h1>
+				<?php } ?>
+				<?php if($this->inwestycja->header){?><img src="<?=$this->baseUrl;?>/files/inwestycje/header/<?=$this->inwestycja->header;?>" alt="<?=$this->inwestycja->nazwa;?>" class="mb-5"><?php } ?>
+				
+				
+				<div class="col-12"><?=replace($this->inwestycja->tekst); ?></div>
+				
+				
+<?php if($this->atuty){?>
+				<div class="row">
+<?php foreach($this->atuty as $atut){?>
+					<div class="col-4">
+						<div class="invest-icon hvr-shadow text-center">
+                            <img src="<?=$this->baseUrl;?>/files/inwestycje/atuty/<?=$atut->ikona;?>" alt="<?=$atut->nazwa;?>">
+							<h3><?=$atut->nazwa;?></h3>
+						</div>
+					</div>
+<?php } ?>
+				</div>
+<?php } ?>
+                <?php if($this->inwestycja->opis){?>
+                <div class="col-12"><hr class="mt-5 mb-5"></div>
+				<div class="col-12"><?=replace($this->inwestycja->opis); ?></div>
+                <?php } ?>
+			</div>
+		</div>
+	</div>
+</div>

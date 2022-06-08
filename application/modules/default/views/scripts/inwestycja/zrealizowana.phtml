@@ -1,0 +1,20 @@
+<div id="dziennik">
+	<div class="container">
+		<div class="row">
+			<div class="col-2 pr-0">
+				<div class="zrealizowana-list">
+					<ul class="list-unstyled">
+						<li><i class="fa-icons fa-calendar"></i> <strong>ROK:</strong> <?=$this->zrealizowana->koniec_rok;?></li>
+						<li><i class="fa-icons fa-rooms"></i> <strong>MIESZKANIA:</strong> <?=$this->zrealizowana->koniec_mieszkania;?></li>
+						<li><i class="fa-icons fa-city"></i> <strong>MIASTO:</strong> <?=$this->zrealizowana->koniec_miasto;?></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-10 inwestdesc pl-0">
+				<img src="<?=$this->baseUrl;?>/files/inwestycje/miniaturka/<?=$this->zrealizowana->miniaturka;?>" alt="<?=$this->zrealizowana->nazwa;?>" class="mb-4">
+				<?=replace($this->zrealizowana->opis);?>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+<div id="">
+	<div class="container">
+		<div class="row"> 
+<?php foreach($this->inwestycje as $inwestycja){?>
+			<div class="col-6 zrealizowana">
+				<div class="mainoffer">
+					<a href="<?=$this->baseUrl;?>/z/<?=$inwestycja->tag;?>/"><div class="image"><img src="<?=$this->baseUrl;?>/files/inwestycje/miniaturka/<?=$inwestycja->miniaturka;?>" alt="<?=$inwestycja->nazwa;?>"></div></a>
+					<div class="mainoffer-desc">
+						<h2 class="source"><a href="<?=$this->baseUrl;?>/z/<?=$inwestycja->tag;?>/"><?=$inwestycja->nazwa;?></a></h2>
+						<p><?=previewParser($inwestycja->lista, 150);?></p>
+						<a href="<?=$this->baseUrl;?>/z/<?=$inwestycja->tag;?>/" class="bttn bttn-more">ZOBACZ WIĘCEJ</a>
+					</div>
+				</div>
+			</div>
+<?php } ?>
+		</div>
+	</div>
+</div>

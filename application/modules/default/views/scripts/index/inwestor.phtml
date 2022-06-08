@@ -1,0 +1,85 @@
+<?php
+	$inlineStore = Zend_Registry::get('inlineStore');
+	$inlineIcons = Zend_Registry::get('inlineIcons');
+	$inlineImg = Zend_Registry::get('inlineImg');
+?>
+<div class="page-inwestor">
+	<div class="container">
+		<div class="row pb30">
+			<div class="col-5">
+				<?php if($this->user && $this->user->role == "admin"){?><div class="container"><div class="row"><div class="col-12 text-center col-inline-nav"><button type="button" class="btn btn-primary btn-modal btn-sm" data-toggle="modal" data-target="#tinyMCEModal" data-inline="1" data-formtype="formtytultekst" data-formid="modaleditor1">Edytuj sekcję</button></div></div></div><?php } ?>
+				<h2><?=$inlineStore[0]['modaltytul'];?></h2>
+				<?=$inlineStore[0]['modaleditor'];?>
+			</div>
+			<div class="col-7">
+				<?php if($this->user && $this->user->role == "admin"){ //modaleditor,modallink,modallinkbutton,modaltytul?><div class="container"><div class="row"><div class="col-12 text-center col-inline-nav"><button type="button" class="btn btn-primary btn-modal btn-sm" data-toggle="modal" data-target="#iconnewModal" data-inline="1" data-place="1" data-width="60" data-height="60" data-hideinput="modallink,modallinkbutton">Dodaj boks</button></div></div></div><?php } ?>
+				<div class="row positions"<?php if($this->user && $this->user->role == "admin"){?> id="sortable"<?php } ?>>
+				<?php foreach($inlineIcons as $icon){if($icon['id_place'] == 1){?>
+					<div class="col-6 col-icontop-title"<?php if($this->user && $this->user->role == "admin"){?> id="recordsArray_<?=$this->escape($icon['id']);?>"<?php } ?>>
+						<img src="<?=$this->baseUrl;?>/files/ikonki/<?=$icon['plik'];?>" alt="<?=$icon['tytul'];?>">
+						<h3><?=$icon['modaltytul'];?></h3>
+						<p><?=$icon['modaleditor'];?></p>
+						<?php if($this->user && $this->user->role == "admin"){?>
+						<button type="button" class="btn btn-primary btn-modal-edit btn-sm" data-toggle="modal" data-target="#iconModal" data-inline="<?=$icon['id'];?>" data-place="1" data-width="60" data-height="60" data-hideinput="modallink,modallinkbutton"></button> <button type="button" class="btn btn-primary btn-modal-dell btn-sm btn-dell-icon" data-inline="<?=$icon['id'];?>"></button>
+						<?php } ?>
+					</div>
+				<?php } } ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="paralaxa" style="background-image:url('<?=$this->baseUrl;?>/files/gfx/<?=$inlineImg[1]['plik'];?>');background-attachment: fixed;background-repeat:no-repeat">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-7 text-center">
+					<h2>Nasze sukcesy</h2>
+				</div>
+			</div>
+			<div class="row positions"<?php if($this->user && $this->user->role == "admin"){?> id="sortable"<?php } ?>>
+<?php foreach($inlineIcons as $icon){if($icon['id_place'] == 2){?>
+				<div class="col-3 text-center col-sukces"<?php if($this->user && $this->user->role == "admin"){?> id="recordsArray_<?=$this->escape($icon['id']);?>"<?php } ?>>
+					<img src="<?=$this->baseUrl;?>/files/ikonki/<?=$icon['plik'];?>" alt="<?=$icon['tytul'];?>">
+					<h4><?=$icon['modaltytul'];?></h4>
+					<?php if($this->user && $this->user->role == "admin"){ //modaleditor,modallink,modallinkbutton,modaltytul?>
+					<button type="button" class="btn btn-primary btn-modal-edit btn-sm" data-toggle="modal" data-target="#iconModal" data-inline="<?=$icon['id'];?>" data-place="2" data-width="140" data-height="140" data-hideinput="modaleditor,modallink,modallinkbutton"></button>
+					<?php } ?>
+				</div>
+<?php } } ?>
+			</div>
+		</div>
+		<?php if($this->user && $this->user->role == "admin"){?><div class="container"><div class="row"><div class="col-12 text-center col-inline-nav2">
+		<button type="button" class="btn btn-primary btn-modal btn-sm btn-modal-img" data-toggle="modal" data-target="#imgModal" data-inline="2" data-place="2" data-width="1920" data-height="1080">Zmień obrazek tła</button></div></div></div><?php } ?>
+	</div>
+	
+	<div class="container clearfix">
+		<div class="row pt60 pb60">
+			<div class="col-4 col-carousel">
+				<?php if($this->user && $this->user->role == "admin"){?><div class="container"><div class="row"><div class="col-12 text-center col-inline-nav"><button type="button" class="btn btn-primary btn-modal btn-sm" data-toggle="modal" data-target="#tinyMCEModal" data-inline="2" data-formtype="formtytultekstlink" data-formid="modaleditor2">Edytuj sekcję</button></div></div></div><?php } ?>
+				<h2><?=$inlineStore[1]['modaltytul'];?></h2>
+				<?=$inlineStore[1]['modaleditor'];?>
+				<?php if($inlineStore[1]['modallink']){?><a href="<?=$inlineStore[1]['modallink'];?>" class="section-link gradient hvr-ripple-out"><?=$inlineStore[1]['modallinkbutton'];?></a><?php } ?>
+			</div>
+			<div class="col-8 positions"<?php if($this->user && $this->user->role == "admin"){?> id="sortable"<?php } ?>>
+
+<?php foreach($inlineIcons as $icon){if($icon['id_place'] == 5){?>
+				<div class="apartament-demo apartament-demo-pion"<?php if($this->user && $this->user->role == "admin"){?> id="recordsArray_<?=$this->escape($icon['id']);?>"<?php } ?>>
+					<div class="apartament-demo-img apartament-demo-img-pion">
+						<img src="<?=$this->baseUrl;?>/files/ikonki/<?=$icon['plik'];?>" alt="<?=$icon['tytul'];?>">
+					</div>
+					<div class="apartament-demo-opis apartament-demo-opis-pion align-middle">
+						<h3><?=$icon['modaltytul'];?></h3>
+						<p><?=$icon['modaleditor'];?></p>
+						<?php if($icon['modallinkbutton']){?><a href="<?=$icon['modallink'];?>" class="gradient hvr-ripple-out"><?=$icon['modallinkbutton'];?></a><?php } ?>
+						<?php if($this->user && $this->user->role == "admin"){ //modaleditor,modallink,modallinkbutton,modaltytul?>
+							<div class="container"><div class="row"><div class="col-12 text-center col-inline-nav"><button type="button" class="btn btn-primary btn-modal-edit btn-sm" data-toggle="modal" data-target="#iconModal" data-inline="<?=$icon['id'];?>" data-place="5" data-width="250" data-height="340"></button></div></div></div>
+						<?php } ?>
+					</div>
+				</div>
+<?php } } ?>
+				
+
+			</div>
+		</div>
+	</div>
+</div>

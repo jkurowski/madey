@@ -1,0 +1,27 @@
+<div class="container">
+<?php foreach($this->news as $key => $post){?>
+	<article id="post-<?=$post->id;?>" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="<?php if($key % 2 == 0) {?>row<?php } else { ?>row flex-row-reverse<?php } ?>">
+            <?php if($post->plik){?><div class="col-6 col-news-thumb p-0"><a href="<?=$this->baseUrl;?>/aktualnosci/<?=$post->tag;?>/" itemprop="url"><img src="<?=$this->baseUrl;?>/files/news/<?=$post->plik;?>" alt="<?=$post->tytul;?>"></a></div><?php } ?>
+            <div class="<?php if($post->plik){?>col-6 col-news-entry d-flex align-items-center<?php } else {?>col-12<?php } ?>">
+                <div class="entry-shadow-content">
+                    <span class="small"><?=$post->data;?></span>
+                    <h2><a href="<?=$this->baseUrl;?>/aktualnosci/<?=$post->tag;?>/" title="<?=$post->tytul;?>" itemprop="url"><span itemprop="name headline"><?=$post->tytul;?></span></a></h2>
+                    <div class="entry-content" itemprop="description">
+                        <p><?=previewParser($post->wprowadzenie, 300);?></p>
+                        <a href="<?=$this->baseUrl;?>/aktualnosci/<?=$post->tag;?>/" title="<?=$post->tytul;?>" class="bttn bttn-blue bttn-more">CZYTAJ WIĘCEJ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        	<meta itemprop="author" content="<?= $this->header->autor; ?>">
+	        <meta itemprop="datePublished" content="<?=$post->data;?>">
+    </article>
+    <?php } ?>
+
+	<div class="row">
+		<div class="col-12">
+			<?= $this->paginationControl($this->news, 'Sliding', 'pagination.phtml'); ?>
+		</div>
+	</div>
+</div>

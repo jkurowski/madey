@@ -1,0 +1,9 @@
+RewriteRule sitemap.xml sitemap.xml [L]
+RewriteEngine On
+RewriteRule .* public/index.php
+
+AddType font/ttf .ttf
+AddType font/eot .eot
+AddType font/otf .otf
+AddType font/woff .woff
+AddType font/woff .svg

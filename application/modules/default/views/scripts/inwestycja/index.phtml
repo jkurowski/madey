@@ -1,0 +1,39 @@
+<div id="aboutus">
+    <div class="container">
+        <div class="row">
+<?php foreach($this->inwestycje as $inwestycja){?>
+<?php if($inwestycja->status == 1){?>
+    <?php if($inwestycja->id == 5){?>
+            <div class="col-12 col-lg-6">
+                <div class="inwest-list-item">
+                    <a href="https://www.bliskiolechow.pl/" target="_blank">
+                        <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
+                    </a>
+                    <div class="inwestlist">
+                        <h2 class="source">
+                            <a href="https://www.bliskiolechow.pl/" target="_blank"><?=$inwestycja->nazwa;?></a>
+                        </h2>
+                        <p><?=$inwestycja->lista;?></p>
+                        <a href="https://www.bliskiolechow.pl/" class="bttn bttn-blue bttn-more mr-4" target="_blank">OPIS INWESTYCJI</a> <a href="https://www.bliskiolechow.pl/mieszkania" class="bttn bttn-blue bttn-more" target="_blank">ZNAJDŹ MIESZKANIE</a>
+                    </div>
+                </div>
+            </div>
+        <?php } else { ?>
+            <div class="col-12 col-lg-6">
+                <div class="inwest-list-item">
+                    <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/">
+                        <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
+                    </a>
+                    <div class="inwestlist">
+                        <h2 class="source"><a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/"><?=$inwestycja->nazwa;?></a></h2>
+                        <p><?=$inwestycja->lista;?></p>
+                        <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/" class="bttn bttn-blue bttn-more mr-4">OPIS INWESTYCJI</a> <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/" class="bttn bttn-blue bttn-more">ZNAJDŹ MIESZKANIE</a>
+                    </div>
+                </div>
+            </div>
+    <?php } ?>
+<?php } ?>
+<?php } ?>
+        </div>
+    </div>
+</div>

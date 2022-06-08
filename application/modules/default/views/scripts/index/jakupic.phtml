@@ -1,0 +1,176 @@
+<div id="jakkupic">
+	<div class="container">
+		<div class="row">
+			<div class="col-6">
+				<img src="<?=$this->baseUrl;?>/files/upload/krok-1.jpg" alt="Podejmij decyzje">
+			</div>
+			<div class="col-6">
+				<h2 class="source">1. Podejmij decyzje</h2>
+				<p>Zanim podejmiesz <b>decyzję o zakupie mieszkania</b> odpowiedz sobie na pytania:</p>
+				<ul>
+					<li>ile osób będzie w nim mieszkać</li>
+					<li>jakie funkcje mieszkania będą Ci potrzebne ( salon, sypialnie, pokój dziecinny, pokój do pracy)</li>
+					<li>jaki masz styl życia – ile czasu przebywasz w domu, czy w domu pracujesz, czy lubisz, gotować, przyjmować gości, czy lubisz spędzać czas w ogródku, tarasie,  jesteś typem domatora czy obieżyświata, lubisz pomieszczenia ciepłe i słoneczne czy raczej nie.  Na tej podstawie określisz metraż, ilość pokoi, kuchnia otwarta czy zamknięta, układ   funkcjonalny mieszkania.</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12"><hr></div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<h2 class="source">2. Skontaktuj się z nami</h2>
+				<p><b>Skontaktuj z nami:</b></p>
+				<ul>
+					<li>tel. 696 023 200</li>
+					<li>sprzedaz@golden-lion.pl</li>
+				</ul>
+				<p>Przekaż sprzedawcy swoje oczekiwania, aby mógł  przygotować ofertę dla Ciebie.</p>
+			</div>
+			<div class="col-6">
+				<img src="<?=$this->baseUrl;?>/files/upload/krok-2.jpg" alt="Skontaktuj się z nami">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12"><hr></div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<img src="<?=$this->baseUrl;?>/files/upload/krok-3.jpg" alt="Umów spotkanie">
+			</div>
+			<div class="col-6">
+				<h2 class="source">3. Umów spotkanie</h2>
+				<p><b>Umów się z nami na spotkanie</b> w biurze – poznaj nas. Umów się na prezentację na budowie -  zobacz jak budujemy (dbamy o Twoje bezpieczeństwo,  NIE WCHODŹ SAM NA BUDOWĘ zrób to tylko z naszym doradcą).</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="paralax-search">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="source">4. Wybierz mieszkanie</h2>
+				</div>
+			</div>
+			
+			<form id="searchOffer" method="get" action="">
+				<div class="row">
+					<div class="col-5">
+						<label for="s_pokoje">Pokoje</label>
+						<select name="s_pokoje" id="s_pokoje">
+							<option value="">Dowolna ilość</option>
+							<?php $var = explode(',', $this->inwestycja->zakres_pokoje); ?>
+							<?php foreach($var as $pozycja) {?>
+							<option value="<?=$pozycja;?>"<?php if($this->s_pokoje && $this->s_pokoje == $pozycja){echo ' selected="selected"';};?>><?=$pozycja;?></option>
+							<?php } ?>
+						</select>
+					</div>
+					<div class="col-5">
+						<label for="s_metry">Powierzchnia</label>
+						<select name="s_metry" id="s_metry">
+							<option value="">Dowolny metraż</option>
+							<?php $var = explode(',', $this->inwestycja->zakres_powierzchnia); ?>
+							<?php foreach($var as $pozycja) {?>
+							<option value="<?=$pozycja;?>"<?php if($this->s_metry && $this->s_metry == $pozycja){echo ' selected="selected"';};?>><?=$pozycja;?></option>
+							<?php } ?>
+						</select>
+					</div>
+					<div class="col-2">
+						<input type="hidden" name="a" value="szukaj">
+						<button type="submit" id="s_button" class="bttn bttn-search">Szukaj</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-6">
+				<img src="<?=$this->baseUrl;?>/files/upload/krok-5.jpg" alt="Zapoznaj się z ustawą">
+			</div>
+			<div class="col-6">
+				<h2 class="source">5. Zapoznaj się z ustawą</h2>
+				<p><b>Zapoznaj się z ustawą deweloperską</b> z dnia 16.09.2011r. o ochronie praw nabywcy lokalu mieszkalnego lub domu jednorodzinnego (<a href="http://prawo.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20112321377" target="_blank">link do ustawy</a>) - poznaj swoje prawa.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12"><hr></div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<h2 class="source">6. Wybierz sposób finansowania</h2>
+				<p>Podejmij decyzje o <b>sposobie finansowania</b> Twojego zakupu – gotówka czy kredyt – możesz skorzystać z bezpłatnych porad i usług naszego eksperta ds. finansowych  I.N….. tel… mail…</p>
+			</div>
+			<div class="col-6">
+				<img src="<?=$this->baseUrl;?>/files/upload/krok-6.jpg" alt="Wybierz sposób finansowania">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12"><hr></div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<img src="<?=$this->baseUrl;?>/files/upload/krok-7.jpg" alt="Podpisz umowę rezerwacyjną">
+			</div>
+			<div class="col-6">
+				<h2 class="source">7. Podpisz umowę rezerwacyjną</h2>
+				<p>W naszym biurze  podpisz <b>umowę rezerwacyjną</b> – to ważny krok, angażujesz już swoje środki finansowe 5% wartości mieszkania, otrzymasz od nas prospekt informacyjny zawierający informacje o nas, o naszych poprzednich i obecnej  inwestycji oraz o mieszkaniu które kupujesz. Dostaniesz także wzór umowy deweloperskiej. Umowa rezerwacyjna zawiera również wstępny harmonogram finansowania</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12"><hr></div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<h2 class="source">8. Podpisz umowę deweloperską</h2>
+				<p>W kancelarii notarialnej podpisz <b>umowę deweloperską</b> – opisuje mieszkanie jakie kupujesz, zawiera terminarz płatności, Twój indywidualny numer rachunku powierniczego, na który będziesz wpłacać swoje środki, datę przeniesienia własności i wiele innych zapisów Ciebie zabezpieczających. Jest to też monet, kiedy pojawia się Twój wpis  w księdze wieczystej nieruchomości. Wynagrodzenie notariusza płacisz w połowie Ty i w połowie deweloper.</p>
+			</div>
+			<div class="col-6">
+				<img src="<?=$this->baseUrl;?>/files/upload/krok-8.jpg" alt="Podpisz umowę deweloperską">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12"><hr></div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<img src="<?=$this->baseUrl;?>/files/upload/krok-9.jpg" alt="Odbierz swoje M">
+			</div>
+			<div class="col-6">
+				<h2 class="source">9. Odbierz swoje M</h2>
+				<p><b>Odbiór lokalu</b> – to ważny dla Ciebie dzień. Spotykamy się w Twoim nowym mieszkaniu, oceniasz naszą pracę, zgodność z projektem i umową, spisujemy protokół odbioru. Otrzymujesz klucze do własnego M!</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12"><hr></div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<h2 class="source">10. Zostań właścicielem</h2>
+				<p><b>Przeniesienie własności</b> – spotykamy się ponownie u notariusza, popisujemy akt notarialny na podstawie, którego stajesz się właścicielem mieszkania. Wynagrodzenie notariusza jest po Twojej stronie.</p>
+			</div>
+			<div class="col-6">
+				<img src="<?=$this->baseUrl;?>/files/upload/krok-10.jpg" alt="Zostań właścicielem">
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="maincontact">
+	<div class="container">
+		<div class="row">
+			<div class="col-12"><hr></div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<?php
+					$html = new Zend_View();
+					$html->setScriptPath(APPLICATION_PATH.'/layouts/default/');
+					echo $html->render('contactform.phtml');
+				?>
+			</div>
+		</div>
+	</div>
+</div>
