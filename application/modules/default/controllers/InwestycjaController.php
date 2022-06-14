@@ -302,11 +302,11 @@ class Default_InwestycjaController extends kCMS_Site
 			$db->setFetchMode(Zend_Db::FETCH_OBJ);
 			
 			$page = $this->view->strona = $db->fetchRow($db->select()->from('strony')->where('id = ?', $this->menuPageId));
-			
-	        $front = Zend_Controller_Front::getInstance();
-	        $request = $front->getRequest();
 
 			if(!$page) {
+                $front = Zend_Controller_Front::getInstance();
+                $request = $front->getRequest();
+
 				$request->setModuleName('default');
 				$request->setControllerName('error');
 				$request->setActionName('error');
@@ -328,12 +328,15 @@ class Default_InwestycjaController extends kCMS_Site
 				$this->view->pageclass = ' offer-page';
 
 				$inwest = $db->select()
-					->from('inwestycje', array('nazwa', 'inwestycja_plik', 'tag', 'status', 'id', 'lista'))
+					->from('inwestycje', array('nazwa', 'inwestycja_plik', 'tag', 'status', 'id', 'lista', 'lat', 'lng', 'addresspicker_map'))
 					->where('status = ?', 1)
 					->orWhere('status = ?', 3)
 					->order('sort ASC');
 				$inwestycje = $this->view->inwestycje = $db->fetchAll($inwest);
 				$this->view->inwestycjecount = count($inwestycje);
+				$this->view->notop = 1;
+				$this->view->nobottom = 1;
+				$this->view->hidepageheader = 1;
 			}
 		}
 			

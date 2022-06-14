@@ -1,39 +1,73 @@
 <div id="aboutus">
-    <div class="container">
-        <div class="row">
-<?php foreach($this->inwestycje as $inwestycja){?>
-<?php if($inwestycja->status == 1){?>
-    <?php if($inwestycja->id == 5){?>
-            <div class="col-12 col-lg-6">
-                <div class="inwest-list-item">
-                    <a href="https://www.bliskiolechow.pl/" target="_blank">
-                        <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
-                    </a>
-                    <div class="inwestlist">
-                        <h2 class="source">
-                            <a href="https://www.bliskiolechow.pl/" target="_blank"><?=$inwestycja->nazwa;?></a>
-                        </h2>
-                        <p><?=$inwestycja->lista;?></p>
-                        <a href="https://www.bliskiolechow.pl/" class="bttn bttn-blue bttn-more mr-4" target="_blank">OPIS INWESTYCJI</a> <a href="https://www.bliskiolechow.pl/mieszkania" class="bttn bttn-blue bttn-more" target="_blank">ZNAJDŹ MIESZKANIE</a>
-                    </div>
+    <div class="container-fluid p-0">
+        <div class="row no-gutters">
+            <div class="col-6">
+                <div id="map"></div>
+            </div>
+            <div class="col-6">
+                <div class="inwest-list">
+                    <?php foreach($this->inwestycje as $inwestycja){?>
+                        <?php if($inwestycja->status == 1){?>
+                            <?php if($inwestycja->id == 5){?>
+                                <div class="inwest-list-item">
+                                    <a href="https://www.bliskiolechow.pl/" target="_blank">
+                                        <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
+                                    </a>
+                                    <div class="inwestlist">
+                                        <h2 class="source">
+                                            <a href="https://www.bliskiolechow.pl/" target="_blank"><?=$inwestycja->nazwa;?></a>
+                                        </h2>
+                                        <p><?=$inwestycja->lista;?></p>
+                                        <a href="https://www.bliskiolechow.pl/" class="bttn bttn-blue bttn-more mr-4" target="_blank">OPIS INWESTYCJI</a> <a href="https://www.bliskiolechow.pl/mieszkania" class="bttn bttn-blue bttn-more" target="_blank">ZNAJDŹ MIESZKANIE</a>
+                                    </div>
+                                </div>
+                            <?php } else { ?>
+                                <div class="inwest-list-item">
+                                    <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/">
+                                        <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
+                                    </a>
+                                    <div class="inwestlist">
+                                        <h2 class="source"><a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/"><?=$inwestycja->nazwa;?></a></h2>
+                                        <p><?=$inwestycja->lista;?></p>
+                                        <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/" class="bttn bttn-blue bttn-more mr-4">OPIS INWESTYCJI</a> <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/" class="bttn bttn-blue bttn-more">ZNAJDŹ MIESZKANIE</a>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        <?php } ?>
+                    <?php } ?>
                 </div>
             </div>
-        <?php } else { ?>
-            <div class="col-12 col-lg-6">
-                <div class="inwest-list-item">
-                    <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/">
-                        <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
-                    </a>
-                    <div class="inwestlist">
-                        <h2 class="source"><a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/"><?=$inwestycja->nazwa;?></a></h2>
-                        <p><?=$inwestycja->lista;?></p>
-                        <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/" class="bttn bttn-blue bttn-more mr-4">OPIS INWESTYCJI</a> <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/" class="bttn bttn-blue bttn-more">ZNAJDŹ MIESZKANIE</a>
-                    </div>
-                </div>
-            </div>
-    <?php } ?>
-<?php } ?>
-<?php } ?>
         </div>
     </div>
 </div>
+<link href="<?=$this->cssUrl();?>/leaflet.css" rel="stylesheet">
+<script src="<?=$this->jsUrl(); ?>/leaflet.js" charset="utf-8"></script>
+<script>
+    const tileLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        'attribution': 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+    });
+    const madeyIcon = L.icon({
+        iconUrl: '<?=$this->baseUrl;?>/public/gfx/marker/madey-marker.png',
+        shadowUrl: '',
+        iconSize: [65, 75],
+        iconAnchor: [32, 65]
+    });
+    const featureGroup = L.featureGroup([
+    <?php foreach($this->inwestycje as $inwestycja){?>
+        <?php if($inwestycja->status == 1){?>
+    L.marker([<?=$inwestycja->lat;?>, <?=$inwestycja->lng;?>], {icon: madeyIcon}).bindPopup('<h4><?=$inwestycja->nazwa;?></h4><p><?=$inwestycja->addresspicker_map;?></p>'),
+        <?php } ?>
+    <?php } ?>
+    ]);
+
+    let map = new L.Map('map', {
+        'center': [0, 0],
+        'zoom': 0,
+        'layers': [tileLayer, featureGroup]
+    });
+
+    map.fitBounds(featureGroup.getBounds());
+    map.on('popupclose', function(e) {
+        map.fitBounds(featureGroup.getBounds());
+    });
+</script>

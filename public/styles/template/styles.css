@@ -404,6 +404,10 @@ button:focus,
   background: var(--main-blue);
   color: #fff;
 }
+.bttn.bttn-blue {
+  background: var(--main-blue);
+  color: #fff;
+}
 .section-title {
   text-align: center;
 }
@@ -1037,8 +1041,10 @@ div[class*='col-'].slick-slide {
 /* Homepage
 ================================================== */
 #footer {
-  background: var(--main-blue);
+  background: #10375f;
   padding: 30px 0;
+  position: relative;
+  z-index: 20;
 }
 #footer p,
 #footer a {
@@ -1050,6 +1056,8 @@ div[class*='col-'].slick-slide {
 #pageheader {
   background: #e9f4ff url('../../gfx/template/paralaxa.jpg') no-repeat center center;
   padding: 100px 0 70px;
+  position: relative;
+  z-index: 20;
 }
 #pageheader h1 {
   font-weight: 700;
@@ -1077,10 +1085,16 @@ div[class*='col-'].slick-slide {
 #page {
   padding: 90px 0;
 }
+#page.nobottom {
+  padding-bottom: 0;
+}
+#page.notop {
+  padding-top: 0;
+}
 /* Lista inwestycji
 ================================================== */
 .inwestlist {
-  background: #e9f4ff;
+  background: #fff;
   padding: 30px;
 }
 .inwestlist h2 {
@@ -1115,6 +1129,21 @@ div[class*='col-'].slick-slide {
 #homepage .row-invest-slick .slick-slide:hover {
   opacity: 1;
 }
+#map {
+  width: 50%;
+  overflow: hidden;
+  position: fixed !important;
+  left: 0;
+  top: 85px;
+  height: calc(-85px + 100vh);
+}
+.inwest-list {
+  padding: 30px;
+  background: #194a78;
+}
+.inwest-list img {
+  width: 100%;
+}
 .inwest-list-item {
   position: relative;
   top: 0;
@@ -1123,10 +1152,22 @@ div[class*='col-'].slick-slide {
   -o-transition: all 100ms linear;
   transition: all 100ms linear;
   box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0);
+  margin-bottom: 30px;
 }
 .inwest-list-item:hover {
   top: -5px;
   box-shadow: 0 4px 7px 0 rgba(16, 55, 95, 0.3);
+}
+.inwest-list-item:last-child {
+  margin-bottom: 0;
+}
+.leaflet-popup-content p {
+  text-transform: none;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #10375f !important;
+  color: #fff !important;
 }
 /* Inwestycja
 ================================================== */
@@ -1338,24 +1379,38 @@ div[class*='col-'].slick-slide {
   font-weight: 600;
 }
 #searchOffer {
-  background: #e9f4ff;
+  background: #1b4978;
   padding: 30px;
   box-shadow: 0 4px 7px 0 rgba(16, 55, 95, 0.3);
 }
 #searchOffer select {
-  background: white;
+  background: #1b4978;
   padding: 12px 10px;
   margin-bottom: 10px;
-  border: 1px solid #c9def2;
+  border: 1px solid #305e8c;
   margin-top: 2px;
+  color: white;
+  -webkit-transition: all 100ms linear;
+  -moz-transition: all 100ms linear;
+  -o-transition: all 100ms linear;
+  transition: all 100ms linear;
+}
+#searchOffer select:hover {
+  border: 1px solid #6583a2;
 }
 #searchOffer .bttn {
   width: 100%;
   margin-top: 10px;
+  background: #10375f;
+  color: white;
+}
+#searchOffer .bttn:hover {
+  color: #10375f;
+  background: white;
 }
 #searchOffer label {
   font-size: 13px;
-  color: #10375f;
+  color: white;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -1516,8 +1571,10 @@ div[class*='col-'].slick-slide {
   background: #e9f4ff;
 }
 .page-news-list article:hover {
-  top: -5px;
-  box-shadow: 0 4px 7px 0 rgba(16, 55, 95, 0.3);
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  transition: all 200ms ease-in;
+  transform: scale(1.06);
 }
 .single-post h1 {
   margin-top: 30px;
@@ -1595,6 +1652,10 @@ div[class*='col-'].slick-slide {
 }
 /* Kontakt i formularze
 ================================================== */
+.contact-form {
+  padding: 40px 0 80px;
+  background: var(--main-blue);
+}
 .obowiazek p {
   font-size: 11px;
   line-height: 14px !important;
@@ -1678,6 +1739,88 @@ div[class*='col-'].slick-slide {
 }
 textarea {
   height: 120px;
+}
+.contact-form .input input,
+.contact-form .input textarea {
+  border-bottom: 1px solid #4f7dac;
+  background: none;
+  color: white;
+}
+.contact-form .input label {
+  color: #fff;
+}
+.contact-form textarea {
+  margin-bottom: 20px;
+}
+.contact-form .obowiazek p,
+.contact-form .rules-text p {
+  color: #dbe3ec;
+}
+.contact-form .bttn {
+  background: none;
+  border: 1px solid #4f7dac;
+  color: white;
+}
+.contact-form .bttn:hover {
+  background: white;
+  color: var(--main-blue);
+  border: 1px solid #fff;
+}
+.contact-form .input.filled label {
+  color: #8aacce;
+}
+.godziny {
+  padding: 25px 30px;
+  background: none;
+  border: 1px solid #dfe7ef;
+}
+.godziny h3 {
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.godziny li {
+  font-size: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #edf5f8;
+  color: #7f8794;
+}
+.godziny li:last-child {
+  border-bottom: 0;
+}
+.godziny li span {
+  float: right;
+}
+.godziny li span.red {
+  color: red;
+}
+.contact-text i {
+  font-size: 67px;
+  color: #1b4978;
+  margin-bottom: 20px;
+}
+.contact-text .person {
+  border: 1px solid #dfe7ef;
+  padding: 30px;
+}
+.about-paralaxa {
+  background: #194a78 url("../../gfx/template/about-bg.jpg") no-repeat center;
+  background-size: cover;
+  padding: 100px 0;
+  margin: 70px 0;
+}
+.about-paralaxa img {
+  margin: 0 auto;
+}
+.about-paralaxa h3 {
+  color: white;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 24px;
+  margin-top: 30px;
+  padding: 0 25px;
 }
 /* Paginacja
 ================================================== */

@@ -471,10 +471,10 @@ class Form_InwestycjaForm extends Zend_Form
         $this->addElements(array(
 			$typ,
 			$status,
-			// $lat,
-			// $lng,
+			$lat,
+			$lng,
 			// $zoom,
-			// $adres,
+			$adres,
 			$uslugowe,
 			$nazwa,
 			$meta_slowa,

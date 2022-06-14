@@ -33,6 +33,8 @@ class Default_KontaktController extends kCMS_Site
 				
 				$this->view->strona_id = 1;
 				$this->view->validation = 1;
+				$this->view->notop = 1;
+				$this->view->nobottom = 1;
 				$this->view->pageclass = ' contact-page';
 
 
