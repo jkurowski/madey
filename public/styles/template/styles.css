@@ -1568,7 +1568,7 @@ div[class*='col-'].slick-slide {
   padding: 0 30px;
 }
 .page-news-list article .col-news-entry {
-  background: #e9f4ff;
+  background: #f9f9f9;
 }
 .page-news-list article:hover {
   box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.3);
