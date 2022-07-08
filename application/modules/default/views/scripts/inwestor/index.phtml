@@ -53,5 +53,29 @@
             </div>
         </div>
     </div>
-
+</div>
+<div id="investdone">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <span>Nasze inwestycje</span>
+                    <h2>Inwestycje zrealizowane</h2>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <?php foreach($this->inwestycje as $inwestycja){?>
+                        <div class="inwest-list-item col-6">
+                            <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
+                            <div class="inwestlist">
+                                <h2 class="source"><?=$inwestycja->nazwa;?></h2>
+                                <p><?=$inwestycja->lista;?></p>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

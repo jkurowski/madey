@@ -37,6 +37,10 @@ class Default_InwestorController extends kCMS_Site
             $this->view->assign($arrayError);
 
         } else {
+            $inwest = $this->db->select()
+                ->from('inwestycje', array('nazwa', 'inwestycja_plik', 'tag', 'status', 'id', 'lista', 'lat', 'lng', 'addresspicker_map'))
+                ->where('status = ?', 2)
+                ->order('sort ASC');
 
             $array = array(
                 'pageclass' => ' about-page',
@@ -47,7 +51,8 @@ class Default_InwestorController extends kCMS_Site
                 'seo_tytul' => $page->meta_tytul,
                 'seo_opis' => $page->meta_opis,
                 'seo_slowa' => $page->meta_slowa,
-                'strona' => $page
+                'strona' => $page,
+                'inwestycje' => $this->db->fetchAll($inwest)
             );
             $this->view->assign($array);
         }
