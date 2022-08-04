@@ -6,6 +6,12 @@
             </div>
             <div class="col-6">
                 <div class="inwest-list">
+                    <div class="inwest-list-nav">
+                        <a href="#" class="bttn">W SPRZEDAŻY</a>
+                        <a href="#" class="bttn">W PRZYGOTOWANIU</a>
+                        <a href="#" class="bttn">ZAKOŃCZONE</a>
+                    </div>
+
                     <?php foreach($this->inwestycje as $inwestycja){?>
                         <?php if($inwestycja->status == 1){?>
                             <?php if($inwestycja->id == 5){?>
