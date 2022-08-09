@@ -36,23 +36,24 @@
 
 <?=$this->render('header.phtml');?>
     <div id="slider">
-        <ul class="rslidess list-unstyled mb-0 clearfix">
+        <div id="nivo">
             <?php foreach($this->slider as $panel){?>
-                <li><img sizes="(max-width:380px) 33.3vw, (max-width:680px) 66.6vw, 100vw"
-                         srcset="<?=$this->baseUrl;?>/files/slider/desktop/<?=$panel['plik'];?> 1920w,
+                <img sizes="(max-width:380px) 33.3vw, (max-width:680px) 66.6vw, 100vw"
+                     srcset="<?=$this->baseUrl;?>/files/slider/desktop/<?=$panel['plik'];?> 1920w,
 			 <?=$this->baseUrl;?>/files/slider/<?=$panel['plik'];?> 1920w,
 			 <?=$this->baseUrl;?>/files/slider/tablet/<?=$panel['plik'];?> 1024w,
 			 <?=$this->baseUrl;?>/files/slider/mobile/<?=$panel['plik'];?> 580w"
-                         src="<?=$this->baseUrl;?>/files/slider/desktop/<?=$panel['plik'];?>"
-                         alt="<?=$panel['tytul'];?>" width="1920" height="780">
-                </li>
+                     src="<?=$this->baseUrl;?>/files/slider/desktop/<?=$panel['plik'];?>"
+                     alt="<?=$panel['tytul'];?>" width="1920" height="780" title="#apla-<?=$panel['id'];?>">
             <?php } ?>
-        </ul>
+        </div>
         <?php foreach($this->slider as $int => $panel){?>
-        <div class="apla apla-<?=$int;?>">
+        <div id="apla-<?=$panel['id'];?>" class="apla nivo-html-caption">
             <div class="container">
                 <div class="row">
                     <div class="col-5">
+                        <div class="apla-status apla-status-1">W SPRZEDAŻY</div>
+                        <div class="apla-status-ready">GOTOWE DO ODBIORU</div>
                         <div class="blue-apla-box">
                             <h2><?=$panel['tytul'];?></h2>
                         </div>
@@ -285,23 +286,23 @@
 
 	<link rel="stylesheet" href="<?=$this->cssUrl();?>/bootstrap.css">
     <link rel="stylesheet" href="<?=$this->cssUrl();?>/styles.min.css">
+    <link rel="stylesheet" href="<?=$this->cssUrl();?>/nivo.min.css">
 
 	<!-- jQuery -->
     <script src="<?=$this->jsUrl(); ?>/jquery.js" charset="utf-8"></script>
     <script src="<?=$this->jsUrl(); ?>/main.min.js" charset="utf-8"></script>
     <script src="<?=$this->jsUrl(); ?>/slick.js" charset="utf-8"></script>
+    <script src="<?=$this->jsUrl(); ?>/nivo.js" charset="utf-8"></script>
 
 	<script type="text/javascript">
 	$(document).ready(function(){
-		//$(".rslidess").responsiveSlides({auto:<?=$this->header->slider_auto; ?>, pager:<?=$this->header->slider_pager; ?>, nav:<?=$this->header->slider_nav; ?>, timeout:<?=$this->header->slider_timeout; ?>, random:false, speed: <?=$this->header->slider_speed; ?>});
-
-        $(".rslidess").slick({
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            autoplay: <?=$this->header->slider_auto; ?>,
-            autoplaySpeed: <?=$this->header->slider_timeout; ?>,
-            arrows: false
+        $('#nivo').nivoSlider({
+            effect: 'boxRainGrow',
+            animSpeed: 700,
+            pauseTime: 5000000,
+            pauseOnHover: false,
+            slices: 8,
+            randomStart: false,
         });
 
         $(".row-invest-slick").slick({
@@ -313,14 +314,6 @@
             autoplaySpeed: <?=$this->header->slider_timeout; ?>,
             arrows: false
         });
-
-        $('.rslidess').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-            $('.apla').hide();
-        });
-        $('.rslidess').on('afterChange', function(event, slick, currentSlide, nextSlide){
-            $('.apla-'+currentSlide).fadeIn();
-        });
-
 <?php if($this->header->popup_status == 1){; ?>
 	<?php if($this->header->popup_tryb == 1){; ?>
 					$.cookie('popup', null);

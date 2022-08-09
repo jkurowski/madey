@@ -641,7 +641,7 @@ header .submenu li:hover:after {
   position: relative;
   margin-bottom: 110px;
 }
-#slider .apla {
+#slider .nivo-caption {
   position: absolute;
   left: 0;
   right: 0;
@@ -649,10 +649,7 @@ header .submenu li:hover:after {
   z-index: 100;
   display: none;
 }
-#slider .apla.apla-0 {
-  display: block;
-}
-#slider .apla .blue-apla-box {
+#slider .nivo-caption .blue-apla-box {
   background: #10375f;
   padding: 20px 27px;
   height: 100%;
@@ -660,11 +657,11 @@ header .submenu li:hover:after {
   align-items: center;
   box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.08);
 }
-#slider .apla .blue-apla-box h2 {
+#slider .nivo-caption .blue-apla-box h2 {
   color: white;
   margin: 0;
 }
-#slider .apla .white-apla-box {
+#slider .nivo-caption .white-apla-box {
   background: white;
   padding: 20px 27px;
   height: 100%;
@@ -672,12 +669,12 @@ header .submenu li:hover:after {
   align-items: center;
   box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.08);
 }
-#slider .apla .white-apla-box p {
+#slider .nivo-caption .white-apla-box p {
   font-size: 15px;
   line-height: 24px;
   margin: 0;
 }
-#slider .apla .bttn {
+#slider .nivo-caption .bttn {
   margin-top: 80px;
   background: #D79111;
   color: white;
