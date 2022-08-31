@@ -100,11 +100,20 @@
 }
 .apla-status {
   position: absolute;
-  background: green;
   padding: 0 20px;
   color: white;
   font-weight: 500;
   top: -37px;
+  text-transform: uppercase;
+}
+.apla-status-1 {
+  background: green;
+}
+.apla-status-2 {
+  background: #d74040;
+}
+.apla-status-3 {
+  background: #1b4978;
 }
 .apla-status-ready {
   position: absolute;

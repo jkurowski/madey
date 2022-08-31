@@ -101,18 +101,27 @@
 }
 .apla-status {
   position: absolute;
-  background: green;
   padding: 0 20px;
   color: white;
   font-weight: 500;
   top: -37px;
-}
-.apla-status-ready {
-  position: absolute;
-  right: 15px;
-  top: -37px;
-  background: #d79111;
-  padding: 0 20px;
-  color: white;
-  font-weight: 500;
+  text-transform: uppercase;
+  &-1 {
+    background: green;
+  }
+  &-2 {
+    background: #d74040;
+  }
+  &-3 {
+    background: #1b4978;
+  }
+  &-ready {
+    position: absolute;
+    right: 15px;
+    top: -37px;
+    background: #d79111;
+    padding: 0 20px;
+    color: white;
+    font-weight: 500;
+  }
 }

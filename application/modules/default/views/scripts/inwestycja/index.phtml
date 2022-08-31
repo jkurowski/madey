@@ -7,38 +7,40 @@
             <div class="col-6">
                 <div class="inwest-list">
                     <div class="inwest-list-nav">
-                        <a href="#" class="bttn">W SPRZEDAŻY</a>
-                        <a href="#" class="bttn">W PRZYGOTOWANIU</a>
-                        <a href="#" class="bttn">ZAKOŃCZONE</a>
+                        <a href="<?=$this->baseUrl;?>/oferta/" class="bttn">WSZYSTKIE</a>
+                        <a href="<?=$this->baseUrl;?>/oferta/w-sprzedazy" class="bttn">W SPRZEDAŻY</a>
+                        <a href="#" class="bttn d-none">W PRZYGOTOWANIU</a>
+                        <a href="<?=$this->baseUrl;?>/oferta/zakonczone" class="bttn">ZAKOŃCZONE</a>
                     </div>
 
                     <?php foreach($this->inwestycje as $inwestycja){?>
-                        <?php if($inwestycja->status == 1){?>
-                            <?php if($inwestycja->id == 5){?>
-                                <div class="inwest-list-item">
-                                    <a href="https://www.bliskiolechow.pl/" target="_blank">
-                                        <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
-                                    </a>
-                                    <div class="inwestlist">
-                                        <h2 class="source">
-                                            <a href="https://www.bliskiolechow.pl/" target="_blank"><?=$inwestycja->nazwa;?></a>
-                                        </h2>
-                                        <p><?=$inwestycja->lista;?></p>
-                                        <a href="https://www.bliskiolechow.pl/" class="bttn bttn-blue bttn-more mr-4" target="_blank">OPIS INWESTYCJI</a> <a href="https://www.bliskiolechow.pl/mieszkania" class="bttn bttn-blue bttn-more" target="_blank">ZNAJDŹ MIESZKANIE</a>
-                                    </div>
+                        <?php if($inwestycja->id == 5){?>
+                            <div class="inwest-list-item">
+                                <a href="https://www.bliskiolechow.pl/" target="_blank">
+                                    <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
+                                </a>
+                                <div class="inwestlist">
+                                    <h2 class="source">
+                                        <a href="https://www.bliskiolechow.pl/" target="_blank"><?=$inwestycja->nazwa;?></a>
+                                    </h2>
+                                    <p><?=$inwestycja->lista;?></p>
+                                    <a href="https://www.bliskiolechow.pl/" class="bttn bttn-blue bttn-more mr-4" target="_blank">OPIS INWESTYCJI</a> <a href="https://www.bliskiolechow.pl/mieszkania" class="bttn bttn-blue bttn-more" target="_blank">ZNAJDŹ MIESZKANIE</a>
                                 </div>
-                            <?php } else { ?>
-                                <div class="inwest-list-item">
-                                    <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/">
-                                        <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
-                                    </a>
-                                    <div class="inwestlist">
-                                        <h2 class="source"><a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/"><?=$inwestycja->nazwa;?></a></h2>
-                                        <p><?=$inwestycja->lista;?></p>
-                                        <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/" class="bttn bttn-blue bttn-more mr-4">OPIS INWESTYCJI</a> <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/" class="bttn bttn-blue bttn-more">ZNAJDŹ MIESZKANIE</a>
-                                    </div>
+                            </div>
+                        <?php } else { ?>
+                            <div class="inwest-list-item">
+                                <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/">
+                                    <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
+                                </a>
+                                <div class="inwestlist">
+                                    <h2 class="source"><a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/"><?=$inwestycja->nazwa;?></a></h2>
+                                    <p><?=$inwestycja->lista;?></p>
+                                    <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/" class="bttn bttn-blue bttn-more mr-4">OPIS INWESTYCJI</a>
+                                    <?php if($inwestycja->status == 1){?>
+                                    <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/" class="bttn bttn-blue bttn-more">ZNAJDŹ MIESZKANIE</a>
+                                    <?php } ?>
                                 </div>
-                            <?php } ?>
+                            </div>
                         <?php } ?>
                     <?php } ?>
                 </div>

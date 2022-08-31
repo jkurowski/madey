@@ -187,11 +187,10 @@ class Default_InwestycjaController extends kCMS_Site
 						return "Mieszkanie";
 					case '2':
 						return "Lokal usługowy";
-					case '3':
+                    case '4':
+                    case '3':
 						return "Miejsce parkingowe";
-					case '4':
-						return "Miejsce parkingowe";
-				}
+                }
 			}
 		}
 
@@ -303,10 +302,10 @@ class Default_InwestycjaController extends kCMS_Site
 			
 			$page = $this->view->strona = $db->fetchRow($db->select()->from('strony')->where('id = ?', $this->menuPageId));
 
-			if(!$page) {
-                $front = Zend_Controller_Front::getInstance();
-                $request = $front->getRequest();
+            $front = Zend_Controller_Front::getInstance();
+            $request = $front->getRequest();
 
+			if(!$page) {
 				$request->setModuleName('default');
 				$request->setControllerName('error');
 				$request->setActionName('error');
@@ -327,11 +326,21 @@ class Default_InwestycjaController extends kCMS_Site
 				$this->view->canonical = $this->baseUrl.'/oferta/';
 				$this->view->pageclass = ' offer-page';
 
+                $uri = $request->getRequestUri();
 				$inwest = $db->select()
 					->from('inwestycje', array('nazwa', 'inwestycja_plik', 'tag', 'status', 'id', 'lista', 'lat', 'lng', 'addresspicker_map'))
-					->where('status = ?', 1)
-					->orWhere('status = ?', 3)
 					->order('sort ASC');
+
+                if($uri == '/oferta/zakonczone' || $uri == '/oferta/zakonczone/') {
+                    $inwest->where('status =?', 2);
+                }
+
+                if($uri == '/oferta/w-sprzedazy' || $uri == '/oferta/w-sprzedazy/') {
+                    $inwest->where('status =?', 1);
+                }
+
+
+
 				$inwestycje = $this->view->inwestycje = $db->fetchAll($inwest);
 				$this->view->inwestycjecount = count($inwestycje);
 				$this->view->notop = 1;
@@ -370,7 +379,7 @@ class Default_InwestycjaController extends kCMS_Site
 
 				$page = $db->fetchRow($db->select()->from(array('s' => 'strony'), array('id', 'tag', 'nazwa'))->where('s.id = ?', $this->menuPageId));
 				
-				$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/'.$page->tag.'/"><span itemprop="name">'.$page->nazwa.'</span></a><meta itemprop="position" content="2" /></li><li class="sep"></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><b itemprop="item">'.$inwestycja->nazwa.'</b><meta itemprop="position" content="3" /></li>';
+				$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/oferta/"><span itemprop="name">'.$page->nazwa.'</span></a><meta itemprop="position" content="2" /></li><li class="sep"></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><b itemprop="item">'.$inwestycja->nazwa.'</b><meta itemprop="position" content="3" /></li>';
 				
 				$this->getRequest()->setParam('sitetag', 'oferta');
 				$this->getRequest()->setParam('tag', 'oferta');
@@ -470,7 +479,7 @@ class Default_InwestycjaController extends kCMS_Site
 
 			$tag = $this->view->wybranytag = $this->getRequest()->getParam('tag_inwest');
 			$this->view->pagetag = $tag_inwest_page = $this->getRequest()->getParam('tag_inwest_page');
-			$inwestycja = $this->view->inwestycja = $db->fetchRow($db->select()->from('inwestycje', array('id', 'nazwa', 'typ', 'tag', 'uslugowe', 'nazwa', 'zakres_pokoje', 'zakres_powierzchnia', 'header'))->where('tag = ?', $tag));
+			$inwestycja = $this->view->inwestycja = $db->fetchRow($db->select()->from('inwestycje', array('id', 'nazwa', 'typ', 'tag', 'uslugowe', 'nazwa', 'zakres_pokoje', 'zakres_powierzchnia', 'header', 'status'))->where('tag = ?', $tag));
 
 			if(!$inwestycja) {
 			
@@ -515,7 +524,7 @@ class Default_InwestycjaController extends kCMS_Site
 				$this->view->pagetag = 'plan-inwestycji';
 
 				//Schema breadcrumbs
-				$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/'.$menupage->tag.'/"><span itemprop="name">'.$menupage->nazwa.'</span></a><meta itemprop="position" content="2" /></li><li class="sep"></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><b itemprop="item">'.$inwestycja->nazwa.'</b><meta itemprop="position" content="3" /></li>';
+				$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/oferta/"><span itemprop="name">'.$menupage->nazwa.'</span></a><meta itemprop="position" content="2" /></li><li class="sep"></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><b itemprop="item">'.$inwestycja->nazwa.'</b><meta itemprop="position" content="3" /></li>';
 				
 				//Plan inwestycji
 				$this->view->plan = $db->fetchRow($db->select()->from('inwestycje_plan')->where('id_inwest = ?', $inwestycja->id)); 
@@ -1285,7 +1294,7 @@ class Default_InwestycjaController extends kCMS_Site
 					$this->view->inwestpage = $db->fetchAll($db->select()->from(array('inwestycje_strony'), array('nazwa', 'id', 'tag', 'typ', 'tag_inwest', 'sort', 'status'))->where('id_inwest = ?', $inwestycja->id)->where('status = ?', 1)->order('sort ASC'));
 
 					// Schema breadcrumbs
-					$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/'.$page->tag.'/"><span itemprop="name">'.$page->nazwa.'</span></a><meta itemprop="position" content="2" /></li>
+					$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/oferta/"><span itemprop="name">'.$page->nazwa.'</span></a><meta itemprop="position" content="2" /></li>
 					<li class="sep"></li>
 					<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/i/'.$inwestycja->tag.'/"><span itemprop="name">'.$inwestycja->nazwa.'</span></a><meta itemprop="position" content="3" /></li>
 					<li class="sep"></li>
@@ -1537,7 +1546,7 @@ class Default_InwestycjaController extends kCMS_Site
 							
 						}
 						
-						$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/'.$page->tag.'/"><span itemprop="name">'.$page->nazwa.'</span></a><meta itemprop="position" content="2" /></li><li class="sep"></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><b itemprop="item">'.$inwestycja->nazwa.'</b><meta itemprop="position" content="3" /></li>';						
+						$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/oferta/"><span itemprop="name">'.$page->nazwa.'</span></a><meta itemprop="position" content="2" /></li><li class="sep"></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><b itemprop="item">'.$inwestycja->nazwa.'</b><meta itemprop="position" content="3" /></li>';
 						
 					}
 					
@@ -1547,7 +1556,7 @@ class Default_InwestycjaController extends kCMS_Site
 					
 						$this->view->poprzednie = $db->fetchRow($db->select()->from('inwestycje_powierzchnia')->where('numer < ?', $mieszkanie->numer)->order('numer DESC')->limit(1)->where('numer_pietro = ?', $numer_pietro)->where('id_inwest = ?', $inwestycja->id)->where('typ = ?', $mieszkanie->typ));
 						
-						$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/'.$page->tag.'/"><span itemprop="name">'.$page->nazwa.'</span></a><meta itemprop="position" content="2" /></li>
+						$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/oferta/"><span itemprop="name">'.$page->nazwa.'</span></a><meta itemprop="position" content="2" /></li>
 						<li class="sep"></li>
 						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/i/'.$inwestycja->tag.'/"><span itemprop="name">'.$inwestycja->nazwa.'</span></a><meta itemprop="position" content="3" /></li>
 						<li class="sep"></li>
@@ -1973,7 +1982,7 @@ class Default_InwestycjaController extends kCMS_Site
 				$this->getRequest()->setParam('tag', 'oferta');
 
 				// Schema breadcrumbs
-				$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/'.$page->tag.'/"><span itemprop="name">'.$page->nazwa.'</span></a><meta itemprop="position" content="2" /></li><li class="sep"></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><b itemprop="item">'.$inwestycja->nazwa.'</b><meta itemprop="position" content="3" /></li>';
+				$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/oferta/"><span itemprop="name">'.$page->nazwa.'</span></a><meta itemprop="position" content="2" /></li><li class="sep"></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><b itemprop="item">'.$inwestycja->nazwa.'</b><meta itemprop="position" content="3" /></li>';
 				
 				// Plan inwestycji
 				$this->view->plan = $db->fetchRow($db->select()->from('inwestycje_plan')->where('id_inwest = ?', $inwestycja->id)); 
@@ -2056,7 +2065,7 @@ class Default_InwestycjaController extends kCMS_Site
 				$this->getRequest()->setParam('tag', 'oferta');
 
 				// Schema breadcrumbs
-				$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/'.$page->tag.'/"><span itemprop="name">'.$page->nazwa.'</span></a><meta itemprop="position" content="2" /></li><li class="sep"></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><b itemprop="item">'.$inwestycja->nazwa.'</b><meta itemprop="position" content="3" /></li>';
+				$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/oferta/"><span itemprop="name">'.$page->nazwa.'</span></a><meta itemprop="position" content="2" /></li><li class="sep"></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><b itemprop="item">'.$inwestycja->nazwa.'</b><meta itemprop="position" content="3" /></li>';
 				
 				// Plan inwestycji
 				$this->view->plan = $db->fetchRow($db->select()->from('inwestycje_plan')->where('id_inwest = ?', $inwestycja->id)); 
@@ -2153,7 +2162,7 @@ class Default_InwestycjaController extends kCMS_Site
 				$this->view->inwestycje = $db->fetchAll($db->select()->from('inwestycje', array('nazwa', 'tag', 'status'))->where('status = ?', 1));
 				
 				// Schema breadcrumbs
-				$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/'.$page->tag.'/"><span itemprop="name">'.$page->nazwa.'</span></a><meta itemprop="position" content="2" /></li><li class="sep"></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><b itemprop="item">'.$inwestycja->nazwa.'</b><meta itemprop="position" content="3" /></li>';
+				$this->view->breadcrumbs = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/oferta/"><span itemprop="name">'.$page->nazwa.'</span></a><meta itemprop="position" content="2" /></li><li class="sep"></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><b itemprop="item">'.$inwestycja->nazwa.'</b><meta itemprop="position" content="3" /></li>';
 				
 				// Plan inwestycji
 				$this->view->plan = $db->fetchRow($db->select()->from('inwestycje_plan')->where('id_inwest = ?', $inwestycja->id)); 

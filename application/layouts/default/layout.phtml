@@ -52,8 +52,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-5">
-                        <div class="apla-status apla-status-1">W SPRZEDAŻY</div>
-                        <div class="apla-status-ready">GOTOWE DO ODBIORU</div>
+                        <div class="apla-status apla-status-<?=$panel['inwest_status'];?>"><?=$this->investStatus($panel['inwest_status']);?></div>
+                        <?php if($panel['dopisek']) {?><div class="apla-status-ready"><?=$panel['dopisek'];?></div><?php } ?>
                         <div class="blue-apla-box">
                             <h2><?=$panel['tytul'];?></h2>
                         </div>

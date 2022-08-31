@@ -1,7 +1,7 @@
 <div id="aside">
 	<ul class="list-unstyled sidemenu">
 				<li<?php if($this->inwestmenupage == 'opis'){?> class="active"<?php } ?>><a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/">Opis inwestycji</a></li>
-			<?php if($this->plan->id){?>
+			<?php if($this->plan->id && $this->inwestycja->status == 1){?>
 					<li class="<?php if($this->pagetag == 'plan-inwestycji'){?> active<?php } ?>"><a href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/plan-inwestycji/">Znajdź mieszkanie</a></li>
 			<?php } ?>
 			
@@ -38,7 +38,7 @@
 	<?php } ?>
 	</ul>
 
-	<?php if($this->inwestycja->id <> 1) {?>
+	<?php if($this->inwestycja->status == 1) {?>
 		<?php if($this->searchonplan){?>
 	<form id="searchOffer" method="get" action="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/plan-inwestycji/">
 		<?php } else { ?>
