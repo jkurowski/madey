@@ -29,7 +29,11 @@
                             </div>
                         <?php } else { ?>
                             <div class="inwest-list-item">
+                            <?php if($inwestycja->status == 1){?>
                                 <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/">
+                            <?php } else { ?>
+                                <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/">
+                            <?php } ?>
                                     <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
                                 </a>
                                 <div class="inwestlist">
@@ -62,9 +66,7 @@
     });
     const featureGroup = L.featureGroup([
     <?php foreach($this->inwestycje as $inwestycja){?>
-        <?php if($inwestycja->status == 1){?>
-    L.marker([<?=$inwestycja->lat;?>, <?=$inwestycja->lng;?>], {icon: madeyIcon}).bindPopup('<h4><?=$inwestycja->nazwa;?></h4><p><?=$inwestycja->addresspicker_map;?></p>'),
-        <?php } ?>
+        L.marker([<?=$inwestycja->lat;?>, <?=$inwestycja->lng;?>], {icon: madeyIcon}).bindPopup('<h4><?=$inwestycja->nazwa;?></h4><p><?=$inwestycja->addresspicker_map;?></p>'),
     <?php } ?>
     ]);
 

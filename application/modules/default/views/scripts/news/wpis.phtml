@@ -1,29 +1,17 @@
 <div class="container">
 	<div class="row">
 		<div class="col-8 single-post">
-			<article id="post-<?=$this->news->id;?>" itemscope itemType="http://schema.org/BlogPosting">
-			<?php if($this->news->plik){?><img src="<?=$this->baseUrl;?>/files/news/<?=$this->news->plik;?>" alt="<?=$this->news->tytul;?>" itemprop="image"><?php } ?>
-			<h1><a href="<?=$this->baseUrl;?>/aktualnosci/<?=$this->news->tag;?>/" title="<?=$this->news->tytul; ?>" itemprop="url"><span itemprop="name headline"><?=$this->news->tytul; ?></span></a></h1>
-			<div itemprop="articleBody">
-				<p><b><?=$this->news->wprowadzenie; ?></b></p>
-				<p>&nbsp;<p>
-				<?=replace($this->news->tekst); ?> 
-			</div>
-			
-			<meta itemprop="author" content="<?= $this->header->autor; ?>">
-			<meta itemprop="datePublished" content="<?=$this->news->data;?>">
-		</article>
-		
-			<div class="news-share clearfix">
-				<h4>Podziel się tym wpisem</h4>
-				<ul class="wpis-social list-unstyled">
-					<li class="wpis-fb"><a href="javascript:fbShare('https://www.madeydevelopment.pl/aktualnosci/<?=$this->news->tag;?>/', 520, 350)" rel="nofollow"><span>FACEBOOK</span></a></li>
-					<li class="wpis-tw"><a href="javascript:twShare('<?=$this->news->tytul;?>', 'https://www.madeydevelopment.pl/aktualnosci/<?=$this->news->tag;?>/', 520, 450)" rel="nofollow"><span>TWITTER</span></a></li>
-					<li class="wpis-gplus"><a href="javascript:gplusShare('https://www.madeydevelopment.pl/aktualnosci/<?=$this->news->tag;?>/', 400, 460)" rel="nofollow"><span>GOOGLE+</span></a></li>
-					<li class="wpis-linkedin"><a href="javascript:linkedinShare('<?=$this->news->tytul;?>', 'https://www.madeydevelopment.pl/aktualnosci/<?=$this->news->tag;?>/', 520, 350)" rel="nofollow"><span>Linkedin</span></a></li>
-				</ul>
-			</div>
-			
+            <article id="post-<?=$this->news->id;?>" itemscope itemType="http://schema.org/BlogPosting">
+                <?php if($this->news->plik){?><img src="<?=$this->baseUrl;?>/files/news/<?=$this->news->plik;?>" alt="<?=$this->news->tytul;?>" itemprop="image"><?php } ?>
+                <h1><a href="<?=$this->baseUrl;?>/aktualnosci/<?=$this->news->tag;?>/" title="<?=$this->news->tytul; ?>" itemprop="url"><span itemprop="name headline"><?=$this->news->tytul; ?></span></a></h1>
+                <div itemprop="articleBody">
+                    <p><b><?=$this->news->wprowadzenie; ?></b></p>
+                    <?=replace($this->news->tekst); ?>
+                </div>
+
+                <meta itemprop="author" content="<?= $this->header->autor; ?>">
+                <meta itemprop="datePublished" content="<?=$this->news->data;?>">
+            </article>
 		</div>
 		<div class="col-4 single-post-side">
 <?php if($this->inne){?>

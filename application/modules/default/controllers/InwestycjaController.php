@@ -333,10 +333,12 @@ class Default_InwestycjaController extends kCMS_Site
 
                 if($uri == '/oferta/zakonczone' || $uri == '/oferta/zakonczone/') {
                     $inwest->where('status =?', 2);
+                    $this->view->inwest_status = 2;
                 }
 
                 if($uri == '/oferta/w-sprzedazy' || $uri == '/oferta/w-sprzedazy/') {
                     $inwest->where('status =?', 1);
+                    $this->view->inwest_status = 1;
                 }
 
 

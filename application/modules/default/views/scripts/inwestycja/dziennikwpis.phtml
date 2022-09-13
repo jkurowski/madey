@@ -1,52 +1,24 @@
 <div id="dziennik">
-	<div class="fluid-container">
-		<div class="row no-gutters">
-			<div class="col-3 inwestmenu">
-				<?php echo $this->render('inwestycja/aside.phtml');?>
+	<div class="container">
+		<div class="row">
+			<div class="col-3 ">
+                <div class="inwestmenu">
+                    <?php echo $this->render('inwestycja/aside.phtml');?>
+                </div>
 			</div>
 			
-			<div class="col-9 singledesc">
-				<div class="row justify-content-center no-gutters">
-					<div class="col-8 single-post">
-						<?php if($this->news->plik){?><img src="<?=$this->baseUrl; ?>/files/inwestycje/news/<?=$this->news->plik;?>" alt="<?=$this->news->tytul;?>" class="mb-4"><?php } ?>
-						<h1 class="source"><span itemprop="name headline"><?=$this->news->tytul;?></span></h1>
-						
-						<p><b><?=$this->news->wprowadzenie;?></b></p>
-						<br>
-						<?=replace($this->news->tekst); ?>
-						
-						
-						<div class="news-share clearfix">
-							<h4>Podziel się tym wpisem</h4>
-							<ul class="wpis-social list-unstyled">
-								<li class="wpis-fb"><a href="javascript:fbShare('<?=$this->baseUrl; ?>/i/<?=$this->wybranytag;?>/w/<?=$this->news->id;?>,<?=zmiana($this->news->tytul);?>/', 520, 350)" rel="nofollow"><span>FACEBOOK</span></a></li>
-								<li class="wpis-tw"><a href="javascript:twShare('<?=$this->news->tytul;?>', '<?=$this->baseUrl; ?>/i/<?=$this->wybranytag;?>/w/<?=$this->news->id;?>,<?=zmiana($this->news->tytul);?>/', 520, 450)" rel="nofollow"><span>TWITTER</span></a></li>
-								<li class="wpis-gplus"><a href="javascript:gplusShare('<?=$this->baseUrl; ?>/i/<?=$this->wybranytag;?>/w/<?=$this->news->id;?>,<?=zmiana($this->news->tytul);?>/', 400, 460)" rel="nofollow"><span>GOOGLE+</span></a></li>
-								<li class="wpis-linkedin"><a href="javascript:linkedinShare('<?=$this->news->tytul;?>', '<?=$this->baseUrl; ?>/i/<?=$this->wybranytag;?>/w/<?=$this->news->id;?>,<?=zmiana($this->news->tytul);?>/', 520, 350)" rel="nofollow"><span>Linkedin</span></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-4 single-post-side">
-			<?php if($this->inne){?>
-						<div class="side-box">
-							<h3>Ostatnie wpisy</h3>
-							<ul class="list-unstyled">
-			<?php foreach($this->inne as $inny){?>
-							  <li class="media">
-								<a href="<?=$this->baseUrl; ?>/i/<?=$this->wybranytag;?>/w/<?=$inny->id;?>,<?=zmiana($inny->tytul);?>/" title="<?=$inny->tytul;?>">
-								<?php if($inny->plik){?><img class="mr-3" src="<?=$this->baseUrl;?>/files/inwestycje/news/thumbs/<?=$inny->plik;?>" alt="<?=$inny->tytul;?>"><?php } ?>
-								<div class="media-body">
-								  <h5 class=""><?=$inny->tytul;?></h5>
-								  <p><?=previewParser($inny->wprowadzenie, 200);?></p>
-								</div>
-								</a>
-							  </li>
-			<?php } ?>
-							</ul>
-						</div>
-			<?php } ?>
-					</div>
-				</div>
+			<div class="col-9 single-post">
+                <article id="post-<?=$this->news->id;?>" itemscope itemType="http://schema.org/BlogPosting">
+                    <?php if($this->news->plik){?><img src="<?=$this->baseUrl;?>/files/inwestycje/news/<?=$this->news->plik;?>" alt="<?=$this->news->tytul;?>" itemprop="image"><?php } ?>
+                    <h1><a href="<?=$this->baseUrl;?>/aktualnosci/<?=$this->news->tag;?>/" title="<?=$this->news->tytul; ?>" itemprop="url"><span itemprop="name headline"><?=$this->news->tytul; ?></span></a></h1>
+                    <div itemprop="articleBody">
+                        <p><b><?=$this->news->wprowadzenie; ?></b></p>
+                        <?=replace($this->news->tekst); ?>
+                    </div>
+
+                    <meta itemprop="author" content="<?= $this->header->autor; ?>">
+                    <meta itemprop="datePublished" content="<?=$this->news->data;?>">
+                </article>
 			</div>
 		</div>
 	</div>
