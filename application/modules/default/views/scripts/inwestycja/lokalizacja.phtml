@@ -7,7 +7,34 @@
 
 			<div class="col-9 inwestdesc">
 				<?=replace($this->strona_tekst);?>
+<?php if($this->inwestycja->lat && $this->inwestycja->lng) {?>
+                <div id="investMap" style="width:100%;height:300px"></div>
+<?php } ?>
 			</div>
 		</div>
 	</div>
 </div>
+<?php if($this->inwestycja->lat && $this->inwestycja->lng) {?>
+<link href="<?=$this->cssUrl();?>/leaflet.css" rel="stylesheet">
+<script src="<?=$this->jsUrl(); ?>/leaflet.js" charset="utf-8"></script>
+<script>
+    const tileLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        'attribution': 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+    });
+    const madeyIcon = L.icon({
+        iconUrl: '<?=$this->baseUrl;?>/public/gfx/marker/madey-marker.png',
+        shadowUrl: '',
+        iconSize: [65, 75],
+        iconAnchor: [32, 65]
+    });
+    const featureGroup = L.featureGroup([
+        L.marker([<?=$this->inwestycja->lat;?>, <?=$this->inwestycja->lng;?>], {icon: madeyIcon}).bindPopup('<h4><?=$this->inwestycja->nazwa;?></h4><p><?=$this->inwestycja->addresspicker_map;?></p>'),
+    ]);
+
+    let map = new L.Map('investMap', {
+        'center': [<?=$this->inwestycja->lat;?>,  <?=$this->inwestycja->lng;?>],
+        'zoom': 17,
+        'layers': [tileLayer, featureGroup]
+    });
+</script>
+<?php } ?>
