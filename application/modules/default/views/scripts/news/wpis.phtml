@@ -20,7 +20,7 @@
 <?php foreach($this->inne as $inny){?>
 				  <li class="media">
 					<a href="<?=$this->baseUrl;?>/aktualnosci/<?=$inny->tag;?>/" title="<?=$inny->tytul;?>">
-					<?php if($inny->plik){?><img src="<?=$this->baseUrl;?>/files/news/thumbs/<?=$inny->plik;?>" alt="<?=$inny->tytul;?>"><?php } ?>
+					<?php if($inny->plik){?><img src="<?=$this->baseUrl;?>/files/news/<?=$inny->plik;?>" alt="<?=$inny->tytul;?>"><?php } ?>
 					<div class="media-body">
 					  <h5 class=""><?=$inny->tytul;?></h5>
 					  <p><?=previewParser($inny->wprowadzenie, 200);?> ...</p>
