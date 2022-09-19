@@ -16,9 +16,9 @@
 				
 				
 <?php if($this->atuty){?>
-				<div class="row">
+				<div class="row d-flex justify-content-center">
 <?php foreach($this->atuty as $atut){?>
-					<div class="col-4">
+					<div class="col-4 mb-4">
 						<div class="invest-icon hvr-shadow text-center">
                             <img src="<?=$this->baseUrl;?>/files/inwestycje/atuty/<?=$atut->ikona;?>" alt="<?=$atut->nazwa;?>">
 							<h3><?=$atut->nazwa;?></h3>
