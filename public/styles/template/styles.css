@@ -1052,6 +1052,116 @@ div[class*='col-'].slick-slide {
 .hvr-shadow:active {
   box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
 }
+/* Pakiety
+================================================== */
+.programs {
+  margin: 0;
+  list-style: none;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0;
+}
+.programs li {
+  -ms-flex: 0 0 33.333333%;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  padding: 45px 50px 50px;
+}
+ul.programs li.smart {
+  background-color: #f1f3f4;
+}
+ul.programs li.trend {
+  background-color: #909398;
+}
+ul.programs li.high {
+  background-color: #1d1d1b;
+}
+ul.programs li.trend .desc,
+ul.programs li.high .desc,
+ul.programs li.trend .desc2,
+ul.programs li.high .desc2 {
+  color: #fff;
+}
+ul.programs .stars {
+  display: flex;
+  justify-content: center;
+}
+ul.programs .icon img {
+  margin: 45px auto;
+}
+ul.programs .desc {
+  padding-bottom: 30px;
+  height: 130px;
+}
+ul.programs .desc2 {
+  padding-bottom: 25px;
+}
+ul.programs .desc p {
+  font-style: oblique;
+}
+ul.programs li h3 {
+  color: #d2c0ac;
+  font-size: 50px;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+ul.programs li h3 img {
+  display: inline-block;
+}
+ul.programs .letter {
+  display: inline-block;
+  margin: 0;
+}
+ul.programs.jesion-programs li {
+  text-align: center;
+}
+ul.programs.jesion-programs li h3,
+ul.programs.jesion-programs .desc p {
+  color: white;
+  line-height: normal;
+}
+ul.programs.jesion-programs li h3 {
+  line-height: 48px;
+}
+ul.programs.jesion-programs li a {
+  color: #fff;
+  border: 1px solid white;
+  padding: 7px 15px;
+  font-size: 13px;
+  background: #44601f;
+  transition: all 200ms linear;
+}
+ul.programs.jesion-programs li a:hover {
+  background: white;
+  color: #44601f;
+}
+ul.programs.jesion-programs li p {
+  font-size: 15px;
+}
+ul.programs.jesion-programs .desc {
+  padding-bottom: 30px;
+  height: 110px;
+}
+ul.programs.jesion-programs .stars {
+  margin-bottom: 20px;
+}
+ul.programs.jesion-programs li h3 strong {
+  display: block;
+  width: 100%;
+  line-height: 1;
+}
+ul.programs.jesion-programs .pakiet-basic {
+  background: #9dcf5b;
+}
+ul.programs.jesion-programs .pakiet-premium {
+  background: #8AB74D;
+}
+ul.programs.jesion-programs .pakiet-vip {
+  background: #769F3F;
+}
 /* Homepage
 ================================================== */
 #footer {
