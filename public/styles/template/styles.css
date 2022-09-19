@@ -225,6 +225,12 @@ button {
 .fa-phone:before {
   content: "\f095";
 }
+.fa-mail:before {
+  content: "\f199";
+}
+.fa-fb:before {
+  content: "\f082";
+}
 /* Informacja o ciasteczkach
 ================================================== */
 #cookies {
@@ -579,6 +585,11 @@ header .top a i {
   margin-right: 7px;
   margin-top: 2px;
 }
+header .top a i.fa-fb,
+header .top a i.fa-mail {
+  font-size: 27px;
+  margin: 0;
+}
 header .top a:hover {
   color: #10375f;
 }
@@ -593,7 +604,7 @@ header.fixed {
   background: white;
 }
 header.fixed nav a {
-  padding: 15px 30px;
+  padding: 15px 30px 14px;
 }
 header.fixed .top li {
   height: 31px;
