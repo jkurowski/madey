@@ -698,6 +698,12 @@ header .submenu li:hover:after {
   width: 100%;
   padding: 12px 0;
 }
+#slider #forbes {
+  position: absolute;
+  z-index: 999;
+  right: 40px;
+  top: 40px;
+}
 .rslides {
   position: relative;
   list-style: none;
