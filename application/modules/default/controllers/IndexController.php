@@ -468,8 +468,8 @@ class Default_IndexController extends kCMS_Site
 
 			$select_pomieszczenia->where('pokoje IN (?)', explode(',', $oferta->pokoje));
 			$select_pomieszczenia->where('id_inwest IN (?)', array(1,3,4,5));
-
 			$select_pomieszczenia->where('status =?', 1);
+			$select_pomieszczenia->order('pokoje ASC');
 			$this->view->powierzchnia = $result = $db->fetchAll($select_pomieszczenia);
 			$this->view->wynik = count($result);
 
