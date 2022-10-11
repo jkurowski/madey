@@ -466,7 +466,7 @@ class Default_IndexController extends kCMS_Site
 				'pdf'
 			));
 
-			$select_pomieszczenia->where('pokoje =?', $oferta->pokoje);
+			$select_pomieszczenia->where('pokoje =? IN (?)', explode(',', $oferta->pokoje));
 			$select_pomieszczenia->where('id_inwest IN (?)', array(1,3,4,5));
 
 			$select_pomieszczenia->where('status =?', 1);
