@@ -74,7 +74,7 @@ abstract class kCMS_Site extends Zend_Controller_Action {
 				$html = '<div class="slider-galeria">';
                 $i = 0;
 				foreach ($images as $key => $value) {
-					$html.= '<a href="/files/galeria/big/'.$value['plik'].'" class="swipebox" rel="gallery-1'.$input[2].'" title="'.$value['nazwa'].'"><img src="/files/galeria/thumbs/'.$value['plik'].'"></a>';
+					$html.= '<a href="/files/galeria/big/'.$value['plik'].'" rel="gallery-1'.$input[2].'" title="'.$value['nazwa'].'"><img src="/files/galeria/thumbs/'.$value['plik'].'"></a>';
                     if(++$i > 6) break;
 				}
 				$html.= '</div>';

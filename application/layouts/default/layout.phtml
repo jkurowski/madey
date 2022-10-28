@@ -300,7 +300,10 @@
     <script src="<?=$this->jsUrl(); ?>/jquery.js" charset="utf-8"></script>
     <script src="<?=$this->jsUrl(); ?>/main.min.js" charset="utf-8"></script>
     <script src="<?=$this->jsUrl(); ?>/slick.js" charset="utf-8"></script>
-    <script src="<?=$this->jsUrl(); ?>/nivo.js" charset="utf-8"></script>
+    <script src="<?=$this->jsUrl(); ?>/nivo.min.js" charset="utf-8"></script>
+
+    <script src="<?=$this->jsUrl(); ?>/simple-lightbox.jquery.min.js"></script>
+    <link rel="stylesheet" href="<?=$this->cssUrl();?>/simple-lightbox.css">
 
 	<script type="text/javascript">
 	$(document).ready(function(){
@@ -311,6 +314,9 @@
             pauseOnHover: false,
             slices: 8,
             randomStart: false,
+            afterLoad: function() {
+                const lightbox = $('.slider-galeria a').simpleLightbox();
+            }
         });
 
         $(".row-invest-slick").slick({
