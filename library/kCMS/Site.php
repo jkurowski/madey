@@ -70,7 +70,17 @@ abstract class kCMS_Site extends Zend_Controller_Action {
 			$db = Zend_Registry::get('db');
 			$images = $db->fetchAll($db->select()->from('galeria_zdjecia')->order( 'sort ASC' )->where('id_gal =?', $input[2]));
 			
-			if($input[1] == 'galeria') { 
+			if($input[1] == 'slider-galeria') {
+				$html = '<div class="slider-galeria">';
+                $i = 0;
+				foreach ($images as $key => $value) {
+					$html.= '<a href="/files/galeria/big/'.$value['plik'].'" class="swipebox" rel="gallery-1'.$input[2].'" title="'.$value['nazwa'].'"><img src="/files/galeria/thumbs/'.$value['plik'].'"></a>';
+                    if(++$i > 6) break;
+				}
+				$html.= '</div>';
+			}
+
+			if($input[1] == 'galeria') {
 				$html = '<div class="galeria galeria-tekst clearfix">';
 				foreach ($images as $value) {
 					$html.= '<div class="insidegal"><a href="/files/galeria/big/'.$value->plik.'" class="swipebox" rel="gallery-1'.$input[2].'" title="'.$value->nazwa.'"><img src="/files/galeria/thumbs/'.$value->plik.'"><div></div></a></div>';

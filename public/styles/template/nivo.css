@@ -98,6 +98,37 @@
 .nivo-controlNav a.active {
   background: #D79111;
 }
+.apla-gallery {
+  position: absolute;
+  top: -200px;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+.apla-gallery .insidegal a {
+  overflow: visible;
+}
+.apla-gallery img {
+  position: static;
+  width: 100%;
+  height: auto;
+  border: 5px solid white;
+}
+.apla-gallery .slider-galeria {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.apla-gallery .slider-galeria a {
+  width: 150px;
+  padding: 0 10px;
+  position: relative;
+  transition: all 100ms linear;
+  top: 0;
+}
+.apla-gallery .slider-galeria a:hover {
+  top: -5px;
+}
 .apla-status {
   position: absolute;
   padding: 0 20px;

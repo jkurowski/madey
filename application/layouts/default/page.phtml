@@ -146,6 +146,8 @@
 <?php } ?>
 	});
 	$(window).load(function() {
+        AOS.init();
+
 <?php if($this->szukajeczka) {?>
 		var aboveHeight = $('#header').outerHeight();
 		$('html, body').stop().animate({

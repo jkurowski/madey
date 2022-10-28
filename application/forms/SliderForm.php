@@ -22,6 +22,22 @@ class Form_SliderForm extends Zend_Form
                 array('Label'),
                 array(array('row' => 'HtmlTag'), array('tag' => 'div', 'class' => 'formRow'))));
 
+        $galeria_id = new Zend_Form_Element_Select('galeria_id');
+        $galeria_id->setLabel('Galeria')
+            ->addMultiOption (NULL, 'Brak')
+            ->setDecorators(array(
+                'ViewHelper',
+                'Errors',
+                array(array('data' => 'HtmlTag'), array('tag' => 'div', 'class' => 'formRight')),
+                array('Label'),
+                array(array('row' => 'HtmlTag'), array('tag' => 'div', 'class' => 'formRow'))));
+        $db = Zend_Registry::get('db');
+        $katalog = $db->fetchAll($db->select()->from('galeria')->order( 'nazwa ASC' ));
+
+        foreach ($katalog as $listItem) {
+            $galeria_id->addMultiOption($listItem->id, $listItem->nazwa);
+        }
+
         $tytul = new Zend_Form_Element_Text('tytul');
         $tytul->setLabel('Tytuł')
             ->setRequired(true)
@@ -119,6 +135,7 @@ class Form_SliderForm extends Zend_Form
         $this->setDecorators(array('FormElements',array('HtmlTag'),'Form',));
         $this->addElements(array(
             $inwest_status,
+            $galeria_id,
             $tytul,
             $link,
             $link_tytul,

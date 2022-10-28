@@ -52,7 +52,7 @@
         </div>
         <?php foreach($this->slider as $int => $panel){?>
         <div id="apla-<?=$panel['id'];?>" class="apla nivo-html-caption">
-            <div class="container">
+            <div class="container position-relative">
                 <div class="row">
                     <div class="col-5">
                         <div class="apla-status apla-status-<?=$panel['inwest_status'];?>"><?=$this->investStatus($panel['inwest_status']);?></div>
@@ -72,6 +72,11 @@
                         <?php } ?>
                     </div>
                 </div>
+                <?php if($panel['galeria_id']) {?>
+                    <div class="apla-gallery">
+                        <?=replace('[galeria=slider-galeria]'.$panel['galeria_id'].'[/galeria]'); ?>
+                    </div>
+                <?php } ?>
             </div>
         </div>
         <?php } ?>
@@ -97,28 +102,28 @@
         <div id="mainboxes">
             <div class="container">
                 <div class="row">
-                    <div class="col-3">
+                    <div data-aos-offset="300" data-aos="fade-up" class="col-3">
                         <div class="icon-box text-center">
                             <img src="<?=$this->baseUrl;?>/files/upload/kompleksowe-icon.png" width="105" height="105" alt="Ikonka kompleksowego podejścia">
                             <h3>Kompleksowe podejście</h3>
                             <p>Wspieramy naszych klientów przy pozyskaniu kredytu i wykończeniu własnego „M”</p>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div data-aos-offset="300" data-aos="fade-up" class="col-3">
                         <div class="icon-box text-center">
                             <img src="<?=$this->baseUrl;?>/files/upload/zaufanie-icon.png" width="105" height="105" alt="Ikonka zaufania">
                             <h3>Zaufanie</h3>
                             <p>Wyróżnia nas kilkunastoletnie doświadczenie w realizacji różnych obiektów budowlanych</p>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div data-aos-offset="300" data-aos="fade-up" class="col-3">
                         <div class="icon-box text-center">
                             <img src="<?=$this->baseUrl;?>/files/upload/partner-icon.png" width="105" height="105" alt="">
                             <h3>Partnerskie podejście</h3>
                             <p>Stawiamy na stabilne relacje oparte na obustronnym zaufaniu</p>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div data-aos-offset="300" data-aos="fade-up" class="col-3">
                         <div class="icon-box text-center">
                             <img src="<?=$this->baseUrl;?>/files/upload/jakosc-icon.png" width="105" height="105" alt="">
                             <h3>Gwarancja jakości</h3>
@@ -145,7 +150,7 @@
 
     <div class="container container-paralaxa">
         <div class="row">
-            <div class="col-4">
+            <div data-aos-offset="300" data-aos="fade-up" class="col-4">
                 <a href="<?=$this->baseUrl;?>/m/dla-singli/"><img src="<?=$this->filesUrl(); ?>/upload/mieszkanie-solo.jpg" alt=""></a>
                 <div class="paralaxa-box">
                     <h2><a href="<?=$this->baseUrl;?>/m/dla-singli/">DLA SINGLI</a></h2>
@@ -155,7 +160,7 @@
                     <a href="<?=$this->baseUrl;?>/m/dla-singli/" class="bttn bttn-sm">ZOBACZ MIESZKANIA</a>
                 </div>
             </div>
-            <div class="col-4">
+            <div data-aos-offset="400" data-aos="fade-up" class="col-4">
                 <a href="<?=$this->baseUrl;?>/m/dla-par/"><img src="<?=$this->filesUrl(); ?>/upload/mieszkanie-para.jpg" alt=""></a>
                 <div class="paralaxa-box">
                     <h2><a href="<?=$this->baseUrl;?>/m/dla-par/">DLA PAR</a></h2>
@@ -165,7 +170,7 @@
                     <a href="<?=$this->baseUrl;?>/m/dla-par/" class="bttn bttn-sm">ZOBACZ MIESZKANIA</a>
                 </div>
             </div>
-            <div class="col-4">
+            <div data-aos-offset="500" data-aos="fade-up" class="col-4">
                 <a href="<?=$this->baseUrl;?>/m/dla-rodzin/"><img src="<?=$this->filesUrl(); ?>/upload/mieszkanie-rodzina.jpg" alt=""></a>
                 <div class="paralaxa-box">
                     <h2><a href="<?=$this->baseUrl;?>/m/dla-rodzin/">DLA RODZIN</a></h2>
@@ -349,6 +354,8 @@
 	});
 
 	$(window).load(function() {
+        AOS.init();
+
 <?php if($this->message == 1) {?>
 		$('html, body').stop().animate({
 			scrollTop: $('#formalert').offset().top

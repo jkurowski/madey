@@ -99,6 +99,39 @@
     }
   }
 }
+
+.apla-gallery {
+  position: absolute;
+  top: -200px;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  .insidegal a {
+    overflow: visible;
+  }
+  img {
+    position: static;
+    width: 100%;
+    height: auto;
+    border:5px solid white
+  }
+  .slider-galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    a {
+      width: 150px;
+      padding: 0 10px;
+      position: relative;
+      transition: all 100ms linear;
+      top:0;
+      &:hover {
+        top: -5px
+      }
+    }
+  }
+}
+
 .apla-status {
   position: absolute;
   padding: 0 20px;
