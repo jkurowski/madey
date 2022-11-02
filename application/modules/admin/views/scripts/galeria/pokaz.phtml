@@ -36,7 +36,7 @@
         $('#jquery-wrapped-fine-uploader').fineUploader({
             debug: true,
             request: {
-                endpoint: 'https://www.madeydevelopment.pl/admin/galeria/upload/id/<?= $this->katalog->id;?>/'
+                endpoint: '<?php echo $this->baseUrl;?>/admin/galeria/upload/id/<?= $this->katalog->id;?>/'
             }
         }).on('error', function(event, id, name, reason) {
         })
