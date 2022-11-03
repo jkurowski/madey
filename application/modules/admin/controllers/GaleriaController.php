@@ -204,7 +204,7 @@ class Admin_GaleriaController extends kCMS_Admin
 				$data = array('plik' => $date.'_'.$zmienobrazek, 'id_gal' => $id, 'nazwa' => $obrazek);
 
 				require_once 'kCMS/Thumbs/ThumbLib.inc.php';
-				PhpThumbFactory::create($upfile)->resize(920, 920)->save($upfile);
+				PhpThumbFactory::create($upfile)->resize(1200, 1200)->save($upfile);
 
 				$options = array('jpegQuality' => 80);
 				PhpThumbFactory::create($upfile, $options)->adaptiveResizeQuadrant(480, 480)->save($thumbs);
