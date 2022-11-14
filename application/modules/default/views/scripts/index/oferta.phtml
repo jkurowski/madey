@@ -1,11 +1,3 @@
-<div class="container mt-5">
-	<div class="row">
-		<div class="col-12 inwestdesc">
-			<?=replace($this->oferta->tekst); ?>
-		</div>
-	</div>
-</div>
-
 <div id="wyniki" class="mt-2 mb-5">
 	<div class="container">
 		<div class="lista"><div class="view"><span id="grid">Mała lista</span> <span id="list">Duża lista</span></div></div>
@@ -46,7 +38,7 @@
 						<div class="col-2 text-right">
 							<div class="<?=statusMieszkaniaListaTag($powierzchnia->status);?>-ap"><?=statusMieszkania($powierzchnia->status);?><?php if($powierzchnia->specjalny){?><br><div class="specjalny-ap"><?=$powierzchnia->specjalny;?></div><?php } ?></div>
 						</div>
-						<div class="col-3 text-right">
+						<div class="col-3 text-right d-flex justify-content-end align-items-center">
 						<!--<h4>380.000 zł</h4>-->
 							<!-- Budynkowa -->
 
@@ -59,6 +51,49 @@
 						<p><br>Brak wyników</p>
 					</div>
 				<?php } ?>
+
+                <div class="row pt-5 mt-5 mb-5">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <span>INWESTYCJA</span>
+                            <h2>BLISKI OLECHÓW</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <?php foreach($this->bliskiolechow as $powierzchnia){?>
+                    <?php $url = 'https://www.bliskiolechow.pl';?>
+
+
+                    <div class="row no-gutters pozycja-ap" data-url="<?=$url?>/mieszkania/pietro/<?=$powierzchnia->floor_id;?>/m/<?=$powierzchnia->id;?>">
+                        <!-- Osiedlowa i budynkowa -->
+                        <div class="col-2 status-ap-<?=statusMieszkaniaListaTag($powierzchnia->status);?> namelist">
+                            <h2><?=$powierzchnia->number;?></h2>
+                        </div>
+                        <div class="col-2 col-room-thumb">
+                            <img src="<?=$url?>/investment/property/list/<?=$powierzchnia->file_webp;?>" alt="<?=$powierzchnia->name;?>">
+                        </div>
+                        <div class="col-3 paramlist d-flex align-items-center">
+                            <ul class="list-unstyled biglist mb-0 w-100">
+                                <?php if($powierzchnia->price) {?><li>cena: <span><b><?=$powierzchnia->price;?> zł</b></span></li><?php } ?>
+                                <li>pokoje: <span><?=$powierzchnia->rooms;?></span></li>
+                                <li>powierzchnia: <span><?=$powierzchnia->area;?>&nbsp; m<sup>2</sup></span></li>
+                            </ul>
+
+                            <ul class="list-unstyled smalllist mb-0 w-100">
+                                <?php if($powierzchnia->price) {?><li>cena: <span><b><?=$powierzchnia->price;?> zł</b></span></li><?php } ?>
+                                <li>pokoje: <span><?=$powierzchnia->rooms;?></span></li>
+                                <li>pow.: <span><?=$powierzchnia->area;?>&nbsp; m<sup>2</sup></span></li>
+                            </ul>
+                        </div>
+                        <div class="col-2 text-right">
+                            <div class="<?=statusMieszkaniaListaTag($powierzchnia->status);?>-ap"><?=statusMieszkania($powierzchnia->status);?></div>
+                        </div>
+                        <div class="col-3 text-right d-flex justify-content-end align-items-center">
+                            <a href="<?=$url?>/mieszkania/pietro/<?=$powierzchnia->floor_id;?>/m/<?=$powierzchnia->id;?>" class="bttn bttn-blue bttn-small bttn-more" target="_blank">ZOBACZ</a>
+                        </div>
+                    </div>
+                <?php } ?>
 			</div>
 		</div>
 	</div>
