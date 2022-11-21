@@ -10,35 +10,18 @@ class Form_SliderUstawieniaForm extends Zend_Form
 
 		$efekt = new Zend_Form_Element_Select('efekt');
         $efekt->setLabel('Efekt')
-		->addMultiOption('random','random')
-		->addMultiOption('simpleFade','simpleFade')
-		->addMultiOption('curtainTopLeft','curtainTopLeft')
-		->addMultiOption('curtainTopRight','curtainTopRight')
-		->addMultiOption('curtainBottomLeft','curtainBottomLeft')
-		->addMultiOption('curtainBottomRight','curtainBottomRight')
-		->addMultiOption('curtainSliceLeft','curtainSliceLeft')
-		->addMultiOption('curtainSliceRight','curtainSliceRight')
-		->addMultiOption('blindCurtainTopLeft','blindCurtainTopLeft')
-		->addMultiOption('blindCurtainTopRight','blindCurtainTopRight')
-		->addMultiOption('blindCurtainBottomLeft','blindCurtainBottomLeft')
-		->addMultiOption('blindCurtainBottomRight','blindCurtainBottomRight')
-		->addMultiOption('blindCurtainSliceBottom','blindCurtainSliceBottom')
-		->addMultiOption('blindCurtainSliceTop','blindCurtainSliceTop')
-		->addMultiOption('stampede','stampede')
-		->addMultiOption('mosaic','mosaic')
-		->addMultiOption('mosaicReverse','mosaicReverse')
-		->addMultiOption('mosaicRandom','mosaicRandom')
-		->addMultiOption('mosaicSpiral','mosaicSpiral')
-		->addMultiOption('mosaicSpiralReverse','mosaicSpiralReverse')
-		->addMultiOption('topLeftBottomRight','topLeftBottomRight')
-		->addMultiOption('bottomRightTopLeft','bottomRightTopLeft')
-		->addMultiOption('bottomLeftTopRight','bottomLeftTopRight')
-		->addMultiOption('bottomLeftTopRight','bottomLeftTopRight')
-		->addMultiOption('scrollLeft','scrollLeft')
-		->addMultiOption('scrollRight','scrollRight')
-		->addMultiOption('scrollHorz','scrollHorz')
-		->addMultiOption('scrollBottom','scrollBottom')
-		->addMultiOption('scrollTop','scrollTop')
+		->addMultiOption('sliceDownRight','sliceDownRight')
+		->addMultiOption('sliceDownLeft','sliceDownLeft')
+		->addMultiOption('sliceUpRight','sliceUpRight')
+		->addMultiOption('sliceUpLeft','sliceUpLeft')
+		->addMultiOption('sliceUpDown','sliceUpDown')
+		->addMultiOption('sliceUpDownLeft','sliceUpDownLeft')
+		->addMultiOption('fold','fold')
+		->addMultiOption('fade','fade')
+		->addMultiOption('boxRandom','boxRandom')
+		->addMultiOption('boxRain','boxRain')
+		->addMultiOption('boxRainReverse','boxRainReverse')
+		->addMultiOption('boxRainGrowReverse','boxRainGrowReverse')
 		->setDecorators(array(
 		'ViewHelper',
 		'Errors',
@@ -125,8 +108,17 @@ class Form_SliderUstawieniaForm extends Zend_Form
 		'ViewHelper',
 		array(array('data' => 'HtmlTag'), array('tag' => 'div', 'class' => 'formSubmit'))));
 
-		$this->setDecorators(array('FormElements',array('HtmlTag'),'Form',));
-        $this->addElements(array($auto, $pause, $nav, $pager, $speed, $timeout, $submit));
+        $this->setDecorators(array('FormElements', array('HtmlTag'), 'Form',));
+        $this->addElements(array(
+            $efekt,
+            $auto,
+            $pause,
+            //$nav,
+            //$pager,
+            $speed,
+            $timeout,
+            $submit
+        ));
 
     }
 }

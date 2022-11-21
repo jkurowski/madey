@@ -1,5 +1,5 @@
 <?php
-
+require_once 'kCMS/Thumbs/ThumbLib.inc.php';
 class Admin_SliderController extends kCMS_Admin
 {
 		public function preDispatch() {
@@ -55,20 +55,20 @@ class Admin_SliderController extends kCMS_Admin
 							chmod($tablet, 0755);
 							chmod($mobile, 0755);
 							chmod($thumbs, 0755);
-							require_once 'kCMS/Thumbs/ThumbLib.inc.php';
+
 							
 							$options = array('jpegQuality' => 90);
 							$options2 = array('jpegQuality' => 90);
-							$thumb = PhpThumbFactory::create($pc, $options)->resize(159, 159)->save($thumbs);
-							$thumb = PhpThumbFactory::create($pc, $options2)->adaptiveResizeQuadrant($this->sliderszerokosc, $this->sliderwysokosc)->save($desktop);
-							$thumb = PhpThumbFactory::create($pc, $options)->adaptiveResizeQuadrant(1024, 450)->save($tablet);
-							$thumb = PhpThumbFactory::create($pc, $options)->adaptiveResizeQuadrant(580, 500)->save($mobile);
+							PhpThumbFactory::create($pc, $options)->resize(159, 159)->save($thumbs);
+							PhpThumbFactory::create($pc, $options2)->adaptiveResizeQuadrant($this->sliderszerokosc, $this->sliderwysokosc)->save($desktop);
+							PhpThumbFactory::create($pc, $options)->adaptiveResizeQuadrant(1024, 450)->save($tablet);
+							PhpThumbFactory::create($pc, $options)->adaptiveResizeQuadrant(580, 500)->save($mobile);
 							
 							$dataImg = array('plik' => $plik);
 							$db->update('slider', $dataImg, 'id = ' . $lastId);
 						}
 
-					$this->_redirect('/admin/slider/');
+					$this->redirect('/admin/slider/');
 				} else {
 						
 					//Wyswietl bledy	
@@ -135,10 +135,10 @@ class Admin_SliderController extends kCMS_Admin
 							
 							$options = array('jpegQuality' => 90);
 							$options2 = array('jpegQuality' => 90);
-							$thumb = PhpThumbFactory::create($pc, $options)->resize(159, 159)->save($thumbs);
-							$thumb = PhpThumbFactory::create($pc, $options2)->adaptiveResizeQuadrant($this->sliderszerokosc, $this->sliderwysokosc)->save($desktop);
-							$thumb = PhpThumbFactory::create($pc, $options)->adaptiveResizeQuadrant(1024, 450)->save($tablet);
-							$thumb = PhpThumbFactory::create($pc, $options)->adaptiveResizeQuadrant(580, 500)->save($mobile);
+							PhpThumbFactory::create($pc, $options)->resize(159, 159)->save($thumbs);
+							PhpThumbFactory::create($pc, $options2)->adaptiveResizeQuadrant($this->sliderszerokosc, $this->sliderwysokosc)->save($desktop);
+							PhpThumbFactory::create($pc, $options)->adaptiveResizeQuadrant(1024, 450)->save($tablet);
+							PhpThumbFactory::create($pc, $options)->adaptiveResizeQuadrant(580, 500)->save($mobile);
 							
 							$dataImg = array('plik' => $plik);
 							$db->update('slider', $dataImg, 'id = ' . $id);
@@ -219,11 +219,9 @@ class Admin_SliderController extends kCMS_Admin
 			
 			$form->auto->setvalue($ustawienia->slider_auto);
 			$form->pause->setvalue($ustawienia->slider_pause);
-			$form->nav->setvalue($ustawienia->slider_nav);
-			$form->pager->setvalue($ustawienia->slider_pager);
 			$form->speed->setvalue($ustawienia->slider_speed);
 			$form->timeout->setvalue($ustawienia->slider_timeout);
-			//$form->efekt->setvalue($ustawienia->slider_efekt);
+			$form->efekt->setvalue($ustawienia->slider_efekt);
 
 			//Akcja po wcisnieciu Submita
 			if ($this->_request->getPost()) {
@@ -231,11 +229,9 @@ class Admin_SliderController extends kCMS_Admin
 				//Odczytanie wartosci z inputów $auto, $pause, $nav, $pager, $speed, $timeout
 				$auto = $this->_request->getPost('auto');
 				$pause = $this->_request->getPost('pause');
-				$nav = $this->_request->getPost('nav');
-				$pager = $this->_request->getPost('pager');
 				$speed = $this->_request->getPost('speed');
 				$timeout = $this->_request->getPost('timeout');
-				//$efekt = $this->_request->getPost('efekt');
+				$efekt = $this->_request->getPost('efekt');
 				$formData = $this->_request->getPost();
 
 				//Sprawdzenie poprawnosci forma
@@ -244,17 +240,15 @@ class Admin_SliderController extends kCMS_Admin
 					$data = array(
 						'slider_auto' => $auto,
 						'slider_pause' => $pause,
-						'slider_nav' => $nav,
-						'slider_pager' => $pager,
 						'slider_speed' => $speed,
 						'slider_timeout' => $timeout,
-						//'slider_efekt' => '1',
+						'slider_efekt' => $efekt,
 					);
 
 				}
 
 				$db->update('ustawienia', $data);
-				$this->_redirect('/admin/slider/ustawienia/');
+				$this->redirect('/admin/slider/ustawienia/');
 			} else {
 					
 				//Wyswietl bledy	

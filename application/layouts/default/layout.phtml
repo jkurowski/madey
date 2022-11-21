@@ -295,15 +295,12 @@
 	<script type="text/javascript">
 	$(document).ready(function(){
         $('#nivo').nivoSlider({
-            effect: 'boxRainGrow',
-            animSpeed: 700,
-            pauseTime: 5000000,
-            pauseOnHover: false,
-            slices: 8,
-            randomStart: false,
-            afterLoad: function() {
-                const lightbox = $('.slider-galeria a').simpleLightbox();
-            }
+            effect: '<?=$this->header->slider_efekt; ?>',
+            animSpeed: <?=$this->header->slider_speed; ?>,
+            pauseTime: <?=$this->header->slider_timeout; ?>,
+            pauseOnHover: <?=$this->header->slider_pause; ?>,
+            slices: 15,
+            randomStart: false
         });
 
         $(".row-invest-slick").slick({
