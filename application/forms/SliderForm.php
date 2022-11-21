@@ -135,11 +135,11 @@ class Form_SliderForm extends Zend_Form
         $this->setDecorators(array('FormElements',array('HtmlTag'),'Form',));
         $this->addElements(array(
             $inwest_status,
-            $galeria_id,
+            //$galeria_id,
             $tytul,
             $link,
             $link_tytul,
-            $tekst,
+            //$tekst,
             $dopisek,
             $obrazek,
             $submit

@@ -36,9 +36,6 @@
 
 <?=$this->render('header.phtml');?>
     <div id="slider">
-        <a href="<?=$this->baseUrl;?>/inwestor/" id="forbes">
-            <img src="<?=$this->baseUrl;?>/public/gfx/template/diamenty-miesiecznika-forbes-2022.png" alt="Logo Diamenty Forbesa 2022">
-        </a>
         <div id="nivo">
             <?php foreach($this->slider as $panel){?>
                 <img sizes="(max-width:380px) 33.3vw, (max-width:680px) 66.6vw, 100vw"
@@ -54,16 +51,11 @@
         <div id="apla-<?=$panel['id'];?>" class="apla nivo-html-caption">
             <div class="container position-relative">
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-10">
                         <div class="apla-status apla-status-<?=$panel['inwest_status'];?>"><?=$this->investStatus($panel['inwest_status']);?></div>
                         <?php if($panel['dopisek']) {?><div class="apla-status-ready"><?=$panel['dopisek'];?></div><?php } ?>
                         <div class="blue-apla-box">
                             <h2><?=$panel['tytul'];?></h2>
-                        </div>
-                    </div>
-                    <div class="col-5">
-                        <div class="white-apla-box">
-                            <p><?=$panel['tekst'];?></p>
                         </div>
                     </div>
                     <div class="col-2">
@@ -72,11 +64,6 @@
                         <?php } ?>
                     </div>
                 </div>
-                <?php if($panel['galeria_id']) {?>
-                    <div class="apla-gallery">
-                        <?=replace('[galeria=slider-galeria]'.$panel['galeria_id'].'[/galeria]'); ?>
-                    </div>
-                <?php } ?>
             </div>
         </div>
         <?php } ?>
@@ -105,7 +92,7 @@
                     <div data-aos-offset="300" data-aos="fade-up" class="col-3">
                         <div class="icon-box text-center">
                             <img src="<?=$this->baseUrl;?>/files/upload/kompleksowe-icon.png" width="105" height="105" alt="Ikonka kompleksowego podejścia">
-                            <h3>Kompleksowe podejście</h3>
+                            <h3>Kompleksowa obsługa</h3>
                             <p>Wspieramy naszych klientów przy pozyskaniu kredytu i wykończeniu własnego „M”</p>
                         </div>
                     </div>

@@ -651,6 +651,12 @@ header .submenu li a:hover {
 header .submenu li:hover:after {
   display: none;
 }
+header #forbes {
+  position: absolute;
+  right: -110px;
+  top: 5px;
+  width: 96px;
+}
 .mobilemenu {
   display: none;
 }
@@ -701,12 +707,6 @@ header .submenu li:hover:after {
   text-transform: uppercase;
   width: 100%;
   padding: 12px 0;
-}
-#slider #forbes {
-  position: absolute;
-  z-index: 999;
-  right: 40px;
-  top: 40px;
 }
 .rslides {
   position: relative;

@@ -69,15 +69,26 @@
         L.marker([<?=$inwestycja->lat;?>, <?=$inwestycja->lng;?>], {icon: madeyIcon}).bindPopup('<h4><?=$inwestycja->nazwa;?></h4><p><?=$inwestycja->addresspicker_map;?></p>'),
     <?php } ?>
     ]);
-
-    let map = new L.Map('map', {
+    const mapDiv = document.getElementById("map");
+    let map = new L.Map(mapDiv, {
         'center': [0, 0],
         'zoom': 0,
         'layers': [tileLayer, featureGroup]
     });
 
     map.fitBounds(featureGroup.getBounds());
-    map.on('popupclose', function(e) {
+    map.on('popupclose', function () {
         map.fitBounds(featureGroup.getBounds());
     });
+
+    function debounce(func) {
+        let timer;
+        return function (event) {
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(func, 100, event);
+        };
+    }
+    window.addEventListener("resize",debounce(function(e){
+        map.fitBounds(featureGroup.getBounds());
+    }));
 </script>
