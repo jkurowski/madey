@@ -7,10 +7,11 @@
             <div class="col-6">
                 <div class="inwest-list">
                     <div class="inwest-list-nav">
-                        <a href="<?=$this->baseUrl;?>/oferta/" class="bttn">WSZYSTKIE</a>
-                        <a href="<?=$this->baseUrl;?>/oferta/w-sprzedazy" class="bttn">W SPRZEDAŻY</a>
+                        <a href="<?=$this->baseUrl;?>/oferta/" class="bttn <?php if(!$this->activeTab){?>bttn-active<?php } ?>">WSZYSTKIE</a>
+                        <a href="<?=$this->baseUrl;?>/oferta/w-sprzedazy" class="bttn <?php if($this->activeTab == 1){?>bttn-active<?php } ?>">W SPRZEDAŻY</a>
+                        <a href="<?=$this->baseUrl;?>/oferta/gotowe-do-odbioru" class="bttn <?php if($this->activeTab == 3){?>bttn-active<?php } ?>">GOTOWE DO ODBIORU</a>
                         <a href="#" class="bttn d-none">W PRZYGOTOWANIU</a>
-                        <a href="<?=$this->baseUrl;?>/oferta/zakonczone" class="bttn">ZAKOŃCZONE</a>
+                        <a href="<?=$this->baseUrl;?>/oferta/zakonczone" class="bttn <?php if($this->activeTab == 2){?>bttn-active<?php } ?>">ZAKOŃCZONE</a>
                     </div>
 
                     <?php foreach($this->inwestycje as $inwestycja){?>

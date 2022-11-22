@@ -32,6 +32,17 @@ class Form_InwestycjaForm extends Zend_Form
 		array(array('data' => 'HtmlTag'), array('tag' => 'div', 'class' => 'formRight')),
 		array('Label'),
 		array(array('row' => 'HtmlTag'), array('tag' => 'div', 'class' => 'formRow'))));
+
+		$gotowe = new Zend_Form_Element_Select('gotowe');
+        $gotowe->setLabel('Gotowa do odbioru')
+		->addMultiOption('0','Nie')
+		->addMultiOption('1','Tak')
+		->setDecorators(array(
+		'ViewHelper',
+		'Errors',
+		array(array('data' => 'HtmlTag'), array('tag' => 'div', 'class' => 'formRight')),
+		array('Label'),
+		array(array('row' => 'HtmlTag'), array('tag' => 'div', 'class' => 'formRow'))));
 		
 		$uslugowe = new Zend_Form_Element_Select('uslugowe');
         $uslugowe->setLabel('Lokale usługowe')
@@ -471,6 +482,7 @@ class Form_InwestycjaForm extends Zend_Form
         $this->addElements(array(
 			$typ,
 			$status,
+			$gotowe,
 			$lat,
 			$lng,
 			// $zoom,

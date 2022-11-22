@@ -1289,6 +1289,10 @@ ul.programs.jesion-programs .pakiet-vip {
 }
 .inwest-list .inwest-list-nav a {
   margin: 0 3px;
+  background: #0d2d4f;
+}
+.inwest-list .inwest-list-nav a.bttn-active {
+  background: #d79111;
 }
 .inwest-list-item {
   position: relative;
