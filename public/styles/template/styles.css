@@ -174,25 +174,6 @@ button {
 .inputbox-error {
   border-bottom: 1px solid #ff9000 !important;
 }
-/* Youtube
-================================================== */
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  padding-top: 30px;
-  height: 0;
-  overflow: hidden;
-  margin: 35px 0;
-}
-.video-container iframe,
-.video-container object,
-.video-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
 /* Fonty
 ================================================== */
 @font-face {
@@ -562,7 +543,7 @@ header nav a {
   color: #a3b4c6;
   font-size: 16px;
   display: flex;
-  padding: 24px 17px;
+  padding: 24px 10px;
 }
 header nav a:hover {
   color: white;
@@ -609,7 +590,7 @@ header.fixed {
   background: white;
 }
 header.fixed nav a {
-  padding: 15px 19px 14px;
+  padding: 15px 12px 14px;
 }
 header.fixed .top li {
   height: 31px;
@@ -631,6 +612,9 @@ header.fixed .col-10 {
   flex: 0 0 calc(100% - 120px);
   max-width: calc(100% - 120px);
 }
+header.fixed .forbesli #forbes img {
+  width: 55px;
+}
 header .submenu li {
   border-bottom: 1px solid #e0f0ff;
 }
@@ -651,11 +635,18 @@ header .submenu li a:hover {
 header .submenu li:hover:after {
   display: none;
 }
-header #forbes {
-  position: absolute;
-  right: -110px;
-  top: 5px;
-  width: 96px;
+header .forbesli {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .forbesli #forbes {
+  position: static;
+  width: auto;
+  padding: 0 13px;
+}
+header .forbesli #forbes img {
+  width: 76px;
 }
 .mobilemenu {
   display: none;
@@ -673,9 +664,10 @@ header #forbes {
   top: calc(100% - 40px);
   z-index: 100;
   display: none;
+  transition: all 200ms linear;
 }
 #slider .nivo-caption .blue-apla-box {
-  background: #10375f;
+  background: rgba(16, 55, 95, 0.9);
   padding: 20px 27px;
   height: 100%;
   display: flex;
