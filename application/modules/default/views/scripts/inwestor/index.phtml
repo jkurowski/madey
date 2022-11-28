@@ -81,14 +81,27 @@
                     <h2>Inwestycje zrealizowane</h2>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 mt-3">
                 <div class="row">
                     <?php foreach($this->inwestycje as $inwestycja){?>
                         <div class="inwest-list-item col-6">
-                            <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
-                            <div class="inwestlist">
-                                <h2 class="source"><?=$inwestycja->nazwa;?></h2>
-                                <p><?=$inwestycja->lista;?></p>
+                            <div class="flip-card">
+                                <div class="flip-card-inner text-center">
+                                    <div class="flip-card-front">
+                                        <div>
+                                            <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
+                                            <div class="inwestlist pb-0">
+                                                <h2 class="source mb-0"><?=$inwestycja->nazwa;?></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div>
+                                            <p><?=$inwestycja->flip;?></p>
+                                            <a href="<?= $this->baseUrl; ?>/i/<?= $inwestycja->tag; ?>/" class="bttn bttn-blue bttn-more mt-4">ZOBACZ WIĘCEJ</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     <?php } ?>

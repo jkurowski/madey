@@ -38,7 +38,7 @@ class Default_InwestorController extends kCMS_Site
 
         } else {
             $inwest = $this->db->select()
-                ->from('inwestycje', array('nazwa', 'inwestycja_plik', 'tag', 'status', 'id', 'lista', 'lat', 'lng', 'addresspicker_map'))
+                ->from('inwestycje', array('nazwa', 'inwestycja_plik', 'tag', 'status', 'id', 'lat', 'lng', 'addresspicker_map', 'flip'))
                 ->where('status = ?', 2)
                 ->order('sort ASC');
 

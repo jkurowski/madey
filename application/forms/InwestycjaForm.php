@@ -401,8 +401,8 @@ class Form_InwestycjaForm extends Zend_Form
 		array(array('data' => 'HtmlTag'), array('tag' => 'div', 'class' => 'fullformRowtext')),
 		array('Label'), array(array('row' => 'HtmlTag'), array('tag' => 'div', 'class' => 'fullformRow'))));
 		
-        $dlaczegowarto = new Zend_Form_Element_Textarea('dlaczegowarto');
-        $dlaczegowarto->setLabel('Dlaczego warto')
+        $flip = new Zend_Form_Element_Textarea('flip');
+        $flip->setLabel('Tekst na odwróconej karcie')
 		->setRequired(false)
 		->setAttrib('rows', 17)
 		->setAttrib('cols', 100)
@@ -514,7 +514,7 @@ class Form_InwestycjaForm extends Zend_Form
 			// $lokalizacja_plik,
 			// $lokalizacja,
 			// $dlaczego_plik,
-			// $dlaczegowarto,
+            $flip,
 			$submit
 		));
     }

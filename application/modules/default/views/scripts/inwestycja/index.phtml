@@ -7,44 +7,62 @@
             <div class="col-6">
                 <div class="inwest-list">
                     <div class="inwest-list-nav">
-                        <a href="<?=$this->baseUrl;?>/oferta/" class="bttn <?php if(!$this->activeTab){?>bttn-active<?php } ?>">WSZYSTKIE</a>
-                        <a href="<?=$this->baseUrl;?>/oferta/w-sprzedazy" class="bttn <?php if($this->activeTab == 1){?>bttn-active<?php } ?>">W SPRZEDAŻY</a>
-                        <a href="<?=$this->baseUrl;?>/oferta/gotowe-do-odbioru" class="bttn <?php if($this->activeTab == 3){?>bttn-active<?php } ?>">GOTOWE DO ODBIORU</a>
+                        <a href="<?= $this->baseUrl; ?>/oferta/"
+                           class="bttn <?php if (!$this->activeTab) { ?>bttn-active<?php } ?>">WSZYSTKIE</a>
+                        <a href="<?= $this->baseUrl; ?>/oferta/w-sprzedazy"
+                           class="bttn <?php if ($this->activeTab == 1) { ?>bttn-active<?php } ?>">W SPRZEDAŻY</a>
+                        <a href="<?= $this->baseUrl; ?>/oferta/gotowe-do-odbioru"
+                           class="bttn <?php if ($this->activeTab == 3) { ?>bttn-active<?php } ?>">GOTOWE DO ODBIORU</a>
                         <a href="#" class="bttn d-none">W PRZYGOTOWANIU</a>
-                        <a href="<?=$this->baseUrl;?>/oferta/zakonczone" class="bttn <?php if($this->activeTab == 2){?>bttn-active<?php } ?>">ZAKOŃCZONE</a>
+                        <a href="<?= $this->baseUrl; ?>/oferta/zakonczone"
+                           class="bttn <?php if ($this->activeTab == 2) { ?>bttn-active<?php } ?>">ZAKOŃCZONE</a>
                     </div>
 
-                    <?php foreach($this->inwestycje as $inwestycja){?>
-                        <?php if($inwestycja->id == 5){?>
+                    <?php foreach ($this->inwestycje as $inwestycja) { ?>
+                        <?php if ($inwestycja->id == 5) { ?>
                             <div class="inwest-list-item">
                                 <a href="https://www.bliskiolechow.pl/" target="_blank">
-                                    <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
+                                    <img src="<?= $this->baseUrl; ?>/files/inwestycje/tekst/<?= $inwestycja->inwestycja_plik; ?>"
+                                         alt="<?= $inwestycja->nazwa; ?>">
                                 </a>
                                 <div class="inwestlist">
                                     <h2 class="source">
-                                        <a href="https://www.bliskiolechow.pl/" target="_blank"><?=$inwestycja->nazwa;?></a>
+                                        <a href="https://www.bliskiolechow.pl/"
+                                           target="_blank"><?= $inwestycja->nazwa; ?></a>
                                     </h2>
-                                    <p><?=$inwestycja->lista;?></p>
-                                    <a href="https://www.bliskiolechow.pl/" class="bttn bttn-blue bttn-more mr-4" target="_blank">OPIS INWESTYCJI</a> <a href="https://www.bliskiolechow.pl/mieszkania" class="bttn bttn-blue bttn-more" target="_blank">ZNAJDŹ MIESZKANIE</a>
+                                    <p><?= $inwestycja->lista; ?></p>
+                                    <a href="https://www.bliskiolechow.pl/" class="bttn bttn-blue bttn-more mr-4"
+                                       target="_blank">OPIS INWESTYCJI</a> <a
+                                            href="https://www.bliskiolechow.pl/mieszkania"
+                                            class="bttn bttn-blue bttn-more" target="_blank">ZNAJDŹ MIESZKANIE</a>
                                 </div>
                             </div>
                         <?php } else { ?>
                             <div class="inwest-list-item">
-                            <?php if($inwestycja->status == 1){?>
-                                <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/">
-                            <?php } else { ?>
-                                <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/">
-                            <?php } ?>
-                                    <img src="<?=$this->baseUrl;?>/files/inwestycje/tekst/<?=$inwestycja->inwestycja_plik;?>" alt="<?=$inwestycja->nazwa;?>">
-                                </a>
-                                <div class="inwestlist">
-                                    <h2 class="source"><a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/"><?=$inwestycja->nazwa;?></a></h2>
-                                    <p><?=$inwestycja->lista;?></p>
-                                    <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/" class="bttn bttn-blue bttn-more mr-4">OPIS INWESTYCJI</a>
-                                    <?php if($inwestycja->status == 1){?>
-                                    <a href="<?=$this->baseUrl;?>/i/<?=$inwestycja->tag;?>/plan-inwestycji/" class="bttn bttn-blue bttn-more">ZNAJDŹ MIESZKANIE</a>
-                                    <?php } ?>
-                                </div>
+                                <?php if ($inwestycja->status == 1){ ?>
+                                <a href="<?= $this->baseUrl; ?>/i/<?= $inwestycja->tag; ?>/plan-inwestycji/">
+                                    <?php } else { ?>
+                                    <a href="<?= $this->baseUrl; ?>/i/<?= $inwestycja->tag; ?>/">
+                                        <?php } ?>
+                                        <img src="<?= $this->baseUrl; ?>/files/inwestycje/tekst/<?= $inwestycja->inwestycja_plik; ?>"
+                                             alt="<?= $inwestycja->nazwa; ?>">
+                                    </a>
+                                    <div class="inwestlist">
+                                        <h2 class="source">
+                                            <?php if ($inwestycja->status == 1){ ?>
+                                            <a href="<?= $this->baseUrl; ?>/i/<?= $inwestycja->tag; ?>/plan-inwestycji/">
+                                                <?php } else { ?>
+                                                <a href="<?= $this->baseUrl; ?>/i/<?= $inwestycja->tag; ?>/">
+                                                    <?php } ?>
+                                                    <?= $inwestycja->nazwa; ?></a></h2>
+                                        <p><?= $inwestycja->lista; ?></p>
+                                        <a href="<?= $this->baseUrl; ?>/i/<?= $inwestycja->tag; ?>/"
+                                           class="bttn bttn-blue bttn-more mr-4">OPIS INWESTYCJI</a>
+                                        <?php if ($inwestycja->status == 1) { ?>
+                                            <a href="<?= $this->baseUrl; ?>/i/<?= $inwestycja->tag; ?>/plan-inwestycji/"
+                                               class="bttn bttn-blue bttn-more">ZNAJDŹ MIESZKANIE</a>
+                                        <?php } ?>
+                                    </div>
                             </div>
                         <?php } ?>
                     <?php } ?>
@@ -53,8 +71,8 @@
         </div>
     </div>
 </div>
-<link href="<?=$this->cssUrl();?>/leaflet.css" rel="stylesheet">
-<script src="<?=$this->jsUrl(); ?>/leaflet.js" charset="utf-8"></script>
+<link href="<?= $this->cssUrl(); ?>/leaflet.css" rel="stylesheet">
+<script src="<?= $this->jsUrl(); ?>/leaflet.js" charset="utf-8"></script>
 <script>
     const tileLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         'attribution': 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
@@ -66,9 +84,9 @@
         iconAnchor: [32, 65]
     });
     const featureGroup = L.featureGroup([
-    <?php foreach($this->inwestycje as $inwestycja){?>
+        <?php foreach($this->inwestycje as $inwestycja){?>
         L.marker([<?=$inwestycja->lat;?>, <?=$inwestycja->lng;?>], {icon: madeyIcon}).bindPopup('<h4><?=$inwestycja->nazwa;?></h4><p><?=$inwestycja->addresspicker_map;?></p>'),
-    <?php } ?>
+        <?php } ?>
     ]);
     const mapDiv = document.getElementById("map");
     let map = new L.Map(mapDiv, {
@@ -89,7 +107,8 @@
             timer = setTimeout(func, 100, event);
         };
     }
-    window.addEventListener("resize",debounce(function(e){
+
+    window.addEventListener("resize", debounce(function (e) {
         map.fitBounds(featureGroup.getBounds());
     }));
 </script>

@@ -587,7 +587,7 @@ header.fixed {
   width: 100%;
   z-index: 9999;
   top: -100px;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
 }
 header.fixed nav a {
   padding: 15px 12px 14px;
@@ -598,6 +598,7 @@ header.fixed .top li {
 header.fixed #logo {
   padding: 10px 15px;
   width: 100%;
+  background: none;
 }
 header.fixed #logo img {
   width: 80px;
@@ -924,6 +925,42 @@ div[class*='col-'].slick-slide {
   height: 49px;
   margin-top: 28px;
 }
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 200px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flip-card-front {
+  background-color: white;
+}
+.flip-card-back {
+  background-color: #10375f;
+  color: white;
+  transform: rotateY(180deg);
+}
 .icon-box img {
   margin: 0 auto;
 }
@@ -934,8 +971,8 @@ div[class*='col-'].slick-slide {
   margin: 30px 0 20px;
 }
 .icon-box p {
-  font-size: 13px;
-  line-height: 21px;
+  font-size: 14px;
+  line-height: 24px;
   margin: 0;
   padding: 0 15px;
 }
@@ -1286,22 +1323,13 @@ ul.programs.jesion-programs .pakiet-vip {
 .inwest-list .inwest-list-nav a.bttn-active {
   background: #d79111;
 }
-.inwest-list-item {
-  position: relative;
-  top: 0;
-  -webkit-transition: all 100ms linear;
-  -moz-transition: all 100ms linear;
-  -o-transition: all 100ms linear;
-  transition: all 100ms linear;
-  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0);
-  margin-bottom: 30px;
+.inwest-list-item .flip-card {
+  height: 470px;
 }
-.inwest-list-item:hover {
-  top: -5px;
-  box-shadow: 0 4px 7px 0 rgba(16, 55, 95, 0.3);
-}
-.inwest-list-item:last-child {
-  margin-bottom: 0;
+.inwest-list-item .flip-card p {
+  padding: 0 50px;
+  font-size: 18px;
+  line-height: 28px;
 }
 .leaflet-popup-content p {
   text-transform: none;
