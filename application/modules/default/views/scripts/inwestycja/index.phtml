@@ -10,12 +10,12 @@
                         <a href="<?= $this->baseUrl; ?>/oferta/"
                            class="bttn <?php if (!$this->activeTab) { ?>bttn-active<?php } ?>">WSZYSTKIE</a>
                         <a href="<?= $this->baseUrl; ?>/oferta/w-sprzedazy"
-                           class="bttn <?php if ($this->activeTab == 1) { ?>bttn-active<?php } ?>">W SPRZEDAŻY</a>
+                           class="bttn <?php if ($this->activeTab == 1) { ?>bttn-active<?php } ?>">W SPRZEDAŻY - W TRAKCIE BUDOWY</a>
                         <a href="<?= $this->baseUrl; ?>/oferta/gotowe-do-odbioru"
-                           class="bttn <?php if ($this->activeTab == 3) { ?>bttn-active<?php } ?>">GOTOWE DO ODBIORU</a>
+                           class="bttn <?php if ($this->activeTab == 3) { ?>bttn-active<?php } ?>">W SPRZEDAŻY - GOTOWE DO ODBIORU</a>
                         <a href="#" class="bttn d-none">W PRZYGOTOWANIU</a>
                         <a href="<?= $this->baseUrl; ?>/oferta/zakonczone"
-                           class="bttn <?php if ($this->activeTab == 2) { ?>bttn-active<?php } ?>">ZAKOŃCZONE</a>
+                           class="bttn <?php if ($this->activeTab == 2) { ?>bttn-active<?php } ?>">SPRZEDANE - ZAKOŃCZONE</a>
                     </div>
 
                     <?php foreach ($this->inwestycje as $inwestycja) { ?>
