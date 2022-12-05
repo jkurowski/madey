@@ -8,7 +8,7 @@ abstract class kCMS_Site extends Zend_Controller_Action {
 		$action = $this->view->action = $request->getActionName();
 		$controller = $this->view->controller = $request->getControllerName();
 		$this->view->user = Zend_Auth::getInstance()->getIdentity();
-	
+
         $this->view->baseUrl = $this->baseUrl = $this->_request->getBaseUrl();
 		$db = Zend_Registry::get('db');
 
@@ -25,6 +25,7 @@ abstract class kCMS_Site extends Zend_Controller_Action {
 		//$this->view->finwestycje = $db->fetchAll($inwest);
 	
 		$menu = new kCMS_MenuBuilder();
+        ray($menu);
 		Zend_Registry::set('querymenu', $menu);
 		
 		$inlineArray = $db->fetchAll($db->select()->from('inline'));

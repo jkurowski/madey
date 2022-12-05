@@ -1,0 +1,8 @@
+{
+    "name": "4dl/madey",
+    "description": "Nowa strona dla Madey",
+    "require": {
+        "shardj/zf1-future": "^1.21",
+        "spatie/ray": "^1.36"
+    }
+}

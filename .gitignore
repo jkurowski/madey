@@ -10,3 +10,4 @@ logs
 cgi-bin
 backup
 application/layouts/default/inline.phtml
+/vendor/

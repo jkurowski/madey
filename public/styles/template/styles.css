@@ -909,13 +909,13 @@ div[class*='col-'].slick-slide {
 /* Homepage
 ================================================== */
 #maininvestor {
-  padding: 60px 0;
+  padding: 30px 0 50px;
 }
 #mainboxes {
   margin-top: 40px;
 }
 #maincontact {
-  margin-bottom: 90px;
+  margin-bottom: 60px;
 }
 #maincontact select {
   padding: 13px;
@@ -957,9 +957,10 @@ div[class*='col-'].slick-slide {
   background-color: white;
 }
 .flip-card-back {
-  background-color: #10375f;
-  color: white;
+  background-color: #fff;
+  color: #10375f;
   transform: rotateY(180deg);
+  box-shadow: 0 8px 27px 0 rgba(0, 0, 0, 0.14);
 }
 .icon-box img {
   margin: 0 auto;
@@ -1013,11 +1014,11 @@ div[class*='col-'].slick-slide {
 #mainparalaxa {
   background: var(--main-blue) url('../../gfx/template/paralaxa.jpg') no-repeat top center;
   background-size: cover;
-  padding-top: 80px;
+  padding-top: 40px;
   padding-bottom: 400px;
 }
 .container-paralaxa {
-  padding-bottom: 80px;
+  padding-bottom: 30px;
   margin-top: -357px;
 }
 .container-paralaxa .bttn {

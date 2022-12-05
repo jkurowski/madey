@@ -1,10 +1,22 @@
 <?php
 // Klasa zarzadzania stronami w kCMS - wersja z jezykami
 class kCMS_MenuBuilder {
-    var $items = array();
-    var $html = array();
+    var array $items = array();
+    var array $html = array();
     var $query;
+    private $baseUrl;
+    /**
+     * @var mixed
+     */
+    private $parenttag;
+    /**
+     * @var mixed
+     */
+    private $tag;
 
+    /**
+     * @throws Zend_Exception
+     */
     function __construct() {
         $front = Zend_Controller_Front::getInstance();
         $request = $front->getRequest();
@@ -33,12 +45,12 @@ class kCMS_MenuBuilder {
         }
     }
 
-    function type_link($link,$baseUrl) {
+    function type_link($link, $baseUrl): array
+    {
         $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
-        if(preg_match($reg_exUrl, $link, $url)) {
+        if(preg_match($reg_exUrl, $link)) {
             return array('link' => $link);
         } else {
-
             if($link[0] == '#'){
                 return array('link' => '#');
             } else {
@@ -47,8 +59,23 @@ class kCMS_MenuBuilder {
         }
     }
 
+    public function each(&$ar)
+    {
+        $key = key($ar);
+        if($key === null){return false;}
+        $current = current($ar);
+
+        try
+        {
+            return [$key,$current,'key'=>$key,'value'=>$current];
+        }finally{
+            next($ar);
+        }
+    }
+
     // Menu na stronie
-    function get_menu_html() {
+    function get_menu_html(): string
+    {
         $query = $this->get_menu_items();
         $html = '';
         $root_id = 0;
@@ -57,13 +84,10 @@ class kCMS_MenuBuilder {
         $request = $front->getRequest();
         $this->tag = $request->getParam('tag');
         $this->parenttag = $request->getParam('sitetag');
-        $parentTag = $request->getParam('parenttag');
         $this->baseUrl = $request->getBaseUrl();
 
         if($this->parenttag) {$tag = $this->parenttag; } else {$tag = $this->tag;}
 
-        //$html .= '<ul class="none mainmenu">';
-        //$html .= '<li><a href="'.$this->baseUrl.'/">Strona główna</a></li>';
         foreach ( $query as $item )
             $children[$item['id_parent']][] = $item;
         $loop = !empty($children[$root_id]);
@@ -71,9 +95,9 @@ class kCMS_MenuBuilder {
         $parent = $root_id;
         $parent_stack = array();
 
-        while ( $loop && ( ( $option = each( $children[$parent] ) ) || ( $parent > $root_id ) ) )
+        while ( $loop && ( ( $option = $this->each( $children[$parent] ) ) || ( $parent > $root_id ) ) )
         {
-            if ( $option === false )
+            if (!$option)
             {
                 $parent = array_pop( $parent_stack );
                 $html .= str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 ) . '</ul>';
@@ -99,7 +123,7 @@ class kCMS_MenuBuilder {
                         $link = $this->type_link($option['value']['uri'],$this->baseUrl);
 
                         $html .= sprintf(
-                            '%1$s<li%2$s><a href="%3$s"%4$s class="gotsub">%5$s</a>',
+                            '%1$s<li%2$s><a href="%3$s" %4$s class="gotsub">%5$s</a>',
                             $tab,   // %1$s = tabulation
                             $this->active($option['value']['tag'], $tag),   // %2$s = active position
                             $link['link'],   // %3$s = link (URL)
@@ -111,7 +135,7 @@ class kCMS_MenuBuilder {
 
 
                 $html .= $tab . "\t" . '<ul class="submenu list-unstyled">';
-                array_push( $parent_stack, $option['value']['id_parent'] );
+                $parent_stack[] = $option['value']['id_parent'];
                 $parent = $option['value']['id'];
             }
             else
@@ -143,22 +167,32 @@ class kCMS_MenuBuilder {
                 }
 
         }
-        //$html .= '</ul>';
         return $html;
     }
 
     // Sprawdzenie typu strony
-    function what_type($check) {
-        if($check == '3'){
-            return 'Link';
+    function what_type($check): string
+    {
+        switch ($check) {
+            case '3':
+                $type = 'Link';
+                break;
+            case '0':
+                $type = 'Strona';
+                break;
+            default:
+                $type = 'Strona';
         }
-        if($check == '0'){
-            return 'Strona';
-        }
+        return $type;
     }
 
     // Menu stron w adminie
-    function get_adminmenu_html() {
+
+    /**
+     * @throws Zend_Exception
+     */
+    function get_adminmenu_html(): string
+    {
         $db = Zend_Registry::get('db');
         $db->setFetchMode(Zend_Db::FETCH_ASSOC);
         $select = $db->select()
@@ -180,7 +214,7 @@ class kCMS_MenuBuilder {
 
         foreach ( $query as $item )
             $children[$item['id_parent']][] = $item;
-        while ( ( $option = each( $children[$parent] ) ) || ( $parent > 0 ) ) {
+        while ( ( $option = $this->each( $children[$parent] ) ) || ( $parent > 0 ) ) {
             if ( !empty( $option ) ) {
                 if ( !empty( $children[$option['value']['id']] ) ) {
                     if($option['value']['typ'] == 0 ) {
@@ -212,7 +246,7 @@ class kCMS_MenuBuilder {
                     $html .= '<td class="right">'.$edycja.$usun.'</td>';
                     $html .= '</tr>';
 
-                    array_push( $parent_stack, $parent );
+                    $parent_stack[] = $parent;
                     $parent = $option['value']['id'];
 
                 } else {
@@ -253,7 +287,8 @@ class kCMS_MenuBuilder {
     }
 
     // Boczne menu
-    function sidemenu() {
+    function sidemenu(): string
+    {
         $query = $this->get_menu_items();
         $html = '';
 
@@ -266,7 +301,12 @@ class kCMS_MenuBuilder {
         if($parentTag) {$parentTag = $parentTag;} else {$parentTag = $tag;}
 
         foreach ($query as $value) {
-            if($value['tag'] == $parentTag) { $firstTag = $value['tag']; $firstNazwa = $value['nazwa']; $root_id = $value['id']; $firstLink = $value['link'];}
+            if($value['tag'] == $parentTag) {
+                $firstTag = $value['tag'];
+                $firstNazwa = $value['nazwa'];
+                $root_id = $value['id'];
+                $firstLink = $value['link'];
+            }
             if($value['tag'] == $tag && !$parentTag) { $root_id = $value['id'];} //Dla obecnej pierwszej strony wszystkie dzieci
         }
 
@@ -283,7 +323,7 @@ class kCMS_MenuBuilder {
             }
         }
 
-        while ( $loop && ( ( $option = each( $children[$parent] ) ) || ( $parent > $root_id ) ) )
+        while ( $loop && ( ( $option = $this->each( $children[$parent] ) ) || ( $parent > $root_id ) ) )
         {
             if ( $option === false )
             {
@@ -323,7 +363,7 @@ class kCMS_MenuBuilder {
 
 
                 $html .= $tab . "\t" . '<ul class="sidesubmenu cleanul">';
-                array_push( $parent_stack, $option['value']['id_parent'] );
+                $parent_stack[] = $option['value']['id_parent'];
                 $parent = $option['value']['id'];
             }
             else
@@ -360,7 +400,12 @@ class kCMS_MenuBuilder {
     }
 
     // Generowanie URI do bazy
-    function urigenerate($id){
+
+    /**
+     * @throws Zend_Exception
+     */
+    function urigenerate($id): string
+    {
         $db = Zend_Registry::get('db');
         $db->setFetchMode(Zend_Db::FETCH_ASSOC);
         $select = $db->select()
@@ -402,7 +447,7 @@ class kCMS_MenuBuilder {
     }
 
     // Chlebek, rogalik itd
-    function breadcrumbs($id)
+    function breadcrumbs($id): string
     {
         $data = $this->get_menu_items();
         $crumbs = Array();
@@ -418,12 +463,12 @@ class kCMS_MenuBuilder {
                 if($data[$i]['id'] == $id){
 
                     if($data[$i]['typ'] == 0){
-                        $url = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/'.$data[$i]['uri'].'/"><span itemprop="name">'.$data[$i]['nazwa'].'</span></a><meta itemprop="position" content="'.$i.'" /></li>';
+                        $url = '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="'.$this->baseUrl.'/'.$data[$i]['uri'].'/"><span itemprop="name">'.$data[$i]['nazwa'].'</span></a><meta itemprop="position" content="'.$i.'" /></li>';
                     }  else {
-                        $url = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="'.$data[$i]['uri'].'"><span itemprop="name">'.$data[$i]['nazwa'].'</span></a><meta itemprop="position" content="'.$i.'" /></li>';
+                        $url = '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="'.$data[$i]['uri'].'"><span itemprop="name">'.$data[$i]['nazwa'].'</span></a><meta itemprop="position" content="'.$i.'" /></li>';
                     }
                     array_unshift($crumbs, empty($crumbs)?
-                        '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><b itemprop="name">'.($data[$i]['nazwa']).'</b><meta itemprop="position" content="'.$i.'" /></li>':
+                        '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><b itemprop="name">'.($data[$i]['nazwa']).'</b><meta itemprop="position" content="'.$i.'" /></li>':
                         ($url));
                     $id = $data[$i]['id_parent'];
                     $found = true;
@@ -435,6 +480,10 @@ class kCMS_MenuBuilder {
     }
 
     //Przy zmianie nazwy generowanie linkow dla dzieci
+
+    /**
+     * @throws Zend_Exception
+     */
     function mapTree($root_id)
     {
         $db = Zend_Registry::get('db');
@@ -450,7 +499,7 @@ class kCMS_MenuBuilder {
         $parent = $root_id;
         $parent_stack = array();
 
-        while ( $loop && ( ( $option = each( $children[$parent] ) ) || ( $parent > $root_id ) ) )
+        while ( $loop && ( ( $option = $this->each( $children[$parent] ) ) || ( $parent > $root_id ) ) )
         {
             if ( $option === false )
             {
@@ -487,7 +536,7 @@ class kCMS_MenuBuilder {
                 $dataUri = array('uri' => $uri);
                 $db->update('strony', $dataUri, 'id = '.$id_up);
 
-                array_push( $parent_stack, $option['value']['id_parent'] );
+                $parent_stack[] = $option['value']['id_parent'];
                 $parent = $option['value']['id'];
             }
             else {
@@ -525,6 +574,10 @@ class kCMS_MenuBuilder {
     }
 
     // Jak usuwasz rodzicow to usun tez dzieci
+
+    /**
+     * @throws Zend_Exception
+     */
     function deletemapTree($root_id)
     {
         $db = Zend_Registry::get('db');
@@ -540,7 +593,7 @@ class kCMS_MenuBuilder {
         $parent = $root_id;
         $parent_stack = array();
 
-        while ( $loop && ( ( $option = each( $children[$parent] ) ) || ( $parent > $root_id ) ) )
+        while ( $loop && ( ( $option = $this->each( $children[$parent] ) ) || ( $parent > $root_id ) ) )
         {
             if ( $option === false )
             {
@@ -560,7 +613,7 @@ class kCMS_MenuBuilder {
                 $strony = $db->fetchRow($db->select()->from('strony')->where('id = ?', $id_element));
                 unlink(FILES_PATH."/background/".$strony->plik);
 
-                array_push( $parent_stack, $option['value']['id_parent'] );
+                $parent_stack[] = $option['value']['id_parent'];
                 $parent = $option['value']['id'];
             }
             else {
