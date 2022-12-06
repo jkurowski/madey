@@ -656,18 +656,21 @@ header .forbesli #forbes img {
 ================================================== */
 #slider {
   position: relative;
-  margin-bottom: 110px;
 }
-#slider .nivo-caption {
+#slider .rslides {
+  padding-bottom: 90px;
+}
+#slider .apla {
   position: absolute;
   left: 0;
   right: 0;
-  top: calc(100% - 40px);
+  top: calc(100% + 70px);
+  bottom: 0;
   z-index: 100;
-  display: none;
   transition: all 200ms linear;
+  opacity: 0;
 }
-#slider .nivo-caption .blue-apla-box {
+#slider .apla .blue-apla-box {
   background: rgba(16, 55, 95, 0.7);
   padding: 20px 27px;
   height: 100%;
@@ -675,11 +678,11 @@ header .forbesli #forbes img {
   align-items: center;
   box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.08);
 }
-#slider .nivo-caption .blue-apla-box h2 {
+#slider .apla .blue-apla-box h2 {
   color: white;
   margin: 0;
 }
-#slider .nivo-caption .white-apla-box {
+#slider .apla .white-apla-box {
   background: white;
   padding: 20px 27px;
   height: 100%;
@@ -687,12 +690,12 @@ header .forbesli #forbes img {
   align-items: center;
   box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.08);
 }
-#slider .nivo-caption .white-apla-box p {
+#slider .apla .white-apla-box p {
   font-size: 15px;
   line-height: 24px;
   margin: 0;
 }
-#slider .nivo-caption .bttn {
+#slider .apla .bttn {
   margin-top: 80px;
   background: #D79111;
   color: white;
@@ -700,6 +703,14 @@ header .forbesli #forbes img {
   text-transform: uppercase;
   width: 100%;
   padding: 12px 0;
+}
+#slider .apla.show {
+  top: calc(100% - 40px);
+  z-index: 100;
+  opacity: 1;
+}
+#slider .apla.hide {
+  opacity: 0;
 }
 .rslides {
   position: relative;

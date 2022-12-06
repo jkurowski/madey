@@ -36,39 +36,39 @@
 
 <?=$this->render('header.phtml');?>
 <div id="slider">
-    <div id="nivo">
+    <ul id="nivo">
         <?php foreach ($this->slider as $panel) { ?>
-            <?php if($panel['link']) {?><a href="<?=$panel['link'];?>"><?php } ?>
-            <img sizes="(max-width:380px) 33.3vw, (max-width:680px) 66.6vw, 100vw"
-                 srcset="<?= $this->baseUrl; ?>/files/slider/desktop/<?= $panel['plik']; ?> 1920w,
+            <li>
+                <?php if($panel['link']) {?><a href="<?=$panel['link'];?>"><?php } ?>
+                    <img sizes="(max-width:380px) 33.3vw, (max-width:680px) 66.6vw, 100vw"
+                         srcset="<?= $this->baseUrl; ?>/files/slider/desktop/<?= $panel['plik']; ?> 1920w,
 			 <?= $this->baseUrl; ?>/files/slider/<?= $panel['plik']; ?> 1920w,
 			 <?= $this->baseUrl; ?>/files/slider/tablet/<?= $panel['plik']; ?> 1024w,
 			 <?= $this->baseUrl; ?>/files/slider/mobile/<?= $panel['plik']; ?> 580w"
-                 src="<?= $this->baseUrl; ?>/files/slider/desktop/<?= $panel['plik']; ?>"
-                 alt="<?= $panel['tytul']; ?>" width="1920" height="780" title="#apla-<?= $panel['id']; ?>">
-            <?php if($panel['link']) {?></a><?php } ?>
-        <?php } ?>
-    </div>
-    <?php foreach($this->slider as $int => $panel){?>
-        <div id="apla-<?=$panel['id'];?>" class="apla nivo-html-caption">
-            <div class="container position-relative">
-                <div class="row">
-                    <div class="col-10">
-                        <div class="apla-status apla-status-<?=$panel['inwest_status'];?>"><?=$this->investStatus($panel['inwest_status']);?></div>
-                        <?php if($panel['dopisek']) {?><div class="apla-status-ready"><?=$panel['dopisek'];?></div><?php } ?>
-                        <div class="blue-apla-box">
-                            <h2><?=$panel['tytul'];?></h2>
+                         src="<?= $this->baseUrl; ?>/files/slider/desktop/<?= $panel['plik']; ?>"
+                         alt="<?= $panel['tytul']; ?>" width="1920" height="780" title="#apla-<?= $panel['id']; ?>">
+                    <?php if($panel['link']) {?></a><?php } ?>
+                <div class="apla">
+                    <div class="container position-relative">
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="apla-status apla-status-<?=$panel['inwest_status'];?>"><?=$this->investStatus($panel['inwest_status']);?></div>
+                                <?php if($panel['dopisek']) {?><div class="apla-status-ready"><?=$panel['dopisek'];?></div><?php } ?>
+                                <div class="blue-apla-box">
+                                    <h2><?=$panel['tytul'];?></h2>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <?php if($panel['link'] && $panel['link_tytul']) {?>
+                                    <a href="<?=$panel['link'];?>" class="bttn"><?=$panel['link_tytul'];?></a>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-2">
-                        <?php if($panel['link'] && $panel['link_tytul']) {?>
-                            <a href="<?=$panel['link'];?>" class="bttn"><?=$panel['link_tytul'];?></a>
-                        <?php } ?>
-                    </div>
                 </div>
-            </div>
-        </div>
-    <?php } ?>
+            </li>
+        <?php } ?>
+    </ul>
 </div>
 
 <div id="maininvestor">
@@ -321,21 +321,27 @@
 <script src="<?=$this->jsUrl(); ?>/jquery.js" charset="utf-8"></script>
 <script src="<?=$this->jsUrl(); ?>/main.min.js" charset="utf-8"></script>
 <script src="<?=$this->jsUrl(); ?>/slick.js" charset="utf-8"></script>
-<script src="<?=$this->jsUrl(); ?>/nivo.min.js" charset="utf-8"></script>
 
 <script src="<?=$this->jsUrl(); ?>/simple-lightbox.jquery.min.js"></script>
 <link rel="stylesheet" href="<?=$this->cssUrl();?>/simple-lightbox.css">
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#nivo').nivoSlider({
-            effect: '<?=$this->header->slider_efekt; ?>',
-            animSpeed: <?=$this->header->slider_speed; ?>,
-            pauseTime: <?=$this->header->slider_timeout; ?>,
-            pauseOnHover: <?=$this->header->slider_pause; ?>,
-            slices: 15,
-            randomStart: false
-        });
+        $('#nivo').responsiveSlides(
+            {
+                auto:<?=$this->header->slider_auto; ?>,
+                pager:<?=$this->header->slider_pager; ?>,
+                nav:<?=$this->header->slider_nav; ?>,
+                timeout:<?=$this->header->slider_timeout; ?>,
+                random:false,
+                speed: <?=$this->header->slider_speed; ?>,
+                before: function(){
+                    $('#slider .apla').removeClass('show').addClass('hide');
+                },
+                after: function(){
+                    $('#slider .apla').addClass('show').removeClass('hide');
+                }
+            });
 
         $(".row-invest-slick").slick({
             infinite: true,
@@ -379,7 +385,7 @@
 
     $(window).load(function() {
         AOS.init();
-
+        $('#nivo .apla').addClass('show').removeClass('hide');
         <?php if($this->message == 1) {?>
         $('html, body').stop().animate({
             scrollTop: $('#formalert').offset().top
