@@ -95,9 +95,13 @@
         'layers': [tileLayer, featureGroup]
     });
 
-    map.fitBounds(featureGroup.getBounds());
+    map.fitBounds(featureGroup.getBounds(), {
+        padding: [50, 50]
+    });
     map.on('popupclose', function () {
-        map.fitBounds(featureGroup.getBounds());
+        map.fitBounds(featureGroup.getBounds(), {
+            padding: [50, 50]
+        });
     });
 
     function debounce(func) {
@@ -109,6 +113,8 @@
     }
 
     window.addEventListener("resize", debounce(function (e) {
-        map.fitBounds(featureGroup.getBounds());
+        map.fitBounds(featureGroup.getBounds(), {
+            padding: [50, 50]
+        });
     }));
 </script>
