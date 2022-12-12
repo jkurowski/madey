@@ -479,7 +479,7 @@ header nav ul li {
 header nav ul li .submenu {
   position: absolute;
   display: none;
-  width: 230px;
+  width: 245px;
 }
 header nav ul li:after {
   content: "";
@@ -989,8 +989,8 @@ div[class*='col-'].slick-slide {
   margin: 30px 0 20px;
 }
 .icon-box p {
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 17px;
+  line-height: 29px;
   margin: 0;
   padding: 0 15px;
 }
