@@ -431,7 +431,7 @@ button:focus,
 ================================================== */
 #logo {
   padding: 18px;
-  background: white;
+  background: rgba(255, 255, 255);
   width: 156px;
 }
 #logo a,
@@ -455,6 +455,7 @@ header {
   -moz-transition: all 100ms linear;
   -o-transition: all 100ms linear;
   transition: all 100ms linear;
+  background: rgba(255, 255, 255, 0.7);
 }
 header .col-2 {
   -ms-flex: 0 0 156px;
@@ -472,7 +473,7 @@ header nav ul {
 header nav ul li {
   position: relative;
   line-height: normal;
-  background: #10375f;
+  background: rgba(16, 55, 95, 0.95);
 }
 header nav ul li .submenu {
   position: absolute;
@@ -494,7 +495,7 @@ header nav ul li:after {
   transition: all 100ms linear;
 }
 header nav ul li.phoneli {
-  background: #D79111;
+  background: rgba(215, 145, 17, 0.9);
   width: 190px;
   display: flex;
   align-items: center;
