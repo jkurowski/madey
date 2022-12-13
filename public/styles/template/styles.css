@@ -466,15 +466,13 @@ header .col-10 {
   flex: 0 0 calc(100% - 156px);
   max-width: calc(100% - 156px);
 }
-header nav {
-  background: #10375f;
-}
 header nav ul {
   display: flex;
 }
 header nav ul li {
   position: relative;
   line-height: normal;
+  background: #10375f;
 }
 header nav ul li .submenu {
   position: absolute;
@@ -497,7 +495,7 @@ header nav ul li:after {
 }
 header nav ul li.phoneli {
   background: #D79111;
-  width: 185px;
+  width: 190px;
   display: flex;
   align-items: center;
   transition: all 100ms linear;
@@ -548,6 +546,9 @@ header nav a {
 header nav a:hover {
   color: white;
 }
+header nav li:first-child a {
+  padding-left: 20px;
+}
 header .top li {
   margin-left: 30px;
   height: 48px;
@@ -592,11 +593,14 @@ header.fixed {
 header.fixed nav a {
   padding: 15px 12px 14px;
 }
-header.fixed nav {
+header.fixed nav li {
   background: rgba(16, 55, 95, 0.9);
 }
 header.fixed ul li.phoneli {
   background: rgba(215, 145, 17, 0.9);
+}
+header.fixed ul li.forbesli {
+  width: 112px;
 }
 header.fixed .top li {
   height: 31px;
@@ -604,10 +608,11 @@ header.fixed .top li {
 header.fixed #logo {
   padding: 10px 15px;
   width: 100%;
-  background: none;
+  background: rgba(255, 255, 255, 0.5);
 }
 header.fixed #logo img {
   width: 80px;
+  margin: 0 auto;
 }
 header.fixed .col-2 {
   -ms-flex: 0 0 120px;
@@ -634,6 +639,7 @@ header .submenu li a {
   -moz-transition: all 100ms linear;
   -o-transition: all 100ms linear;
   transition: all 100ms linear;
+  background: white;
 }
 header .submenu li a:hover {
   background: #10375f;

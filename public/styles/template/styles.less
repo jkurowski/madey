@@ -237,12 +237,12 @@ header {
     max-width: calc(100% - 156px);
   }
   nav {
-    background: #10375f;
     ul {
       display: flex;
       li {
         position: relative;
         line-height: normal;
+        background: #10375f;
         .submenu {
           position: absolute;
           display: none;
@@ -261,7 +261,7 @@ header {
         }
         &.phoneli {
           background: #D79111;
-          width: 185px;
+          width: 190px;
           display: flex;
           align-items: center;
           transition:all 100ms linear;
@@ -313,6 +313,9 @@ header {
         color: white;
       }
     }
+    li:first-child a {
+      padding-left: 20px;
+    }
   }
   .top {
     li {
@@ -356,11 +359,14 @@ header {
     nav a {
       padding: 15px 12px 14px;
     }
-    nav {
+    nav li {
       background: rgba(16, 55, 95, 0.9);
     }
     ul li.phoneli {
       background: rgba(215, 145, 17, 0.9);
+    }
+    ul li.forbesli {
+      width: 112px;
     }
     .top li {
       height: 31px;
@@ -368,9 +374,10 @@ header {
     #logo {
       padding: 10px 15px;
       width: 100%;
-      background: none;
+      background: rgba(255, 255, 255, 0.5);
       img {
         width: 80px;
+        margin: 0 auto;
       }
     }
     .col-2 {
@@ -387,6 +394,7 @@ header {
       width: 55px;
     }
   }
+
   .submenu {
     li {
       border-bottom: 1px solid #e0f0ff;
@@ -396,6 +404,7 @@ header {
         display: flex;
         padding: 7px 20px;
         .animation-100();
+        background: white;
         &:hover {
           background: #10375f;
           color: white;

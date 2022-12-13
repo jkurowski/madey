@@ -339,6 +339,7 @@ class Default_InwestycjaController extends kCMS_Site
 
                 if($uri == '/oferta/w-sprzedazy' || $uri == '/oferta/w-sprzedazy/') {
                     $inwest->where('status =?', 1);
+                    $inwest->where('gotowe !=?', 1);
                     $this->view->inwest_status = 1;
                     $this->view->activeTab = 1;
                 }
