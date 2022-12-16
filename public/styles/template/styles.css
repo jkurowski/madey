@@ -1349,7 +1349,8 @@ ul.programs.jesion-programs .pakiet-vip {
   background: #d79111;
 }
 .inwest-list-item .flip-card {
-  height: 330px;
+  height: 470px;
+  margin: 40px 0;
 }
 .inwest-list-item .flip-card p {
   padding: 0 20px;
