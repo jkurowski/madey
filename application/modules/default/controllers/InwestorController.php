@@ -40,6 +40,7 @@ class Default_InwestorController extends kCMS_Site
             $inwest = $this->db->select()
                 ->from('inwestycje', array('nazwa', 'inwestycja_plik', 'tag', 'status', 'id', 'lat', 'lng', 'addresspicker_map', 'flip'))
                 ->where('status = ?', 2)
+                ->orWhere('gotowe = ?', 1)
                 ->order('sort ASC');
 
             $array = array(
