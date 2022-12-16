@@ -1052,7 +1052,53 @@ ul.programs.jesion-programs .pakiet-vip {
     }
   }
 }
+.row-invest-slick {
+  display: none;
+  &.slick-initialized {
+    display: block;
+  }
+  position: relative;
 
+  .slick-arrow {
+    width:55px;
+    height:55px;
+    background:#db9b28;
+    position:absolute;
+    top:0;
+    bottom:0;
+    margin:auto;
+    z-index:90;
+    color:white;
+    text-align:center;
+    padding:2px 0 0;
+    -webkit-transition:all 100ms linear;
+    -moz-transition:all 100ms linear;
+    -o-transition:all 100ms linear;
+    transition:all 100ms linear;
+    cursor:pointer;
+    &:hover {
+      background:#d79111
+    }
+    &.slick-next {
+      right:-15px;
+      &:before {
+        font-family:'Line Awesome Free';
+        font-weight:900;
+        content:"\f30b";
+        font-size:24px
+      }
+    }
+    &.slick-prev {
+      left:-15px;
+      &:after {
+        font-family:'Line Awesome Free';
+        font-weight:900;
+        content:"\f30a";
+        font-size:24px
+      }
+    }
+  }
+}
 
 .leaflet-popup-content p {
   text-transform: none;

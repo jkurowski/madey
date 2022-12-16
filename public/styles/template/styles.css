@@ -1356,6 +1356,52 @@ ul.programs.jesion-programs .pakiet-vip {
   font-size: 18px;
   line-height: 28px;
 }
+.row-invest-slick {
+  display: none;
+  position: relative;
+}
+.row-invest-slick.slick-initialized {
+  display: block;
+}
+.row-invest-slick .slick-arrow {
+  width: 55px;
+  height: 55px;
+  background: #db9b28;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 90;
+  color: white;
+  text-align: center;
+  padding: 2px 0 0;
+  -webkit-transition: all 100ms linear;
+  -moz-transition: all 100ms linear;
+  -o-transition: all 100ms linear;
+  transition: all 100ms linear;
+  cursor: pointer;
+}
+.row-invest-slick .slick-arrow:hover {
+  background: #d79111;
+}
+.row-invest-slick .slick-arrow.slick-next {
+  right: -15px;
+}
+.row-invest-slick .slick-arrow.slick-next:before {
+  font-family: 'Line Awesome Free';
+  font-weight: 900;
+  content: "\f30b";
+  font-size: 24px;
+}
+.row-invest-slick .slick-arrow.slick-prev {
+  left: -15px;
+}
+.row-invest-slick .slick-arrow.slick-prev:after {
+  font-family: 'Line Awesome Free';
+  font-weight: 900;
+  content: "\f30a";
+  font-size: 24px;
+}
 .leaflet-popup-content p {
   text-transform: none;
 }
