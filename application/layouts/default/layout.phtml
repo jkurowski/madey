@@ -51,14 +51,14 @@
                 <div class="apla">
                     <div class="container position-relative">
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col-12 col-sm-8 col-md-9 col-xl-10">
                                 <div class="apla-status apla-status-<?=$panel['inwest_status'];?>"><?=$this->investStatus($panel['inwest_status']);?></div>
                                 <?php if($panel['dopisek']) {?><div class="apla-status-ready"><?=$panel['dopisek'];?></div><?php } ?>
                                 <div class="blue-apla-box">
                                     <h2><?=$panel['tytul'];?></h2>
                                 </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-12 col-sm-4 col-md-3 col-xl-2">
                                 <?php if($panel['link'] && $panel['link_tytul']) {?>
                                     <a href="<?=$panel['link'];?>" class="bttn"><?=$panel['link_tytul'];?></a>
                                 <?php } ?>
