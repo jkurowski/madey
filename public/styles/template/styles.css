@@ -1344,6 +1344,14 @@ ul.programs.jesion-programs .pakiet-vip {
 .inwest-list .inwest-list-nav a {
   margin: 0 3px;
   background: #0d2d4f;
+  flex-wrap: wrap;
+  line-height: 20px;
+  padding: 7px 15px;
+}
+.inwest-list .inwest-list-nav a span {
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 .inwest-list .inwest-list-nav a.bttn-active {
   background: #d79111;
@@ -2430,6 +2438,10 @@ textarea {
   header .submenu li a {
     font-size: 14px;
   }
+  .inwest-list .inwest-list-nav a {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
 /* end of 1279.98 */
 @media (max-width: 1199.98px) {
@@ -2510,6 +2522,30 @@ textarea {
   }
   header.fixed nav li:first-child a {
     padding-left: 15px;
+  }
+  .inwest-list {
+    padding: 20px;
+  }
+  .inwest-list .inwest-list-nav a {
+    padding: 7px 11px;
+    font-weight: 500;
+  }
+  .inwestlist {
+    padding: 20px;
+  }
+  .inwestlist h2 {
+    font-size: 29px;
+    margin-bottom: 10px;
+  }
+  .inwestlist p {
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 22px;
+  }
+  .inwestlist .bttn {
+    font-size: 13px;
+    padding: 12px 23px;
+    font-weight: 500;
   }
 }
 /* end of 1199.98 */
@@ -2655,6 +2691,23 @@ textarea {
   .openmenu ul.nav li.phoneli a {
     font-size: 29px !important;
     line-height: 23px;
+  }
+  #map {
+    width: 100%;
+    overflow: auto;
+    position: relative !important;
+    left: 0;
+    top: 0;
+    height: 200px;
+  }
+  .inwest-list-item {
+    padding-bottom: 30px;
+  }
+  .inwest-list {
+    padding: 25px 25px 0;
+  }
+  .inwest-list .inwest-list-nav {
+    padding: 0 0 20px;
   }
 }
 /* end of 991.98 */
@@ -2925,6 +2978,13 @@ textarea {
     flex: 0 0 calc(100% - 50px);
     max-width: calc(100% - 50px);
   }
+  .inwest-list .inwest-list-nav {
+    flex-wrap: wrap;
+  }
+  .inwest-list .inwest-list-nav a {
+    width: 48%;
+    margin: 5px 1%;
+  }
 }
 /* end of 575.98 */
 @media (max-width: 460px) {
@@ -2962,6 +3022,32 @@ textarea {
   }
   .openmenu header ul.nav .submenu {
     width: 100%;
+  }
+  .inwest-list {
+    padding: 15px 22px 0;
+  }
+  .inwest-list .inwest-list-nav {
+    padding: 0 0 15px;
+  }
+  .inwest-list-item {
+    padding-bottom: 20px;
+  }
+  .inwestlist {
+    padding: 15px;
+  }
+  .inwestlist h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .inwestlist p {
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .inwestlist .bttn {
+    font-size: 11px;
+    padding: 10px 14px;
+    font-weight: 500;
   }
 }
 /* end of 460 */

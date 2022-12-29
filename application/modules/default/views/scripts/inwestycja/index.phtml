@@ -1,21 +1,21 @@
 <div id="aboutus">
     <div class="container-fluid p-0">
         <div class="row no-gutters">
-            <div class="col-6">
+            <div class="col-12 col-lg-6">
                 <div id="map"></div>
             </div>
-            <div class="col-6">
+            <div class="col-12 col-lg-6">
                 <div class="inwest-list">
                     <div class="inwest-list-nav">
                         <a href="<?= $this->baseUrl; ?>/oferta/"
                            class="bttn <?php if (!$this->activeTab) { ?>bttn-active<?php } ?>">WSZYSTKIE</a>
                         <a href="<?= $this->baseUrl; ?>/oferta/w-sprzedazy"
-                           class="bttn <?php if ($this->activeTab == 1) { ?>bttn-active<?php } ?>">W SPRZEDAŻY - W BUDOWIE</a>
+                           class="bttn <?php if ($this->activeTab == 1) { ?>bttn-active<?php } ?>"><span>W SPRZEDAŻY</span><span>W BUDOWIE</span></a>
                         <a href="<?= $this->baseUrl; ?>/oferta/gotowe-do-odbioru"
-                           class="bttn <?php if ($this->activeTab == 3) { ?>bttn-active<?php } ?>">W SPRZEDAŻY - GOTOWE</a>
+                           class="bttn <?php if ($this->activeTab == 3) { ?>bttn-active<?php } ?>"><span>W SPRZEDAŻY</span><span>GOTOWE</span></a>
                         <a href="#" class="bttn d-none">W PRZYGOTOWANIU</a>
                         <a href="<?= $this->baseUrl; ?>/oferta/zakonczone"
-                           class="bttn <?php if ($this->activeTab == 2) { ?>bttn-active<?php } ?>">SPRZEDANE - ZAKOŃCZONE</a>
+                           class="bttn <?php if ($this->activeTab == 2) { ?>bttn-active<?php } ?>"><span>SPRZEDANE</span><span>ZAKOŃCZONE</span></a>
                     </div>
 
                     <?php foreach ($this->inwestycje as $inwestycja) { ?>
@@ -31,7 +31,7 @@
                                            target="_blank"><?= $inwestycja->nazwa; ?></a>
                                     </h2>
                                     <p><?= $inwestycja->lista; ?></p>
-                                    <a href="https://www.bliskiolechow.pl/" class="bttn bttn-blue bttn-more mr-4"
+                                    <a href="https://www.bliskiolechow.pl/" class="bttn bttn-blue bttn-more mr-2 mr-sm-4"
                                        target="_blank">OPIS INWESTYCJI</a> <a
                                             href="https://www.bliskiolechow.pl/mieszkania"
                                             class="bttn bttn-blue bttn-more" target="_blank">ZNAJDŹ MIESZKANIE</a>
@@ -57,7 +57,7 @@
                                                     <?= $inwestycja->nazwa; ?></a></h2>
                                         <p><?= $inwestycja->lista; ?></p>
                                         <a href="<?= $this->baseUrl; ?>/i/<?= $inwestycja->tag; ?>/"
-                                           class="bttn bttn-blue bttn-more mr-4">OPIS INWESTYCJI</a>
+                                           class="bttn bttn-blue bttn-more mr-2 mr-sm-4">OPIS INWESTYCJI</a>
                                         <?php if ($inwestycja->status == 1) { ?>
                                             <a href="<?= $this->baseUrl; ?>/i/<?= $inwestycja->tag; ?>/plan-inwestycji/"
                                                class="bttn bttn-blue bttn-more">ZNAJDŹ MIESZKANIE</a>
