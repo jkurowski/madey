@@ -229,6 +229,7 @@ class Default_IndexController extends kCMS_Site
             $this->view->seo_slowa = $page->meta_slowa;
 
             $this->view->strona_id = $page->id;
+            $this->view->pageclass = ' page-menu';
         }
     }
 
@@ -401,8 +402,6 @@ class Default_IndexController extends kCMS_Site
             $this->view->seo_slowa = $page->meta_slowa;
 
             $this->view->strona_id = 4;
-
-
         }
     }
 

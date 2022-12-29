@@ -2382,6 +2382,54 @@ textarea {
   #page.about-page {
     padding: 90px 0 20px;
   }
+  .programs li {
+    padding: 35px 20px 40px;
+  }
+  ul.programs.jesion-programs li p {
+    font-size: 15px;
+  }
+  ul.programs.jesion-programs .desc {
+    padding-bottom: 30px;
+    height: 120px;
+  }
+  ul.programs .icon img {
+    margin: 25px auto;
+    height: 80px;
+  }
+  ul.programs li h3 {
+    font-size: 43px;
+  }
+  header .forbesli #forbes img {
+    width: 56px;
+  }
+  header nav ul li.phoneli {
+    width: 155px;
+  }
+  header nav ul li.phoneli a {
+    padding: 0 10px;
+  }
+  header nav a {
+    font-size: 14px;
+    padding: 24px 10px;
+  }
+  header.fixed .forbesli #forbes img {
+    width: 42px;
+  }
+  header.fixed nav a {
+    padding: 16px 10px 16px;
+  }
+  header.fixed .submenu li a {
+    padding: 7px 20px;
+  }
+  header.fixed nav ul li.phoneli {
+    width: 160px;
+  }
+  header nav ul li .submenu {
+    width: 220px;
+  }
+  header .submenu li a {
+    font-size: 14px;
+  }
 }
 /* end of 1279.98 */
 @media (max-width: 1199.98px) {
@@ -2394,16 +2442,74 @@ textarea {
     font-weight: 700;
     margin-bottom: 12px;
   }
-  .top,
-  .navbar {
-    display: none;
-  }
   #pageheader {
     padding: 50px 0;
   }
   article .section-title h2 {
     font-size: 29px;
     margin-bottom: 20px;
+  }
+  ul.programs.jesion-programs li p {
+    font-size: 14px;
+    line-height: 19px !important;
+  }
+  .top li:first-child {
+    margin: 0;
+  }
+  #logo {
+    padding: 18px;
+    width: 125px;
+  }
+  header nav li:first-child a {
+    padding-left: 15px;
+  }
+  header nav a {
+    padding: 20px 7px;
+  }
+  header .submenu li a,
+  header nav a {
+    font-size: 13px;
+  }
+  header .submenu li a {
+    padding: 7px 15px;
+  }
+  header nav ul li.phoneli {
+    width: 115px;
+  }
+  header nav ul li.phoneli a {
+    font-size: 17px;
+    line-height: 16px;
+  }
+  header nav ul li.phoneli span {
+    font-size: 10px;
+  }
+  header .forbesli #forbes {
+    padding: 0 10px;
+  }
+  header .forbesli #forbes img {
+    width: 40px;
+  }
+  header .col-2 {
+    -ms-flex: 0 0 125px;
+    flex: 0 0 125px;
+    max-width: 125px;
+  }
+  header .col-10 {
+    -ms-flex: 0 0 calc(100% - 125px);
+    flex: 0 0 calc(100% - 125px);
+    max-width: calc(100% - 125px);
+  }
+  header.fixed ul li.forbesli {
+    width: 65px;
+  }
+  header.fixed nav ul li.phoneli {
+    width: 115px;
+  }
+  header.fixed nav a {
+    padding: 17px 7px;
+  }
+  header.fixed nav li:first-child a {
+    padding-left: 15px;
   }
 }
 /* end of 1199.98 */
@@ -2435,6 +2541,120 @@ textarea {
   }
   .about-paralaxa img {
     width: 70px;
+  }
+  ul.programs li h3 {
+    font-size: 32px;
+    line-height: 38px !important;
+  }
+  ul.programs .icon img {
+    height: 60px;
+  }
+  ul.programs.jesion-programs li p {
+    font-size: 12px;
+    line-height: 17px !important;
+  }
+  ul.programs .stars img {
+    width: 25px;
+    height: 25px;
+  }
+  #logo {
+    padding: 11px;
+    width: 100px;
+  }
+  header .top li {
+    margin-left: 9px;
+    height: 48px;
+  }
+  header .top a {
+    font-size: 10px;
+  }
+  header .nav {
+    width: 250px;
+    height: 37px;
+    background: #11375f;
+  }
+  header .nav li {
+    display: none;
+    width: 100%;
+  }
+  header nav ul li.forbesli {
+    height: 37px;
+    width: 100px;
+    display: flex;
+  }
+  header nav ul li.phoneli {
+    width: 150px;
+    transition: all 0ms linear;
+  }
+  .mobilemenu {
+    display: block;
+  }
+  .mobilemenu a {
+    background: #194a78;
+    padding: 4px 30px;
+    color: white;
+    margin-right: 1px;
+  }
+  header.fixed {
+    height: 69px;
+  }
+  header.fixed .mobilemenu a {
+    padding: 4px 30px;
+  }
+  header.fixed #logo img {
+    width: 60px;
+  }
+  header.fixed .top li {
+    height: 32px;
+  }
+  header.fixed nav ul li.forbesli {
+    width: 100px;
+  }
+  header.fixed nav ul li.phoneli {
+    width: 150px;
+  }
+  .openmenu .navbar {
+    align-items: start;
+  }
+  .openmenu header .forbesli {
+    height: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  .openmenu header .forbesli #forbes img {
+    width: 40px;
+    margin: 0 auto;
+  }
+  .openmenu header.fixed nav ul li.forbesli,
+  .openmenu header.fixed nav ul li.phoneli {
+    width: 100%;
+  }
+  .openmenu ul.nav {
+    width: 250px;
+  }
+  .openmenu ul.nav li {
+    display: block;
+    width: 100%;
+    background: #10375f;
+  }
+  .openmenu ul.nav li a {
+    padding: 9px 19px !important;
+    font-size: 14px;
+  }
+  .openmenu ul.nav .submenu {
+    position: static;
+    display: block;
+    width: 250px;
+  }
+  .openmenu ul.nav li.phoneli {
+    background: #d79111;
+  }
+  .openmenu ul.nav li.phoneli span {
+    font-size: 14px;
+    margin-top: -5px;
+  }
+  .openmenu ul.nav li.phoneli a {
+    font-size: 29px !important;
+    line-height: 23px;
   }
 }
 /* end of 991.98 */
@@ -2497,6 +2717,57 @@ textarea {
   }
   .paralaxa-box {
     margin-bottom: 30px;
+  }
+  .programs li {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 30px 30px 40px;
+  }
+  ul.programs.jesion-programs li p {
+    font-size: 15px;
+    line-height: 23px !important;
+  }
+  ul.programs.jesion-programs .desc {
+    padding-bottom: 10px;
+    height: auto;
+  }
+  .top {
+    display: none;
+  }
+  .mobilemenu a,
+  header.fixed .mobilemenu a {
+    height: 37px;
+    display: flex;
+    align-items: center;
+  }
+  #logo {
+    width: 66px;
+    padding: 0;
+  }
+  .header-holder,
+  header {
+    height: 68px;
+  }
+  header {
+    padding: 7px 0;
+  }
+  header .col-10 {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+  header.fixed {
+    height: 54px;
+    background: #ffffff;
+  }
+  header.fixed #logo {
+    padding: 0;
+    width: 100%;
+    background: #ffffff;
+  }
+  header.fixed #logo img {
+    width: 50px;
   }
 }
 /* end of 767.98 */
@@ -2581,7 +2852,8 @@ textarea {
     margin-bottom: 10px;
     font-size: 30px;
   }
-  #page.about-page {
+  #page.about-page,
+  #page.page-menu {
     padding: 30px 15px;
   }
   .about-paralaxa {
@@ -2607,8 +2879,73 @@ textarea {
     height: 395px;
     margin: 0 0 35px;
   }
+  header .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  header .col-12 {
+    padding: 0;
+  }
+  header .col-2 {
+    -ms-flex: 0 0 81px;
+    flex: 0 0 81px;
+    max-width: 81px;
+  }
+  header .col-10 {
+    -ms-flex: 0 0 calc(100% - 81px);
+    flex: 0 0 calc(100% - 81px);
+    max-width: calc(100% - 81px);
+  }
+  header.fixed .col-2 {
+    -ms-flex: 0 0 50px;
+    flex: 0 0 50px;
+    max-width: 50px;
+  }
+  header.fixed .col-10 {
+    -ms-flex: 0 0 calc(100% - 50px);
+    flex: 0 0 calc(100% - 50px);
+    max-width: calc(100% - 50px);
+  }
 }
 /* end of 575.98 */
+@media (max-width: 460px) {
+  #logo img {
+    width: 50px;
+  }
+  .header-holder,
+  header {
+    height: 54px;
+  }
+  header .nav {
+    width: auto;
+    height: auto;
+    background: #11375f;
+  }
+  header .nav li {
+    display: none !important;
+  }
+  .openmenu {
+    position: fixed;
+    overflow: hidden;
+  }
+  .openmenu header ul.nav {
+    position: fixed;
+    z-index: 9999;
+    top: 54px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: scroll;
+  }
+  .openmenu header ul.nav li {
+    display: block !important;
+  }
+  .openmenu header ul.nav .submenu {
+    width: 100%;
+  }
+}
+/* end of 460 */
 @media (max-width: 420px) {
   .section-title h2 {
     font-size: 24px;
@@ -2629,6 +2966,25 @@ textarea {
   }
   #page.about-page {
     padding: 30px 15px 0;
+  }
+  ul.programs.jesion-programs li p {
+    font-size: 13px;
+    line-height: 23px !important;
+  }
+  ul.programs li h3 {
+    font-size: 28px;
+    line-height: 28px !important;
+  }
+  ul.programs .icon img {
+    height: 40px;
+    margin: 15px auto;
+  }
+  ul.programs .stars img {
+    width: 18px;
+    height: 18px;
+  }
+  ul.programs.jesion-programs .desc {
+    padding-bottom: 0;
   }
 }
 /* end of 359.98 */

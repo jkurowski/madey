@@ -25,13 +25,12 @@
                         </div>
                         <div class="col-12">
                             <nav class="navbar clearfix">
+                                <div class="mobilemenu">
+                                    <a href="#" id="triggermenu">MENU</a>
+                                </div>
                                 <ul class="nav justify-content-end">
                                     <li><a href="<?=$this->baseUrl;?>/">Strona główna</a></li>
                                     <?php $menu = Zend_Registry::get('querymenu'); echo $menu->get_menu_html(0); ?>
-                                    <!--<li><a href="<?=$this->baseUrl;?>/oferta/">ZNAJDŹ MIESZKANIE</a></li>
-                                    <li><a href="<?=$this->baseUrl;?>/inwestor/">INWESTOR</a></li>
-                                    <li><a href="<?=$this->baseUrl;?>/aktualnosci/">AKTUALNOŚCI</a></li>
-                                    <li><a href="<?=$this->baseUrl;?>/kontakt/">KONTAKT</a></li>-->
                                     <li class="forbesli">
                                         <a href="<?=$this->baseUrl;?>/diamenty-forbesa/" id="forbes">
                                             <img src="<?=$this->baseUrl;?>/public/gfx/template/diamenty-miesiecznika-forbes-2022.png" alt="Logo Diamenty Forbesa 2022">
@@ -45,7 +44,6 @@
                                     </li>
                                 </ul>
                             </nav>
-                            <div class="mobilemenu"><a href="#" id="triggermenu">MENU</a></div>
                         </div>
                     </div>
                 </div>
