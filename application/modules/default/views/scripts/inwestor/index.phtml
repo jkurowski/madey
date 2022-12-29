@@ -15,25 +15,25 @@
     <div class="about-paralaxa">
         <div class="container">
             <div class="row inwestor-icons">
-                <div class="col-3">
+                <div class="col-6 col-md-3">
                     <div class="paralaxa-box">
                         <img src="/files/upload/kompleksowe.png" width="100" height="100" alt="">
                         <h3>Kompleksowe Podejście</h3>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-6 col-md-3">
                     <div class="paralaxa-box">
                         <img src="/files/upload/zaufanie.png" width="100" height="100" alt="">
                         <h3>Zaufanie</h3>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-6 col-md-3">
                     <div class="paralaxa-box">
                         <img src="/files/upload/partner.png" width="100" height="100" alt="">
                         <h3>Partnerskie Podejście</h3>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-6 col-md-3">
                     <div class="paralaxa-box">
                         <img src="/files/upload/jakosc.png" width="100" height="100" alt="">
                         <h3>Gwarancja Jakości</h3>
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="container mb-5">
+    <div class="container mb-3 mb-sm-5">
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
@@ -69,12 +69,12 @@
         </div>
     </div>
     <div class="row d-flex justify-content-center">
-        <div class="col-4 text-center">
+        <div class="col-12 col-md-4 text-center nagroda">
             <a href="https://www.forbes.pl/diamenty/najszybciej-rozwijajace-sie-polskie-firmy-diamenty-forbesa-2021/z8s9tb5" target="_blank"><img src="<?=$this->baseUrl;?>/public/gfx/template/320x251_forbes_2021.jpg" alt="Logo Diamenty Forbesa 2021" style="margin: 40px auto"></a>
             <a href="https://www.forbes.pl/diamenty/najszybciej-rozwijajace-sie-polskie-firmy-diamenty-forbesa-2021/z8s9tb5" target="_blank" class="bttn bttn-blue bttn-more">CZYTAJ WIĘCEJ</a>
         </div>
-        <div class="col-1">&nbsp;</div>
-        <div class="col-4 text-center">
+        <div class="col-12 col-md-1">&nbsp;</div>
+        <div class="col-12 col-md-4 text-center nagroda">
             <a href="https://www.forbes.pl/diamenty/2022/artykuly/diamenty-forbesa-2022-oto-najlepsze-firmy-z-wojewodztwa-lodzkiego/56ggtjs" target="_blank"><img src="<?=$this->baseUrl;?>/public/gfx/template/diamenty-miesiecznika-forbes-2022-kolor.png" alt="Logo Diamenty Forbesa 2022" style="margin: 40px auto"></a>
             <a href="https://www.forbes.pl/diamenty/2022/artykuly/diamenty-forbesa-2022-oto-najlepsze-firmy-z-wojewodztwa-lodzkiego/56ggtjs" target="_blank" class="bttn bttn-blue bttn-more">CZYTAJ WIĘCEJ</a>
         </div>
@@ -82,7 +82,7 @@
 </div>
 
 <div id="investdone">
-    <div class="container mt-5 pt-5">
+    <div class="container mt-0 mt-sm-5 pt-3 pt-sm-5">
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
@@ -129,7 +129,15 @@
             centerMode: false,
             autoplay: true,
             autoplaySpeed: 5000,
-            arrows: true
+            arrows: true,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }
+            ]
         });
     });
 </script>

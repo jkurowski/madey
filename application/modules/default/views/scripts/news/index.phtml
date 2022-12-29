@@ -2,8 +2,8 @@
 <?php foreach($this->news as $key => $post){?>
 	<article id="post-<?=$post->id;?>" itemscope itemType="http://schema.org/BlogPosting">
         <div class="<?php if($key % 2 == 0) {?>row<?php } else { ?>row flex-row-reverse<?php } ?>">
-            <?php if($post->plik){?><div class="col-6 col-news-thumb p-0"><a href="<?=$this->baseUrl;?>/aktualnosci/<?=$post->tag;?>/" itemprop="url"><img src="<?=$this->baseUrl;?>/files/news/<?=$post->plik;?>" alt="<?=$post->tytul;?>"></a></div><?php } ?>
-            <div class="<?php if($post->plik){?>col-6 col-news-entry d-flex align-items-center<?php } else {?>col-12<?php } ?>">
+            <?php if($post->plik){?><div class="col-12 col-md-6 col-news-thumb p-0"><a href="<?=$this->baseUrl;?>/aktualnosci/<?=$post->tag;?>/" itemprop="url"><img src="<?=$this->baseUrl;?>/files/news/<?=$post->plik;?>" alt="<?=$post->tytul;?>"></a></div><?php } ?>
+            <div class="<?php if($post->plik){?>col-12 col-md-6 col-news-entry d-flex align-items-center<?php } else {?>col-12<?php } ?>">
                 <div class="entry-shadow-content text-center">
                     <div class="col-12">
                         <div class="section-title">

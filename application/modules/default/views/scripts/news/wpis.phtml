@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-8 single-post">
+		<div class="col-12 col-lg-8 single-post">
             <article id="post-<?=$this->news->id;?>" itemscope itemType="http://schema.org/BlogPosting">
                 <?php if($this->news->plik){?><img src="<?=$this->baseUrl;?>/files/news/<?=$this->news->plik;?>" alt="<?=$this->news->tytul;?>" itemprop="image"><?php } ?>
                 <h1><a href="<?=$this->baseUrl;?>/aktualnosci/<?=$this->news->tag;?>/" title="<?=$this->news->tytul; ?>" itemprop="url"><span itemprop="name headline"><?=$this->news->tytul; ?></span></a></h1>
@@ -13,7 +13,7 @@
                 <meta itemprop="datePublished" content="<?=$this->news->data;?>">
             </article>
 		</div>
-		<div class="col-4 single-post-side">
+		<div class="col-12 col-lg-4 pt-5 pt-lg-0 single-post-side">
 <?php if($this->inne){?>
 			<div class="side-box">
 				<ul class="list-unstyled">

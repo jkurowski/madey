@@ -2369,6 +2369,270 @@ textarea {
   margin-top: 30px;
   padding: 0 25px;
 }
+/* RWD
+================================================== */
+@media (max-width: 1279.98px) {
+  .container-paralaxa .paralaxa-box {
+    padding: 25px 10px 40px;
+  }
+  .inwest-list-item .flip-card {
+    height: 425px;
+    margin: 0 0 35px;
+  }
+  #page.about-page {
+    padding: 90px 0 20px;
+  }
+}
+/* end of 1279.98 */
+@media (max-width: 1199.98px) {
+  .icon-box p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .container-paralaxa .paralaxa-box h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .top,
+  .navbar {
+    display: none;
+  }
+  #pageheader {
+    padding: 50px 0;
+  }
+  article .section-title h2 {
+    font-size: 29px;
+    margin-bottom: 20px;
+  }
+}
+/* end of 1199.98 */
+@media (max-width: 991.98px) {
+  .container-paralaxa {
+    max-width: 100%;
+  }
+  article .section-title h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  article .section-title span {
+    font-size: 13px;
+    padding: 0 40px 5px;
+    margin-bottom: 10px;
+  }
+  article .bttn {
+    font-size: 12px;
+    padding: 10px 25px;
+  }
+  .about-paralaxa {
+    padding: 70px 0;
+    margin: 70px 0;
+  }
+  .about-paralaxa h3 {
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 0;
+  }
+  .about-paralaxa img {
+    width: 70px;
+  }
+}
+/* end of 991.98 */
+@media (max-width: 767.98px) {
+  body {
+    line-height: 27px;
+    font-size: 16px;
+  }
+  .container-paralaxa {
+    max-width: 540px;
+  }
+  .container-paralaxa img {
+    width: 100%;
+  }
+  .section-title h2 {
+    font-size: 34px;
+    margin-bottom: 15px;
+  }
+  #page {
+    padding: 50px 0;
+  }
+  #page.about-page {
+    padding: 50px 0 20px;
+  }
+  .about-paralaxa {
+    padding: 60px 0;
+    margin: 40px 0;
+  }
+  #contact .contact-form {
+    padding: 30px 0 40px;
+  }
+  #footer img {
+    margin: 0 auto 10px;
+    width: 62px;
+  }
+  #footer a,
+  #footer p {
+    font-size: 10px;
+    line-height: 16px;
+  }
+  #pageheader {
+    padding: 20px 0;
+  }
+  #pageheader h1 {
+    font-size: 43px;
+  }
+  .page-news-list article {
+    margin-bottom: 40px;
+  }
+  .page-news-list article .entry-shadow-content {
+    padding: 30px;
+    width: 100%;
+  }
+  .insidegal {
+    width: 33.3333333%;
+  }
+  .about-paralaxa {
+    padding: 40px 0 30px;
+    margin: 40px 0;
+  }
+  .paralaxa-box {
+    margin-bottom: 30px;
+  }
+}
+/* end of 767.98 */
+@media (max-width: 575.98px) {
+  body {
+    line-height: 23px;
+    font-size: 14px;
+  }
+  .container-paralaxa {
+    max-width: 100%;
+    padding: 0 30px;
+  }
+  #maininvestor {
+    padding: 30px 15px;
+  }
+  #mainparalaxa {
+    padding-bottom: 370px;
+  }
+  #maincontact {
+    margin-bottom: 30px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .section-title h2 {
+    font-size: 29px;
+    margin-bottom: 15px;
+  }
+  #mainboxes {
+    margin-top: 15px;
+  }
+  .flip-card {
+    height: 150px;
+  }
+  .icon-box img {
+    width: 60px;
+  }
+  .icon-box p {
+    font-size: 12px;
+    line-height: 17px;
+  }
+  .icon-box h3 {
+    font-size: 15px;
+    margin: 15px 0 20px;
+  }
+  .bttn.bttn-lg {
+    padding: 20px 0;
+    width: 100%;
+  }
+  #footer {
+    padding: 10px 0 20px;
+  }
+  #footer img {
+    margin: 0 auto;
+    width: 62px;
+  }
+  #contact .col-6 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  #contact .contact-form {
+    padding: 20px 15px 40px;
+  }
+  #pageheader .breadcrumb {
+    display: none;
+  }
+  #pageheader h1 {
+    font-size: 33px;
+    margin: 0;
+  }
+  #page.page-news-list {
+    padding: 30px 30px;
+  }
+  #page.page-news {
+    padding: 30px 15px;
+  }
+  .insidegal {
+    width: 50%;
+  }
+  .single-post h1 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+  #page.about-page {
+    padding: 30px 15px;
+  }
+  .about-paralaxa {
+    padding: 40px 0 10px;
+    margin: 10px -15px 30px;
+  }
+  .about-paralaxa img {
+    width: 50px;
+  }
+  .about-paralaxa h3 {
+    font-size: 16px;
+  }
+  .nagroda img {
+    margin: 0 auto 20px !important;
+    width: 130px;
+  }
+  .inwest-list-item .flip-card p {
+    padding: 0 20px;
+    font-size: 12px;
+    line-height: 22px;
+  }
+  .inwest-list-item .flip-card {
+    height: 395px;
+    margin: 0 0 35px;
+  }
+}
+/* end of 575.98 */
+@media (max-width: 420px) {
+  .section-title h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  .page-news-list article .entry-shadow-content {
+    padding: 20px 0 25px;
+  }
+  .single-post h1 {
+    font-size: 24px;
+  }
+  .media:last-child .media-body {
+    margin-bottom: 0;
+  }
+  .inwest-list-item .flip-card {
+    height: 325px;
+    margin: 0 0 35px;
+  }
+  #page.about-page {
+    padding: 30px 15px 0;
+  }
+}
+/* end of 359.98 */
+/* end of 359.98 */
 /* Paginacja
 ================================================== */
 .pagination ul {

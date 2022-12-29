@@ -10,15 +10,15 @@
             <?php endif; ?>
             <form class="validateform" method="post">
                 <div class="row">
-                    <div class="col-4 input">
+                    <div class="col-12 col-sm-6 col-md-4 input">
                         <label for="form_imie">Imię</label>
                         <input type="text" name="imie" id="form_imie" class="validate[required]" data-prompt-position="topLeft:0" required>
                     </div>
-                    <div class="col-4 input">
+                    <div class="col-12 col-sm-6 col-md-4 input">
                         <label for="form_email">E-mail</label>
                         <input type="email" name="email" id="form_email" class="validate[required]" data-prompt-position="topLeft:0" required>
                     </div>
-                    <div class="col-4 input">
+                    <div class="col-12 col-sm-12 col-md-4 input">
                         <label for="form_telefon">Telefon</label>
                         <input type="tel" name="telefon" id="form_telefon" class="validate[required]" data-prompt-position="topLeft:0" required>
                     </div>
@@ -53,12 +53,12 @@
         </div>
     </div>
 
-	<div class="container pt-5 pb-5 mt-4 mb-4">
+	<div class="container pt-3 pt-sm-5 pb-3 pb-sm-5 mt-4 mb-4">
 		<div class="row">
-			<div class="col-8 text-center contact-text">
+			<div class="col-12 col-lg-8 text-center contact-text">
 				<?=replace($this->strona->tekst); ?>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-lg-4 mt-4 mt-lg-0">
                 <div class="side-box godziny">
                     <h3>Godziny pracy</h3>
                     <ul class="list-unstyled mb-0">
