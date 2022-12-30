@@ -85,8 +85,7 @@ class Default_IndexController extends kCMS_Site
 
         if ($this->_request->isPost()) {
 
-            $ip = $_SERVER['REMOTE_ADDR'];
-            $adresip = $db->fetchRow($db->select()->from('blokowanie')->where('ip = ?', $ip));
+            $adresip = $db->fetchRow($db->select()->from('blokowanie')->where('ip = ?', $_SERVER['REMOTE_ADDR']));
 
             $grecaptcha = $this->_request->getPost('g-recaptcha-response');
             $secret = '6LcbhL8UAAAAAN5gd0KCO5MI8rrNMRRqHYFCe2ow';
@@ -97,13 +96,17 @@ class Default_IndexController extends kCMS_Site
 
                 if(!$adresip) {
 
-                    $imie = $this->_request->getPost('form_imie');
-                    $email = $this->_request->getPost('form_mail');
-                    $temat = $this->_request->getPost('form_temat');
-                    $telefon = $this->_request->getPost('form_telefon');
-                    $wiadomosc = $this->_request->getPost('form_wiadomosc');
+                    $imie = $this->_request->getPost('imie');
+                    $nazwisko = $this->_request->getPost('nazwisko');
+                    $invest = $this->_request->getPost('invest');
+                    $email = $this->_request->getPost('email');
+                    $metry_od = $this->_request->getPost('metry_od');
+                    $metry_do = $this->_request->getPost('metry_do');
+                    $telefon = $this->_request->getPost('telefon');
+                    $pokoje = $this->_request->getPost('pokoje');
+                    $pietro = $this->_request->getPost('pietro');
+                    $wiadomosc = $this->_request->getPost('wiadomosc');
                     $useremail = $this->_request->getPost('useremail');
-                    $ip = $_SERVER['REMOTE_ADDR'];
                     $datadodania = date("d.m.Y - H:i:s");
 
                     $ustawienia = $db->fetchRow($db->select()->from('ustawienia'));
@@ -120,10 +123,15 @@ class Default_IndexController extends kCMS_Site
 							<p style="text-align:center">'.$ustawienia->nazwa.'</p>
 							<p><b>Wiadomość wysłana: '. $datadodania .'</b></p>
 							<hr style="border:0;border-bottom:1px solid #ececec" />
-							<p><b>Imię i nazwisko:</b> '.$imie.'<br />
+							<p><b>Imię i nazwisko:</b> '.$imie.' '.$nazwisko.'<br />
 							<b>E-mail:</b> '. $email .'<br />
 							<b>Telefon:</b> '. $telefon .'<br />
-							<b>IP:</b> '. $ip .'<br />
+							<b>Inwestycja:</b> '. $invest .'<br />
+							<b>Metraż od:</b> '. $metry_od .'<br />
+							<b>Metraż do:</b> '. $metry_do .'<br />
+							<b>Pokoje:</b> '. $pokoje .'<br />
+							<b>Piętro:</b> '. $pietro .'<br />
+							<b>IP:</b> '. $_SERVER['REMOTE_ADDR'] .'<br />
 							<hr style="border:0;border-bottom:1px solid #ececec" />
 							<p style="margin-top:0">'. $wiadomosc .'</p>
 							</div>')
@@ -155,13 +163,6 @@ class Default_IndexController extends kCMS_Site
                     $formData['id_inwest'] = 1;
                     $formData['ip'] = $_SERVER['REMOTE_ADDR'];
                     $formData['www'] = $_SERVER['REQUEST_URI'];
-                    $formData['imie'] = $formData['form_imie'];
-                    unset($formData['form_imie']);
-                    $formData['email'] = $formData['form_mail'];
-                    unset($formData['form_mail']);
-                    $formData['telefon'] = $formData['form_telefon'];
-                    unset($formData['form_telefon']);
-
                     unset($formData['g-recaptcha-response']);
 
                     foreach ($formData as $key => $value) {

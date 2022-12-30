@@ -373,6 +373,7 @@ class Default_InwestycjaController extends kCMS_Site
 			//Wywolanie JS
 			$this->view->validation = 1;
 			$this->view->searchonplan = 1;
+            $this->view->pageclass = ' invest-desc-page';
 			
 			if(!$inwestycja) {
 			
@@ -523,6 +524,7 @@ class Default_InwestycjaController extends kCMS_Site
 				$this->view->strona_nazwa = $inwestycja->nazwa;
 				$this->view->strona_tekst = $inwestycja->tekst;
 				$this->view->pagetag = $inwestycja->tag;
+                $this->view->pageclass = ' invest-desc-page';
 				
 				$this->view->strona_h1 = $inwestycja->nazwa;
 				$this->view->seo_tytul = $inwestycja->meta_tytul;
@@ -1240,6 +1242,7 @@ class Default_InwestycjaController extends kCMS_Site
 			$this->view->listamieszkan = 1;
 			$this->view->pietromap = 1;
 			$this->view->tip = 1;
+            $this->view->pageclass = ' invest-desc-page';
 			
 			$tag = $this->view->wybranytag = $this->getRequest()->getParam('tag_inwest');
 			$inwestycja = $this->view->inwestycja = $db->fetchRow($db->select()->from(array('i' => 'inwestycje'))->where('i.tag = ?', $tag));
@@ -1424,6 +1427,7 @@ class Default_InwestycjaController extends kCMS_Site
 			
 			//Wywolanie JS
 			$this->view->validation = 1;
+            $this->view->pageclass = ' invest-desc-page';
 
 			$tag = $this->view->wybranytag = $this->getRequest()->getParam('tag_inwest');
 			$id_budynek = $this->getRequest()->getParam('id_budynek');
@@ -1651,7 +1655,6 @@ class Default_InwestycjaController extends kCMS_Site
 								$mail
 								->setFrom($ustawienia->email, $imie)
 								->setReplyTo($email, $imie)
-								->addTo('test-u9jat84r9@srv1.mail-tester.com', 'Adres odbiorcy')
 								->addTo($inwestycja->email, 'Adres odbiorcy')
 								->setSubject($ustawienia->domena.' - Zapytanie o mieszkanie - '.$inwestycja->nazwa)
 								->setBodyHTML('

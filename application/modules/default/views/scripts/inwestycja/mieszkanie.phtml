@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row pietro-nav">
-		<div class="col-4">
+		<div class="col-12 col-sm-4">
 		<!-- Inwestycja osiedlowa -->
 		<?php if($this->inwestycja->typ == 1 && $this->inwestycja->id <> 1){?>
 			<?php if($this->poprzednie) {?><a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/b/<?=$this->budynek->id;?>/p/<?=$this->pietro->numer;?>/m/<?=$this->poprzednie->numer;?>/" class="bttn">Poprzednie</a><?php } ?>
@@ -15,7 +15,7 @@
 		<?php } ?>
 		</div>
 		
-		<div class="col-4">
+		<div class="col-12 col-sm-4">
 			<!-- Inwestycja osiedlowa -->
 			<?php if($this->inwestycja->typ == 1 && $this->inwestycja->id <> 1){?>
 				<a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/b/<?=$this->mieszkanie->id_budynek;?>/p/<?=$this->pietro->numer;?>/typ/<?=$this->mieszkanie->typ;?>/" class="bttn">Wróć do planu</a>
@@ -31,7 +31,7 @@
 				<a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/plan-inwestycji/" class="bttn">Wróć do planu</a>
 			<?php } ?>
 		</div>
-		<div class="col-4">
+		<div class="col-12 col-sm-4">
 		<!-- Inwestycja osiedlowa -->
 		<?php if($this->inwestycja->typ == 1 && $this->inwestycja->id <> 1){?>
 			<?php if($this->nastepne) {?><a href="<?=$this->baseUrl;?>/i/<?=$this->inwestycja->tag;?>/b/<?=$this->budynek->id;?>/p/<?=$this->pietro->numer;?>/m/<?=$this->nastepne->numer;?>/" class="bttn">Następny</a><?php } ?>
@@ -51,7 +51,7 @@
 <div id="mieszkanie">
 	<div class="container">
 		<div class="row">
-			<div class="col-4">
+			<div class="col-12 col-md-5 col-lg-4">
                 <div class="mieszkanie-dane">
                     <a href="<?=$this->baseUrl;?>/files/inwestycje/pomieszczenie/<?=$this->mieszkanie->plik;?>" class="swipebox"><img src="<?=$this->baseUrl;?>/files/inwestycje/pomieszczenie/thumbs/<?=$this->mieszkanie->plik;?>" alt="<?=$this->mieszkanie->nazwa;?>"></a>
 
@@ -63,8 +63,8 @@
                         <?php if($this->mieszkanie->kuchnia){?><li>Aneks/Kuchnia:<span><?=kuchnia($this->mieszkanie->kuchnia);?></span></li><?php } ?>
 
                         <?php if(!empty($this->oknoArray[0])){?><li class="clearfix">Wystawa okienna:<span><?php foreach($this->oknoArray as $okno){ echo okno($okno).'<br>'; } ?></span></li><?php } ?>
-                        <?php if($this->mieszkanie->balkon){?><li>Powierzchnia balkonu:<span><?=$this->mieszkanie->balkon;?>m<sup>2</sup></span></li><?php } ?>
-                        <?php if($this->mieszkanie->ogrodek){?><li>Powierzchnia ogródka:<span><?=$this->mieszkanie->ogrodek;?>m<sup>2</sup></span></li><?php } ?>
+                        <?php if($this->mieszkanie->balkon){?><li>Balkon:<span><?=$this->mieszkanie->balkon;?>m<sup>2</sup></span></li><?php } ?>
+                        <?php if($this->mieszkanie->ogrodek){?><li>Ogródek:<span><?=$this->mieszkanie->ogrodek;?>m<sup>2</sup></span></li><?php } ?>
 
                         <?php if($this->mieszkanie->typ_okno){?>
                             <li>Rodzaj okna:<span><?=rodzajOkno($this->mieszkanie->typ_okno);?></span></li>
@@ -91,8 +91,8 @@
                 </div>
 			</div>
 
-			<div class="col-8">
-				<div id="maincontact" class="inwestycja-contact pl-5 pt-4">
+			<div class="col-12 col-md-7 col-lg-8">
+				<div id="maincontact" class="inwestycja-contact pl-0 pl-md-3 pl-lg-5 pt-0 pt-lg-4">
 					<div class="row mieszkanie-form">
 						<div class="col-12">
 							<div id="formalert">
@@ -104,19 +104,19 @@
 							</div>
 							<form method="post" action="" class="validateform kontakt">
 								<div class="row">
-									<div class="col-4">
+									<div class="col-12 col-lg-4">
 										<div class="input">
                                             <label for="form_imie">Imię</label>
                                             <input name="form_imie" id="form_imie" class="validate[required]"type="text">
                                         </div>
 									</div>
-									<div class="col-4">
+									<div class="col-12 col-lg-4">
 										<div class="input">
                                             <label for="form_email">E-mail</label>
                                             <input name="form_email" id="form_email" class="validate[required,custom[email]]" type="text">
                                         </div>
 									</div>
-									<div class="col-4">
+									<div class="col-12 col-lg-4">
 										<div class="input">
                                             <label for="form_tel">Telefon</label>
                                             <input name="form_telefon" id="form_tel" class="validate[custom[phone]]" type="text">

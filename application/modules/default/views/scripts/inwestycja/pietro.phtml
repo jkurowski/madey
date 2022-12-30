@@ -1,11 +1,11 @@
 <div id="plan" class="plan-img">
 	<div class="container">
 		<div class="row">
-			<div class="col-3 inwestmenu">
+			<div class="col-12 col-lg-3 inwestmenu">
 				<?php echo $this->render('inwestycja/aside.phtml');?>
 			</div>
 			
-			<div class="col-9 inwestdesc inwestroomslist">
+			<div class="col-12 col-lg-9 inwestdesc inwestroomslist">
 				<?php if($this->pietro->typ == 4 || $this->pietro->typ == 3){?>
 				<div class="fluid-container">
 					<div class="row pietro-nav no-gutters">
@@ -18,9 +18,9 @@
 			
 				<div class="fluid-container">
 					<div class="row pietro-nav">
-						<div class="col-4"><?php if($this->poprzednie) {?><a href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/p/<?=$this->poprzednie->numer;?>/typ/<?=$this->poprzednie->typ;?>/" class="bttn">Piętro niżej</a><?php } ?></div>
-						<div class="col-4 text-center"><a href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/plan-inwestycji/" class="bttn">Plan inwestycji</a></div>
-						<div class="col-4 text-right"><?php if($this->kolejne) {?><a href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/p/<?=$this->kolejne->numer;?>/typ/<?=$this->kolejne->typ;?>/" class="bttn">Piętro wyżej</a><?php } ?></div>
+						<div class="col-12 col-sm-4"><?php if($this->poprzednie) {?><a href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/p/<?=$this->poprzednie->numer;?>/typ/<?=$this->poprzednie->typ;?>/" class="bttn">Piętro niżej</a><?php } ?></div>
+						<div class="col-12 col-sm-4 text-center"><a href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/plan-inwestycji/" class="bttn">Plan inwestycji</a></div>
+						<div class="col-12 col-sm-4 text-right"><?php if($this->kolejne) {?><a href="<?=$this->baseUrl; ?>/i/<?=$this->inwestycja->tag;?>/p/<?=$this->kolejne->numer;?>/typ/<?=$this->kolejne->typ;?>/" class="bttn">Piętro wyżej</a><?php } ?></div>
 					</div>
 				</div>
 				
