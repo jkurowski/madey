@@ -710,7 +710,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.0",
                 "psr/container": "^2.0"
             },
             "conflict": {
@@ -795,7 +795,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.0",
                 "symfony/service-contracts": "^1|^2|^3"
             },
             "type": "library",
@@ -857,7 +857,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.0",
                 "symfony/polyfill-mbstring": "~1.0"
             },
             "conflict": {
